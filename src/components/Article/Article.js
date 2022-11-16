@@ -2,7 +2,7 @@ import React from 'react'
 import Product from '../Product/Product';
 import './Article.css';
 
-const Article = ({ stock }) => {
+const Article = ({ stock, items, filter }) => {
 
     return (
 
@@ -10,8 +10,15 @@ const Article = ({ stock }) => {
             <div className="container">
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-                    {
-                        stock && stock.map((product, indice) => {
+                    {stock
+                        .filter(items => {
+                            if(!filter) return true;
+                            else{
+                                const itemName = items.name.toLowerCase();
+                                return itemName.includes(filter.toLowerCase());
+                            }
+                        })
+                        .map((product, indice) => {
                             return (
                                 <div key={indice}>
                                     <Product product={product} />

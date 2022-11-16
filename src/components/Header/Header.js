@@ -1,23 +1,41 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { NavLink } from 'react-router-dom';
-import './Header.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Navbar from 'react-bootstrap/Navbar';
 import { ModalLogin } from '../ModalLogin/ModalLogin';
 import { ModalRegister } from '../ModalRegister/ModalRegister';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-import Offcanvas from 'react-bootstrap/Offcanvas';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 import { ListSC } from '../ListSC/ListSC';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+import './Header.css';
 
 const Header = () => {
-    const { items } = useContext(ItemsContext);
-    const removeSC = (product) => {
-        alert("borrado");
-        console.log(product);
+    const { items, setItems, user } = useContext(ItemsContext);
+    let interim = JSON.parse(localStorage.getItem("infoUserLoged")) || [];
+    const { setUser } = useContext(ItemsContext);
+
+    useEffect(() => {
+        if (interim) { setUser(interim) }
+    }, [])
+    useEffect(() => {
+        localStorage.setItem("infoUserLoged", JSON.stringify(user));
+    }, [user]);
+
+    const removeSC = (id) => {
+        let interim = items.filter((item, indice) => indice !== id);
+        setItems(interim);
+
+        toast('Deleted!', {
+            icon: '🗑️',
+        });
+    }
+    const view = () => {
+        if (user) {
+            <ModalLogin />
+        }
     }
 
     return (
@@ -40,9 +58,35 @@ const Header = () => {
                             <NavLink to='/' className={({ isActive }) => isActive ? "nav-link px-2 text-secondary" : "nav-link px-2 text-dark"}>Home</NavLink>
                             <NavLink to='/basket' className={({ isActive }) => isActive ? "nav-link px-2 text-secondary" : "nav-link px-2 text-dark"}>Basket</NavLink>
 
-                            {/* //! AÑADIR DROP CUANDO IMPLEMENTEMOS EL LOGIN */}
+                            {/* //! AÑADIR DROP CUANDO IMPLEMENTEMOS EL LOGIN (esta abajo) */}
                             {/* //? añadir el onChange para el input */}
-                            {/* <NavDropdown
+                        </Nav>
+                        <hr />
+                        <div>
+
+                            {/* {user && <ModalLogin />}
+                            {user && <ModalRegister />} */}
+
+
+                        </div>
+                        <br />
+                        <Offcanvas.Title>
+                            Basket
+                        </Offcanvas.Title>
+
+                        <ListSC items={items} removeSC={removeSC} />
+
+                    </Offcanvas.Body>
+                </Navbar.Offcanvas>
+            </Container>
+        </Navbar >
+    )
+}
+
+export default Header;
+
+
+{   /* <NavDropdown
                                 title="Account"
                                 id={`offcanvasNavbarDropdown-expand-xxl`}
                             >
@@ -55,32 +99,3 @@ const Header = () => {
                                     Something else here
                                 </NavDropdown.Item>
                             </NavDropdown> */}
-                        </Nav>
-                        <hr />
-                        <Form className="d-flex">
-                            <Form.Control
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <Button variant="outline-primary">Search</Button>
-                        </Form>
-                        <hr />
-                        <div>
-                            <ModalLogin /> <ModalRegister />
-                        </div>
-                        <br />
-                        <Offcanvas.Title>
-                            Basket
-                        </Offcanvas.Title>
-                        {/* //! AÑADIR COMPONENTE SHOPPING CART */}
-                        <ListSC items={items} removeSC={removeSC} />
-                    </Offcanvas.Body>
-                </Navbar.Offcanvas>
-            </Container>
-        </Navbar >
-    )
-}
-
-export default Header;

@@ -48,6 +48,7 @@ export const Offer = ({ offer, buy }) => {
             </td>
             <td>
                 <button onClick={() => { buy(offer) }} className='btn btn-sm btn-outline-primary'><FaShoppingCart /> </button>
+                
             </td>
 
         </>

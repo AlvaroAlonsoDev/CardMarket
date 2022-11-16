@@ -1,29 +1,33 @@
 import React, { useContext, useEffect } from 'react'
 import Article from '../components/Article/Article'
-// import { ShoppingCart } from '../components/ShoppingCart/ShoppingCart'
+import { SearchBar } from '../components/SearchBar/SearchBar'
 import { ApiContext } from '../helper/context/ApiContext'
 import { ItemsContext } from '../helper/context/ItemsContext'
 
 
 const Home = () => {
     let interim = JSON.parse(localStorage.getItem('items'));
-    const { items, setItems, stock } = useContext(ItemsContext);
+    const { items, setItems, stock, searchParams, setSearchParams } = useContext(ItemsContext);
     const { fetchData } = useContext(ApiContext);
-    
+    const filter = searchParams.get('filter') ?? "";
 
     useEffect(() => {
         if(interim){setItems(interim)}
         fetchData();
     }, []);
-
     useEffect(() => {
         localStorage.setItem("items", JSON.stringify(items));
     },[items]);
 
+    const handleFilter = (e) => {
+        setSearchParams({ filter: e.target.value });
+    }
+
+
     return (
         <>
-            <Article stock={stock} />
-            {/* <ShoppingCart items={items} removeSC={removeSC}/> */}
+            <SearchBar handleFilter={handleFilter} />
+            <Article stock={stock} items={items} filter={filter} />
         </>
     )
 }

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { Section } from "../components/Section/Section";
 // import { ShoppingCart } from "../components/ShoppingCart/ShoppingCart";
@@ -12,26 +13,17 @@ export const Item = () => {
     const [product, setProduct] = useState({});
     const { fetchDataOffers } = useContext(ApiContext);
 
-
     useEffect(() => {
         if (interim) { setItems(interim) }
         fetchDataOffers();
         stock.forEach((item) => {
             if (item.id.toString() === id) { setProduct(item) }
-        });
+        })
     }, []);
     useEffect(() => {
         localStorage.setItem("items", JSON.stringify(items));
     }, [items]);
 
-    // function updateQuantity(id) {
-    //     for (let i in items) {
-    //         if (items[i].id == id) {
-    //             items[i].quantity = items[i].quantity + 1;
-    //             break; //Stop this loop, we found it!
-    //         }
-    //     }
-    // }
 
     const buy = (product) => {
         const interim = items.find(item => item.id === product.id);
@@ -44,15 +36,16 @@ export const Item = () => {
                 } : element)
             );
         } else {
-            let prueba = {
+            let interim = {
                 id: product.id,
                 seller: product.user,
                 name: product.name,
                 price: product.price
             }
-            setItems([...items, { ...prueba, quantity: 1 }]);
+            setItems([...items, { ...interim, quantity: 1 }]);
         }
-    }
+        toast.success('Successfully saved!');
+    };
 
     // const removeSC = (id) => {
     //     let interim = items.filter((item, indice) => indice !== id);

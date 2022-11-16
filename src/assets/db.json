@@ -37,8 +37,9 @@
         {
             "id": 2,
             "idProduct": 2,
+            "idUsers": 320,
             "name": "Tarmogoyf",
-            "user": "Pepe",
+            "user": "alvaroalonso",
             "price": 45,
             "condition": "Good",
             "lenguage": "English",
@@ -65,8 +66,9 @@
         {
             "id": 20,
             "idProduct": 1,
+            "idUsers": 320,
             "name": "Snapcaster Mage",
-            "user": "Alvaro",
+            "user": "alvaroalonso",
             "price": 24,
             "condition": "Good",
             "lenguage": "English",
@@ -77,5 +79,13 @@
             "description": "Never used"
         }
     ],
-    "users": []
+    "users": [
+        {
+            "id": 320,
+            "username": "alvaroalonso",
+            "name": "Alvaro"
+            "email": "airuritac@gmail.com",
+            "pass": "123"
+        }
+    ]
 }

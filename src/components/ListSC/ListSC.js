@@ -1,6 +1,6 @@
 import { Button } from 'react-bootstrap';
-import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Toaster } from 'react-hot-toast';
 import { FaTrashAlt } from "react-icons/fa";
 
 export function ListSC({ items, removeSC }) {
@@ -9,7 +9,7 @@ export function ListSC({ items, removeSC }) {
     return (
         <ListGroup as="ol" numbered>
             {
-                items && items.map(item => {
+                items && items.map((item, index) => {
                     return (
                         <ListGroup.Item
                             key={item.id}
@@ -21,7 +21,7 @@ export function ListSC({ items, removeSC }) {
                                 {item.quantity} x {item.price}
                             </div>
                             <div className="pointer">
-                                <Button onClick={e => removeSC(item)} variant="outline-danger"><FaTrashAlt /></Button>
+                                <Button onClick={e => removeSC(index)} variant="outline-danger"><FaTrashAlt /></Button>
                             </div>
                         </ListGroup.Item>
                     )
