@@ -1,0 +1,141 @@
+#tray {
+	height: 70px;
+	width: 70px;
+	background-color: #09A7BA;
+	/* display: block; */
+	border-radius: 50%;
+	text-align: center;
+	cursor: pointer;
+	transition-duration: 0.5s;
+	position: fixed;
+	left: 25px;
+	bottom: 25px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#tray:hover {
+	box-shadow: 0 0 10px rgb(141, 141, 141);
+}
+
+#tray i {
+	color: #ffffff;
+	margin-top: 18px;
+	font-size: 30px;
+}
+
+.count {
+	position: absolute;
+	background-color: rgba(212, 7, 10, 1.00);
+	border-radius: 50%;
+	width: 22px;
+	height: 22px;
+	padding: 2px;
+	color: #fff;
+	font-weight: 300;
+	display: none;
+}
+
+
+.fa {
+	margin-top: -10px;
+	color: white;
+	font-size: 3em;
+}
+
+.faNumber {
+	margin-top: -3px;
+}
+
+.list {
+	max-height: 300px;
+	overflow: auto;
+	margin-bottom: 45px;
+}
+
+.info-carrito {
+	position: fixed;
+	left: 100px;
+	bottom: 100px;
+	border-radius: 5px;
+	max-width: 300px;
+	text-align: center;
+	z-index: 100;
+	padding-bottom: 30px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.63);
+	padding-bottom: 25px;
+	overflow: hidden;
+	background-color: rgb(255, 255, 255);
+	display: none;
+}
+
+.info-carrito p {
+	color: #838383;
+	margin: 4% auto;
+	width: 260px;
+	padding: 20px;
+}
+
+.info-carrito>h2, h5 {
+	font-size: 25px;
+	padding-bottom: 25px;
+	line-height: 0;
+	color: #09A7BA;
+	font-weight: 300;
+	padding: 20px;
+	padding-top: 40px;
+}
+
+.info-carrito ul {
+	margin-top: 25px;
+	padding: 0 20px;
+	padding-bottom: 60px;
+}
+
+.info-carrito li {
+	list-style: none;
+	font-size: 1.2rem;
+	color: #616161;
+	overflow: hidden;
+}
+
+.openpopup2 {
+	width: 80%;
+	margin: auto;
+	font-size: 14px;
+	box-shadow: 0 0 5px rgba(134, 134, 134, 0.6);
+	background-color: #FFF;
+	border-radius: 5px;
+	background-color: #797D7E;
+	color: #fff;
+	padding: 10px;
+	margin-top: 10px;
+	cursor: pointer;
+	font-weight: 700;
+	transition-duration: 1s;
+}
+
+.openpopup1:hover {
+	background-color: #09A7BA;
+}
+
+.closewindow {
+	color: #B5B5B5;
+	position: relative;
+	float: right;
+	left: -3%;
+	cursor: pointer;
+	width: 20px;
+	border-radius: 1000%;
+	height: 20px;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.closewindow span {
+	position: relative;
+	bottom: 2px;
+}
+
+.countDisplay {
+	display: block;
+}

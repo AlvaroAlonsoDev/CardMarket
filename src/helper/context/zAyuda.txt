@@ -1,0 +1,2 @@
+Basicamente Crear una carpeta para todos las const 
+que vayas a querer tanto useState como Reducer y esta las manda al app

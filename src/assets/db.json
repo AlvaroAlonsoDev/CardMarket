@@ -1,0 +1,81 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Snapcaster Mage",
+            "description": "Flash, When Snapcaster Mage enters the battlefield, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)",
+            "img": "https://static.cardmarket.com/img/5269750ca629e60ccbc5323f4435bfcb/items/1/ZNL/576031.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Tarmogoyf",
+            "description": "Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.",
+            "img": "https://static.cardmarket.com/img/422376bb86b6fc78915dd2e56452ccab/items/1/TSR/545241.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Teferi, Time Raveler",
+            "description": "Each opponent can cast spells only any time they could cast a sorcery. +1: Until your next turn, you may cast sorcery spells as though they had flash. −3: Return up to one target artifact, creature, or enchantment to its owner's hand. Draw a card.",
+            "img": "https://static.cardmarket.com/img/988b9bdf1d5bce76c81e35cf48a38836/items/1/WAR/371841.jpg"
+        }
+    ],
+    "offers": [
+        {
+            "id": 204,
+            "idProduct": 1,
+            "name": "Snapcaster Mage",
+            "user": "Lopey",
+            "price": 23,
+            "condition": "Good",
+            "lenguage": "English",
+            "quantity": 3,
+            "version": "The List",
+            "signed": "no",
+            "altered": "no",
+            "description": "Never used"
+        },
+        {
+            "id": 2,
+            "idProduct": 2,
+            "name": "Tarmogoyf",
+            "user": "Pepe",
+            "price": 45,
+            "condition": "Good",
+            "lenguage": "English",
+            "quantity": 8,
+            "version": "The List",
+            "signed": "no",
+            "altered": "no",
+            "description": "Never used"
+        },
+        {
+            "id": 2048,
+            "idProduct": 3,
+            "name": "Teferi, Time Raveler",
+            "user": "Juan",
+            "price": 33,
+            "condition": "Good",
+            "lenguage": "English",
+            "quantity": 8,
+            "version": "The List",
+            "signed": "no",
+            "altered": "no",
+            "description": "Never used"
+        },
+        {
+            "id": 20,
+            "idProduct": 1,
+            "name": "Snapcaster Mage",
+            "user": "Alvaro",
+            "price": 24,
+            "condition": "Good",
+            "lenguage": "English",
+            "quantity": 2,
+            "version": "The List",
+            "signed": "no",
+            "altered": "no",
+            "description": "Never used"
+        }
+    ],
+    "users": []
+}

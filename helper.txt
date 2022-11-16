@@ -1,0 +1,10 @@
+Borrar items del carrito
+Poner el total del carrito €
+Funcionalidad Buscador
+Funcionalidad Login 
+Funcionalidad Register
+Crear nueva Offers
+Al añadir al carrito la cantidad
+Alertas de Juan
+Añadir pages de users con sus ofertas publicadas
+
