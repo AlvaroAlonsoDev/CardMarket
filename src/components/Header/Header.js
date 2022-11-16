@@ -9,19 +9,14 @@ import { ModalLogin } from '../ModalLogin/ModalLogin';
 import { ModalRegister } from '../ModalRegister/ModalRegister';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 import { ListSC } from '../ListSC/ListSC';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Header.css';
 
 const Header = () => {
-    const { items, setItems, user } = useContext(ItemsContext);
-    let interim = JSON.parse(localStorage.getItem("infoUserLoged")) || [];
-    const { setUser } = useContext(ItemsContext);
+    const { items, setItems, user, setUser } = useContext(ItemsContext);
 
     useEffect(() => {
-        if (interim) { setUser(interim) }
-    }, [])
-    useEffect(() => {
-        localStorage.setItem("infoUserLoged", JSON.stringify(user));
+        sessionStorage.setItem("infoUserLoged", JSON.stringify(user));
     }, [user]);
 
     const removeSC = (id) => {
@@ -32,9 +27,31 @@ const Header = () => {
             icon: '🗑️',
         });
     }
-    const view = () => {
-        if (user) {
-            <ModalLogin />
+
+    const signOutUser = () => {setUser([])}
+
+    const renderBtnLR = () => {
+        if (user.length === 0) {
+            return (
+                <div><ModalLogin /> <ModalRegister /></div>
+            )
+        } else {
+            return (
+                <NavDropdown
+                    className='ms-2'
+                    title="Account"
+                    id={`offcanvasNavbarDropdown-expand-xxl`}
+                >
+                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                        Another action
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item onClick={signOutUser} className="link-danger" >
+                        Sign Out
+                    </NavDropdown.Item>
+                </NavDropdown>
+            )
         }
     }
 
@@ -57,18 +74,14 @@ const Header = () => {
                         <Nav className="justify-content-end flex-grow-1 pe-3">
                             <NavLink to='/' className={({ isActive }) => isActive ? "nav-link px-2 text-secondary" : "nav-link px-2 text-dark"}>Home</NavLink>
                             <NavLink to='/basket' className={({ isActive }) => isActive ? "nav-link px-2 text-secondary" : "nav-link px-2 text-dark"}>Basket</NavLink>
-
                             {/* //! AÑADIR DROP CUANDO IMPLEMENTEMOS EL LOGIN (esta abajo) */}
                             {/* //? añadir el onChange para el input */}
+                            {renderBtnLR()}
                         </Nav>
                         <hr />
                         <div>
-
-                            {/* {user && <ModalLogin />}
-                            {user && <ModalRegister />} */}
-
-
                         </div>
+
                         <br />
                         <Offcanvas.Title>
                             Basket
@@ -86,16 +99,3 @@ const Header = () => {
 export default Header;
 
 
-{   /* <NavDropdown
-                                title="Account"
-                                id={`offcanvasNavbarDropdown-expand-xxl`}
-                            >
-                                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">
-                                    Another action
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action5">
-                                    Something else here
-                                </NavDropdown.Item>
-                            </NavDropdown> */}

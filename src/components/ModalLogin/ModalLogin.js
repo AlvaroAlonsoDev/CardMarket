@@ -10,16 +10,11 @@ export function ModalLogin() {
     const handleShow = () => setShow(true);
 
     const { fetchDataUsers } = useContext(ApiContext);
-    const { dataUsers, user, setUser } = useContext(ItemsContext);
+    const { dataUsers, setUser, setIsLoged } = useContext(ItemsContext);
 
     useEffect(() => {
         fetchDataUsers();
     }, []);
-    
-    useEffect(() => {
-        localStorage.setItem("infoUserLoged", JSON.stringify(user));
-    }, [user]);
-
 
     const getLogin = (e) => {
         e.preventDefault();
@@ -32,6 +27,7 @@ export function ModalLogin() {
         const interim = dataUsers.find(user => user.email === email) && dataUsers.find(user => user.pass === pass);
         if (interim) {
             setUser(interim);
+            setIsLoged(true);
             handleClose();
         } else {
             console.log("credenciales erroneas");
