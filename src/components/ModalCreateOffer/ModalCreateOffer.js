@@ -2,52 +2,36 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { json, NavLink } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import { ItemsContext } from '../../helper/context/ItemsContext';
+import { v4 as uuidv4 } from 'uuid';
 
-export function ModalRegister() {
+export const ModalCreateOffer = () => {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const {setUser, setIsLoged} = useContext(ItemsContext);
 
-    const getRegisterUser = e => {
+    const getCreateNewOffer = (e) => {
         e.preventDefault();
-
-        let new_user = {
+        let new_offer = {
             id: uuidv4(),
-            username: e.target.username.value,
-            email: e.target.email.value,
-            pass: e.target.pass.value,
-        }
 
-        fetch('http://localhost:4000/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(new_user)
-        }).then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
-        setUser(new_user);
-        setIsLoged(true);
-        handleClose();
+        }
     }
     return (
         <>
-            <Button variant="warning" onClick={handleShow}>
-                Sign-up
-            </Button>
+            <div className='row aling-item-center justify-content-center'>
+                <Button className='m-1 col-sm-6 text-center maxW btn' variant="primary" onClick={handleShow}>
+                    Upload new offer
+                </Button>
+            </div>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} >
                 <Modal.Header closeButton>
-                    <Modal.Title>Sign-up</Modal.Title>
+                    <Modal.Title>New Offer</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 
-                    <form onSubmit={e => { getRegisterUser(e) }}>
+                    <form onSubmit={e => { getCreateNewOffer(e) }}>
 
                         <div className="form-floating mb-3">
                             <input name="username" type="text" className="form-control" id="floatingInputUsername" placeholder="myusername" autoFocus />

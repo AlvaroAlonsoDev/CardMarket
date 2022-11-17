@@ -81,9 +81,8 @@
     ],
     "users": [
         {
-            "id": 320,
-            "username": "alvaroalonso",
-            "name": "Alvaro",
+            "id": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+            "username": "airuritac",
             "email": "airuritac@gmail.com",
             "pass": "123"
         }

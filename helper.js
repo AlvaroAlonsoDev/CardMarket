@@ -5,6 +5,8 @@
 //? Borrar de 1 en 1 
 //? No añadir mas que el stock
 //? Quitar el pass al logearse
+//? Comprobar que no haya usuarios==
+//? Encriptar pass
 // Funcionalidad Register               //TODO DOING
 // Funcionalidad Login                  //!DONE
 // Borrar items del carrito             //!DONE

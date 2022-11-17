@@ -4,9 +4,9 @@ import { FaSearch } from "react-icons/fa";
 
 export const SearchBar = ({ handleFilter }) => {
     return (
-        <div className="container bg-light pt-3">
+        <div className="container height bg-light">
 
-            <div className="row height d-flex justify-content-center align-items-center">
+            <div className="row  d-flex justify-content-center align-items-center">
 
                 <div className="col-md-6">
 
