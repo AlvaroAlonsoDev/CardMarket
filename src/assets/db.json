@@ -1,90 +1,198 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Snapcaster Mage",
-            "description": "Flash, When Snapcaster Mage enters the battlefield, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)",
-            "img": "https://static.cardmarket.com/img/5269750ca629e60ccbc5323f4435bfcb/items/1/ZNL/576031.jpg"
-        },
-        {
-            "id": 2,
-            "name": "Tarmogoyf",
-            "description": "Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.",
-            "img": "https://static.cardmarket.com/img/422376bb86b6fc78915dd2e56452ccab/items/1/TSR/545241.jpg"
-        },
-        {
-            "id": 3,
-            "name": "Teferi, Time Raveler",
-            "description": "Each opponent can cast spells only any time they could cast a sorcery. +1: Until your next turn, you may cast sorcery spells as though they had flash. −3: Return up to one target artifact, creature, or enchantment to its owner's hand. Draw a card.",
-            "img": "https://static.cardmarket.com/img/988b9bdf1d5bce76c81e35cf48a38836/items/1/WAR/371841.jpg"
-        }
-    ],
-    "offers": [
-        {
-            "id": 204,
-            "idProduct": 1,
-            "name": "Snapcaster Mage",
-            "user": "Lopey",
-            "price": 23,
-            "condition": "Good",
-            "lenguage": "English",
-            "quantity": 3,
-            "version": "The List",
-            "signed": "no",
-            "altered": "no",
-            "description": "Never used"
-        },
-        {
-            "id": 2,
-            "idProduct": 2,
-            "idUsers": 320,
-            "name": "Tarmogoyf",
-            "user": "alvaroalonso",
-            "price": 45,
-            "condition": "Good",
-            "lenguage": "English",
-            "quantity": 8,
-            "version": "The List",
-            "signed": "no",
-            "altered": "no",
-            "description": "Never used"
-        },
-        {
-            "id": 2048,
-            "idProduct": 3,
-            "name": "Teferi, Time Raveler",
-            "user": "Juan",
-            "price": 33,
-            "condition": "Good",
-            "lenguage": "English",
-            "quantity": 8,
-            "version": "The List",
-            "signed": "no",
-            "altered": "no",
-            "description": "Never used"
-        },
-        {
-            "id": 20,
-            "idProduct": 1,
-            "idUsers": 320,
-            "name": "Snapcaster Mage",
-            "user": "alvaroalonso",
-            "price": 24,
-            "condition": "Good",
-            "lenguage": "English",
-            "quantity": 2,
-            "version": "The List",
-            "signed": "no",
-            "altered": "no",
-            "description": "Never used"
-        }
-    ],
-    "users": [
-        {
-            "id": "cb9084b1-a588-478f-abe9-ba4e920d5200",
-            "username": "airuritac",
-            "email": "airuritac@gmail.com",
-            "pass": "123"
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Snapcaster Mage",
+      "description": "Flash, When Snapcaster Mage enters the battlefield, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)",
+      "img": "https://static.cardmarket.com/img/5269750ca629e60ccbc5323f4435bfcb/items/1/ZNL/576031.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Tarmogoyf",
+      "description": "Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.",
+      "img": "https://static.cardmarket.com/img/422376bb86b6fc78915dd2e56452ccab/items/1/TSR/545241.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Teferi, Time Raveler",
+      "description": "Each opponent can cast spells only any time they could cast a sorcery. +1: Until your next turn, you may cast sorcery spells as though they had flash. −3: Return up to one target artifact, creature, or enchantment to its owner's hand. Draw a card.",
+      "img": "https://static.cardmarket.com/img/988b9bdf1d5bce76c81e35cf48a38836/items/1/WAR/371841.jpg"
+    }
+  ],
+  "offers": [
+    {
+      "id": 204,
+      "idProduct": 1,
+      "idUser": 23,
+      "name": "Snapcaster Mage",
+      "user": "Lopey",
+      "price": 23,
+      "condition": "Good",
+      "lenguage": "English",
+      "quantity": 3,
+      "version": "The List",
+      "signed": "no",
+      "altered": "no",
+      "description": "Never used"
+    },
+    {
+      "id": 2,
+      "idProduct": 2,
+      "idUsers": 320,
+      "idUser": 83,
+      "name": "Tarmogoyf",
+      "user": "alvaroalonso",
+      "price": 45,
+      "condition": "Good",
+      "lenguage": "English",
+      "quantity": 8,
+      "version": "The List",
+      "signed": "no",
+      "altered": "no",
+      "description": "Never used"
+    },
+    {
+      "id": 2048,
+      "idProduct": 3,
+      "idUser": 27,
+      "name": "Teferi, Time Raveler",
+      "user": "Juan",
+      "price": 33,
+      "condition": "Good",
+      "lenguage": "English",
+      "quantity": 8,
+      "version": "The List",
+      "signed": "no",
+      "altered": "no",
+      "description": "Never used"
+    },
+    {
+      "id": 20,
+      "idProduct": 1,
+      "idUsers": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+      "name": "Snapcaster Mage",
+      "user": "alvaroalonso",
+      "price": 24,
+      "condition": "Good",
+      "lenguage": "English",
+      "quantity": 2,
+      "version": "The List",
+      "signed": "no",
+      "altered": "no",
+      "description": "Never used"
+    },
+    {
+      "id": "c1a51498-3ee0-41aa-85aa-89a4e3e43ca7",
+      "idProduct": 1,
+      "idUsers": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+      "name": "Snapcaster Mage",
+      "user": "airuritac",
+      "price": "43",
+      "condition": "greah",
+      "lenguage": "haerh",
+      "quantity": "3",
+      "version": "haer",
+      "signed": "haer",
+      "altered": "ahee",
+      "description": "haer"
+    },
+    {
+      "id": "e8ed87cb-a96d-4108-a883-08ac9ce6a48d",
+      "idProduct": 2,
+      "idUsers": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+      "name": "Tarmogoyf",
+      "user": "airuritac",
+      "price": "3",
+      "condition": "aher",
+      "lenguage": "herah",
+      "quantity": "34",
+      "version": "reah",
+      "signed": "erahaerh",
+      "altered": "aehr",
+      "description": "hared"
+    },
+    {
+      "id": "2b4f70b1-c293-4b18-b123-b73f6ec16f37",
+      "idProduct": 2,
+      "idUsers": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+      "name": "Tarmogoyf",
+      "user": "airuritac",
+      "price": "23",
+      "condition": "greag",
+      "lenguage": "hareh",
+      "quantity": "23",
+      "version": "aerh",
+      "signed": "fdhafh",
+      "altered": "hafd",
+      "description": "fdafdah"
+    },
+    {
+      "id": "f7e47a98-421c-47cb-b0b7-f4e3d1abfc6e",
+      "idProduct": 3,
+      "idUsers": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+      "name": "Teferi, Time Raveler",
+      "user": "airuritac",
+      "price": "23",
+      "condition": "areh",
+      "lenguage": "aher",
+      "quantity": "23",
+      "version": "aerh",
+      "signed": "hdaf",
+      "altered": "haredh",
+      "description": "haerdha"
+    },
+    {
+      "id": "93d4c6c9-6fe5-499a-b52e-b1a4c498600c",
+      "idProduct": 3,
+      "idUsers": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+      "name": "Teferi, Time Raveler",
+      "user": "nacho",
+      "price": "12",
+      "condition": "gregh",
+      "lenguage": "reh",
+      "quantity": "12",
+      "version": "erhwa",
+      "signed": "reh",
+      "altered": "hre",
+      "description": "erh"
+    },
+    {
+      "id": "f9bfbca5-e22a-450f-97d3-c9163d5aee70",
+      "idProduct": 2,
+      "idUsers": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+      "name": "Tarmogoyf",
+      "user": "nacho",
+      "price": "21",
+      "condition": "gwear",
+      "lenguage": "graewgh",
+      "quantity": "23",
+      "version": "arehw",
+      "signed": "rweq",
+      "altered": "we",
+      "description": "earh"
+    }
+  ],
+  "users": [
+    {
+      "id": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+      "username": "airuritac",
+      "name": "Alvaro",
+      "email": "airuritac@gmail.com",
+      "pass": "123"
+    },
+    {
+      "id": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+      "username": "nacho",
+      "name": "Nacho",
+      "email": "nacho@gmail.com",
+      "pass": "321"
+    },
+    {
+      "id": "5a5184a8-40f2-45e8-8c87-d47a255cf5cc",
+      "name": "Juan",
+      "username": "juanito",
+      "email": "juan@juan.es",
+      "pass": "123"
+    }
+  ]
 }

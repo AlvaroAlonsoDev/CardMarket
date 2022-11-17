@@ -24,19 +24,23 @@ export function ModalLogin() {
         let pass = e.target.pass.value;
 
         // Comprobar datos
-        const interim = dataUsers.find(user => user.email === email) && dataUsers.find(user => user.pass === pass);
-        if (interim) {
+        const interim = dataUsers.find(u => email === u.email);
+        const interim2 = () => {
+            if(interim.pass === pass){
+                return true;
+            }else{alert("credenciales erroneas");}
+        }
+        
+        if (interim2()) {
             setUser(interim);
             setIsLoged(true);
             handleClose();
-        } else {
-            console.log("credenciales erroneas");
         }
     }
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="success" onClick={handleShow}>
                 Login
             </Button>
 

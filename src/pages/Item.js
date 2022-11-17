@@ -55,9 +55,7 @@ export const Item = () => {
 
     return (
         <>
-            <Section product={product} offers={offers} buy={buy} />
-            {/* <ShoppingCart items={items} removeSC={removeSC} /> */}
-
+            <Section product={product} offers={offers} buy={buy} />            
         </>
     );
 };

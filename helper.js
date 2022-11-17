@@ -1,16 +1,22 @@
 //? Poner el total del carrito €
-//? Crear nueva Offers
 //? Al añadir al carrito la cantidad
-//? Añadir pages de users(offersIn)
 //? Borrar de 1 en 1 
 //? No añadir mas que el stock
-//? Quitar el pass al logearse
 //? Comprobar que no haya usuarios==
 //? Encriptar pass
-// Funcionalidad Register               //TODO DOING
-// Funcionalidad Login                  //!DONE
-// Borrar items del carrito             //!DONE
-// Añadir las alertas de Juan           //!DONE
-// Funcionalidad Buscador               //!DONE
+//? Arreglar bug con el login .find
+//? Carrito asociado al user logeado
 
-//* empezamos con el register
+// Crear nueva Offers                   //! DONE
+// Quitar el pass al logearse           //! DONE
+// Añadir offers                        //! DONE
+// Crear page checkout                  //! DONE
+// Crear page profile                   //! DONE
+// Añadir pages de users(offersIn)      //! DONE
+// Funcionalidad Register               //! DONE
+// Funcionalidad Login                  //! DONE
+// Borrar items del carrito             //! DONE
+// Añadir las alertas de Juan           //! DONE
+// Funcionalidad Buscador               //! DONE
+
+//* Arreglar el navBar y ponerlo a nuestro gusto 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { ModalCreateOffer } from '../ModalCreateOffer/ModalCreateOffer';
 import Product from '../Product/Product';
 import './Article.css';
 
@@ -12,8 +13,8 @@ const Article = ({ stock, items, filter }) => {
 
                     {stock
                         .filter(items => {
-                            if(!filter) return true;
-                            else{
+                            if (!filter) return true;
+                            else {
                                 const itemName = items.name.toLowerCase();
                                 return itemName.includes(filter.toLowerCase());
                             }

@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ItemsContext } from '../../helper/context/ItemsContext';
+import { ModalCreateOffer } from '../ModalCreateOffer/ModalCreateOffer';
 import { Offer } from '../Offer/Offer';
 
 export const Section = ({ product, offers, buy }) => {
-    
+    const { user } = useContext(ItemsContext);
     let filterOffers = offers.filter(x => x.idProduct === product.id);
 
+    const renderCreateOffer = () => {
+        if (user.length !== 0) {
+            return (
+                <ModalCreateOffer product={product} />
+            )
+        }
+    }
     return (
         <div className="container">
             <div>
@@ -18,6 +27,7 @@ export const Section = ({ product, offers, buy }) => {
             <hr />
             <div className="table-responsive">
                 <h2>OFFERS AVAILABLE</h2>
+                {renderCreateOffer()}
                 <table className="table">
                     <thead>
                         <tr>
@@ -29,7 +39,6 @@ export const Section = ({ product, offers, buy }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/*//? SOLO PINTAR LOS ELEMENTOS QUE TENGAN EL MISMO IDPRODUCT */}
                         {filterOffers &&
                             filterOffers.map((offer, indice) => {
                                 return (

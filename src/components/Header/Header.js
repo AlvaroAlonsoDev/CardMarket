@@ -1,21 +1,29 @@
 import React, { useContext, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { ModalLogin } from '../ModalLogin/ModalLogin';
 import { ModalRegister } from '../ModalRegister/ModalRegister';
 import { ItemsContext } from '../../helper/context/ItemsContext';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Header.css';
 import { ModalListSC } from '../ModalListSC/ModalListSC';
+import Button from 'react-bootstrap/Button';
+
 
 const Header = () => {
-    const { items, setItems, user, setUser } = useContext(ItemsContext);
+    const { items, setItems, user, setUser, setIsLoged } = useContext(ItemsContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         sessionStorage.setItem("infoUserLoged", JSON.stringify(user));
     }, [user]);
+
+    const signOutUser = (e) => {
+        setUser([]);
+        setIsLoged(false);
+        navigate("/");
+    }
 
     const renderBtnLR = () => {
         if (user.length === 0) {
@@ -23,6 +31,12 @@ const Header = () => {
                 <div>
                     <ModalLogin /> <ModalRegister />
                 </div>
+            )
+        } else {
+            return (
+                <Button className="mx-2" variant="outline-danger" onClick={signOutUser}>
+                    Sign Out
+                </Button>
             )
         }
     }
@@ -45,44 +59,13 @@ const Header = () => {
                     {renderProfile()}
 
                 </Nav>
-                {renderBtnLR()}
-            </Container>
-            <div>
                 <ModalListSC />
+            </Container>
+            <div className='mx-2'>
+                {renderBtnLR()}
             </div>
         </Navbar>
-
-        // <Navbar bg="dark" expand="sm" variant="dark" className="mb-3 maxWid">
-        //     <Container fluid>
-        //         <Navbar.Brand><NavLink to='/' className="nav-link px-2 text-white">CardMarket</NavLink></Navbar.Brand>
-        //         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />
-        //         <Navbar.Offcanvas
-        //             id={`offcanvasNavbar-expand-sm`}
-        //             aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
-        //             placement="end"
-        //         >
-        //             <Offcanvas.Header closeButton>
-        //                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
-        //                     CardMarket
-        //                 </Offcanvas.Title>
-        //             </Offcanvas.Header>
-        //             <Offcanvas.Body>
-        //                 <Nav className="justify-content-end flex-grow-1 pe-3">
-        //                     <NavLink to='/' className={({ isActive }) => isActive ? "nav-link px-2 text-secondary" : "nav-link text-dark"}>Home</NavLink>
-        //                     <NavLink to='/basket' className={({ isActive }) => isActive ? "nav-link px-2 text-secondary" : "nav-link text-dark"}>Basket</NavLink>
-        //                     {/* <div className=''>
-        //                         {renderProfile()}
-        //                         {renderBtnLR()}
-        //                     </div> */}
-        //                 </Nav>
-        //                 <div className='m-3 p-2'>
-        //                     <ModalListSC />
-        //                 </div>
-
-        //             </Offcanvas.Body>
-        //         </Navbar.Offcanvas>
-        //     </Container>
-        // </Navbar >
+        
     )
 }
 

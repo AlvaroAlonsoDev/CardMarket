@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { json, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 
@@ -10,16 +10,17 @@ export function ModalRegister() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const {setUser, setIsLoged} = useContext(ItemsContext);
+    const { setUser, setIsLoged } = useContext(ItemsContext);
 
     const getRegisterUser = e => {
         e.preventDefault();
 
         let new_user = {
             id: uuidv4(),
+            name: e.target.name.value,
             username: e.target.username.value,
             email: e.target.email.value,
-            pass: e.target.pass.value,
+            pass: e.target.pass.value
         }
 
         fetch('http://localhost:4000/users', {
@@ -35,9 +36,10 @@ export function ModalRegister() {
         setIsLoged(true);
         handleClose();
     }
+
     return (
         <>
-            <Button variant="warning" onClick={handleShow}>
+            <Button variant="outline-success" onClick={handleShow}>
                 Sign-up
             </Button>
 
@@ -48,6 +50,11 @@ export function ModalRegister() {
                 <Modal.Body>
 
                     <form onSubmit={e => { getRegisterUser(e) }}>
+
+                        <div className="form-floating mb-3">
+                            <input name="name" type="text" className="form-control" id="floatingInputUsername" placeholder="Name" autoFocus />
+                            <label htmlFor="floatingInputUsername">Name</label>
+                        </div>
 
                         <div className="form-floating mb-3">
                             <input name="username" type="text" className="form-control" id="floatingInputUsername" placeholder="myusername" autoFocus />
@@ -64,11 +71,6 @@ export function ModalRegister() {
                         <div className="form-floating mb-3">
                             <input name="pass" type="password" className="form-control" id="floatingPassword" placeholder="Password" />
                             <label htmlFor="floatingPassword">Password</label>
-                        </div>
-
-                        <div className="form-floating mb-3">
-                            <input type="password" className="form-control" id="floatingPasswordConfirm" placeholder="Confirm Password" />
-                            <label htmlFor="floatingPasswordConfirm">Confirm Password</label>
                         </div>
 
                         <div className="d-grid mb-2">

@@ -23,7 +23,7 @@ export function ModalListSC() {
     }
     return (
         <>
-            <div className='me-2'>
+            <div>
                 <Button variant="primary" onClick={handleShow}>
                     <FaShoppingCart />
                 </Button>
