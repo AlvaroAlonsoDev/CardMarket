@@ -28,10 +28,6 @@ export const Offer = ({ offer, buy }) => {
         }
     }
 
-
-
-
-
     return (
         <>
             <td>{offer.user}</td>

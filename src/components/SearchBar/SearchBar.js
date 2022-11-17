@@ -4,18 +4,16 @@ import { FaSearch } from "react-icons/fa";
 
 export const SearchBar = ({ handleFilter }) => {
     return (
-        <div className="container bg-light pt-3">
+        <div className="container height bg-light">
 
-            <div className="row height d-flex justify-content-center align-items-center">
+            <div className="row p-3 d-flex justify-content-center align-items-center">
 
                 <div className="col-md-6">
-
                     <div className="form">
                         <i className="fa fa-search"></i>
                         <input onChange={handleFilter} type="text" className="form-control form-input" placeholder="Search anything..." />
-                            <span className="left-pan pointer"><FaSearch className='ms-2' /></span>
+                        <span className="left-pan pointer"><FaSearch className='ms-2' /></span>
                     </div>
-
                 </div>
 
             </div>
