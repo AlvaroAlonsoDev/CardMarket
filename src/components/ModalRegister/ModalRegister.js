@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { NavLink } from 'react-router-dom';
 
 export function ModalRegister() {
     const [show, setShow] = useState(false);
@@ -10,7 +11,13 @@ export function ModalRegister() {
 
     const getRegisterUser = e => {
         e.preventDefault();
-        console.log("HEYYY");
+
+        let new_user = {
+            id: 54352,
+            username: e.target.username.value,
+            email: e.target.email.value,
+            pass: e.target.pass.value,
+        }
     }
     return (
         <>
@@ -27,19 +34,19 @@ export function ModalRegister() {
                     <form onSubmit={e => {getRegisterUser(e)}}>
 
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" id="floatingInputUsername" placeholder="myusername" autoFocus />
+                            <input name="username" type="text" className="form-control" id="floatingInputUsername" placeholder="myusername" autoFocus />
                             <label htmlFor="floatingInputUsername">Username</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="floatingInputEmail" placeholder="name@example.com" />
+                            <input name="email" type="email" className="form-control" id="floatingInputEmail" placeholder="name@example.com" />
                             <label htmlFor="floatingInputEmail">Email address</label>
                         </div>
 
                         <hr />
 
                         <div className="form-floating mb-3">
-                            <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+                            <input name="pass" type="password" className="form-control" id="floatingPassword" placeholder="Password" />
                             <label htmlFor="floatingPassword">Password</label>
                         </div>
 
@@ -52,7 +59,7 @@ export function ModalRegister() {
                             <button className="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Register</button>
                         </div>
 
-                        <a className="d-block text-center mt-2 small" href="/">Have an account? Sign In</a>
+                        <NavLink className="d-block text-center mt-2 small" to="/">Have an account? Sign In</NavLink>
 
                         <hr className="my-4" />
                     </form>

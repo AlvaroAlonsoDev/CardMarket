@@ -8,7 +8,7 @@ export const ItemsProvider = ({ children }) => {
     const [offers, setOffers] = useState([]);
     const [dataUsers, setDataUsers] = useState([]);
     const [user, setUser] = useState([]);
-    const [ isLoged, setIsLoged ] = useState(false)
+    const [ isLoged, setIsLoged ] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
 
     return (
