@@ -6,21 +6,14 @@ import toast from 'react-hot-toast';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 import { ListSC } from '../ListSC/ListSC';
 
-export function ModalListSC() {
+export function ModalListSC({ removeSC, buy }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const { items, setItems } = useContext(ItemsContext);
 
 
-    const removeSC = (id) => {
-        let interim = items.filter((item, indice) => indice !== id);
-        setItems(interim);
-
-        toast('Deleted!', {
-            icon: '🗑️',
-        });
-    }
+    
     return (
         <>
             <div>
@@ -35,7 +28,7 @@ export function ModalListSC() {
                 <hr />
                 <Offcanvas.Body>
                     
-                    <ListSC items={items} removeSC={removeSC} />
+                    <ListSC items={items} removeSC={removeSC} buy={buy} />
                 </Offcanvas.Body>
             </Offcanvas>
         </>

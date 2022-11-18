@@ -5,6 +5,9 @@ import { json, NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 
+
+//! BASICAMENTE NO NECESITAMOS UN MODAL SI NO UNA FUNCION
+
 export const ModalDeleteOffer = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -18,7 +21,7 @@ export const ModalDeleteOffer = () => {
         <>
             <div className='row aling-item-center justify-content-center'>
                 <Button className='m-1 col-sm-6 text-center maxW btn' variant="danger" onClick={handleShow}>
-                    Upload new offer
+                    Deleted Offer
                 </Button>
             </div>
 

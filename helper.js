@@ -1,12 +1,17 @@
-//? Poner el total del carrito €
-//? Al añadir al carrito la cantidad
 //? Borrar de 1 en 1 
-//? No añadir mas que el stock
 //? Comprobar que no haya usuarios==
 //? Encriptar pass
 //? Arreglar bug con el login .find
 //? Carrito asociado al user logeado
+//? Mostras ofertas que no tengan id=user
+//? Arreglar precio total
 
+// añdir la cantidad del "amount"       //! DONE
+// Al añadir al carrito la cantidad     //! DONE
+// No añadir mas que el stock           //! DONE
+// form numeros recoger en numeros      //! DONE
+// Poner el total del carrito €         //! DONE
+// Arreglar el navBar                   //! DONE
 // Crear nueva Offers                   //! DONE
 // Quitar el pass al logearse           //! DONE
 // Añadir offers                        //! DONE
@@ -19,4 +24,5 @@
 // Añadir las alertas de Juan           //! DONE
 // Funcionalidad Buscador               //! DONE
 
-//* Arreglar el navBar y ponerlo a nuestro gusto 
+//* Arreglar el boton de añadir en el basket y header (conseguir la cantidad que hay de dicha oferta)
+//* Diria que neceistamos recoger las offers y hacer un comprobacion de en que offer estamos y mostrar el quantity

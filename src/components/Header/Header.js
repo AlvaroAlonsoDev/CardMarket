@@ -7,12 +7,14 @@ import { ModalLogin } from '../ModalLogin/ModalLogin';
 import { ModalRegister } from '../ModalRegister/ModalRegister';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 import './Header.css';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import { ModalListSC } from '../ModalListSC/ModalListSC';
 import Button from 'react-bootstrap/Button';
+import toast from 'react-hot-toast';
 
 
 const Header = () => {
-    const { items, setItems, user, setUser, setIsLoged } = useContext(ItemsContext);
+    const { user, setUser, setIsLoged, isLoged, items, setItems } = useContext(ItemsContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -26,7 +28,7 @@ const Header = () => {
     }
 
     const renderBtnLR = () => {
-        if (user.length === 0) {
+        if (!isLoged) {
             return (
                 <div>
                     <ModalLogin /> <ModalRegister />
@@ -41,31 +43,68 @@ const Header = () => {
         }
     }
     const renderProfile = () => {
-        if (user.length !== 0) {
+        if (isLoged) {
             return (
                 <NavLink to='/account' className={({ isActive }) => isActive ? "nav-link px-2 text-muted" : "nav-link text-white"}>Profile</NavLink>
             )
         }
     }
 
+    const removeSC = (id) => {
+        let interim = items.filter((item, indice) => indice !== id);
+        setItems(interim);
+
+        toast('Deleted!', {
+            icon: '🗑️',
+        });
+    }
+
+    const buy = (product, amount = 1) => {
+        let interim = items.find(item => item.id === product.id);
+
+        if (interim) {
+            if (product.quantity >= (interim.quantity + amount)) {
+                // interim.quantity < product.quantity
+                setItems(
+                    items.map(element => element.id === product.id ? {
+                        ...interim,
+                        quantity: interim.quantity + amount
+                    } : element)
+                );
+                toast.success('Successfully saved!');
+            } else { toast.error('No hay mas stock'); }
+        } else {
+            let interim = {
+                id: product.id,
+                seller: product.user,
+                name: product.name,
+                price: product.price
+            }
+            setItems([...items, { ...interim, quantity: 1 }]);
+            toast.success('Successfully saved!');
+        }
+    };
+
     return (
-
-        <Navbar bg="dark" variant="light" className='mb-3'>
+        <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand><NavLink to='/' className="nav-link px-2 text-white">CardMarket</NavLink></Navbar.Brand>
-                <Nav className="me-auto">
-                    <NavLink to='/' className={({ isActive }) => isActive ? "nav-link px-2 text-muted" : "nav-link text-white"}>Home</NavLink>
-                    <NavLink to='/basket' className={({ isActive }) => isActive ? "nav-link px-2 text-muted" : "nav-link text-white"}>Basket</NavLink>
-                    {renderProfile()}
-
-                </Nav>
-                <ModalListSC />
+                <Navbar.Brand><NavLink to='/' className="nav-link text-white">CardMarket</NavLink></Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto">
+                        <NavLink to='/' className={({ isActive }) => isActive ? "nav-link px-2 text-muted" : "nav-link text-white"}>Home</NavLink>
+                        <NavLink to='/basket' className={({ isActive }) => isActive ? "nav-link px-2 text-muted" : "nav-link text-white"}>Basket</NavLink>
+                        {renderProfile()}
+                    </Nav>
+                    <Nav>
+                        {renderBtnLR()}
+                    </Nav>
+                    <Nav className='mx-2'>
+                        <ModalListSC removeSC={removeSC} buy={buy} />
+                    </Nav>
+                </Navbar.Collapse>
             </Container>
-            <div className='mx-2'>
-                {renderBtnLR()}
-            </div>
         </Navbar>
-        
     )
 }
 
