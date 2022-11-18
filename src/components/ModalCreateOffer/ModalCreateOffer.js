@@ -21,10 +21,10 @@ export const ModalCreateOffer = ({ product }) => {
             idUsers: user.id,
             name: product.name,
             user: user.username,
-            price: e.target.price.value,
+            price: parseInt(e.target.price.value),
             condition: e.target.condition.value,
             lenguage: e.target.lenguage.value,
-            quantity: e.target.quantity.value,
+            quantity: parseInt(e.target.quantity.value),
             version: e.target.version.value,
             signed: e.target.signed.value,
             altered: e.target.altered.value,
@@ -38,7 +38,6 @@ export const ModalCreateOffer = ({ product }) => {
             },
             body: JSON.stringify(new_offer)
         }).then(res => res.json())
-            .then(data => console.log(data))
             .catch(error => console.log(error));
 
         navigate("/")
@@ -58,7 +57,7 @@ export const ModalCreateOffer = ({ product }) => {
                 <Modal.Body>
 
                     <form onSubmit={e => { getfloatingInputUsername(e) }}>
-                        
+
                         <div className="form-floating mb-3">
                             <input name="condition" type="text" className="form-control" id="floatingInputUsername" placeholder="condition" autoFocus />
                             <label htmlFor="floatingInputUsername">Condition</label>

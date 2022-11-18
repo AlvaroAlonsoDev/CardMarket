@@ -8,7 +8,7 @@ import { ItemsContext } from '../helper/context/ItemsContext'
 
 const Home = () => {
     let interim = JSON.parse(localStorage.getItem('items'));
-    const { items, setItems, stock, searchParams, setSearchParams, user } = useContext(ItemsContext);
+    const { items, setItems, stock, searchParams, setSearchParams, isLoged, user } = useContext(ItemsContext);
     const { fetchData } = useContext(ApiContext);
     const filter = searchParams.get('filter') ?? "";
 
@@ -20,37 +20,14 @@ const Home = () => {
         localStorage.setItem("items", JSON.stringify(items));
     }, [items]);
 
-
     const handleFilter = (e) => {
         setSearchParams({ filter: e.target.value });
-    }
-
-    const renderBTNCrush = () => {
-        if (user.length !== 0) {
-            return (
-                <>
-                    <div className='m-5 bg-dark'>
-                        <h5 className='text-center p-3'>
-                            <Link to="/account" className='text-decoration-none text-info display-5'>Hello {user.name}!</Link>
-                        </h5>
-                    </div>
-
-                </>
-            )
-        } else {
-            return (
-                <div className='m-5 bg-dark'>
-                    <h5 className='text-center p-3 display-5 text-info'>Login and upload you own offers</h5>
-                </div>
-            )
-        }
     }
 
     return (
         <>
             <SearchBar handleFilter={handleFilter} />
-            {renderBTNCrush()}
-            <Article stock={stock} items={items} filter={filter} />
+            <Article stock={stock} items={items} filter={filter} isLoged={isLoged} user={user} />
         </>
     )
 }

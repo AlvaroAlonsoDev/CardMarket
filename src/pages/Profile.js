@@ -20,7 +20,6 @@ export const Profile = () => {
     return (
         <>
             <div>
-                <ModalCreateOffer />
                 <ModalEditOffer />
                 <ModalDeleteOffer />
             </div>

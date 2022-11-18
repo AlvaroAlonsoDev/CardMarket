@@ -4,11 +4,11 @@ import { ModalCreateOffer } from '../ModalCreateOffer/ModalCreateOffer';
 import { Offer } from '../Offer/Offer';
 
 export const Section = ({ product, offers, buy }) => {
-    const { user } = useContext(ItemsContext);
+    const { user, isLoged } = useContext(ItemsContext);
     let filterOffers = offers.filter(x => x.idProduct === product.id);
 
     const renderCreateOffer = () => {
-        if (user.length !== 0) {
+        if (isLoged) {
             return (
                 <ModalCreateOffer product={product} />
             )
