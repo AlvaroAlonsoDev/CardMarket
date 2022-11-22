@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Checkout = () => {
     return (
-        <div className='container'>
+        <div className='container mt-2'>
             <div className="row g-5">
                 <div className="col-md-5 col-lg-4 order-md-last">
                     <h4 className="d-flex justify-content-between align-items-center mb-3">
@@ -44,12 +44,6 @@ export const Checkout = () => {
                         </li>
                     </ul>
 
-                    <form className="card p-2">
-                        <div className="input-group">
-                            <input type="text" className="form-control" placeholder="Promo code" />
-                            <button type="submit" className="btn btn-secondary">Redeem</button>
-                        </div>
-                    </form>
                 </div>
                 <div className="col-md-7 col-lg-8">
                     <h4 className="mb-3">Billing address</h4>

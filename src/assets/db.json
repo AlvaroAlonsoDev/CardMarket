@@ -245,6 +245,36 @@
       "signed": "erah",
       "altered": "era",
       "description": "erah"
+    },
+    {
+      "id": "5501af11-fc01-4171-bc13-a358aa82cef2",
+      "idProduct": 3,
+      "idUsers": "f4ecea5a-26d8-4f7f-85e1-34f4ab24ac6a",
+      "name": "Teferi, Time Raveler",
+      "user": "lidiafrias",
+      "price": 5,
+      "condition": "wegfg",
+      "lenguage": "gwreg",
+      "quantity": 5,
+      "version": "gw4",
+      "signed": "gwegew",
+      "altered": "weg",
+      "description": "gwegew"
+    },
+    {
+      "id": "84edacc2-f629-4e76-aa67-f098ecb92a23",
+      "idProduct": 3,
+      "idUsers": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "name": "Teferi, Time Raveler",
+      "user": "pepeguapo",
+      "price": 10,
+      "condition": "l8udl",
+      "lenguage": "lduyl",
+      "quantity": 2,
+      "version": "7udl",
+      "signed": "u7ldut6l",
+      "altered": "ldyu",
+      "description": "7uldl"
     }
   ],
   "users": [
@@ -272,8 +302,15 @@
     {
       "id": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
       "name": "Pepe",
-      "username": "Pepemaquina",
+      "username": "pepeguapo",
       "email": "pepe@gmail.com",
+      "pass": "123"
+    },
+    {
+      "id": "f4ecea5a-26d8-4f7f-85e1-34f4ab24ac6a",
+      "name": "lidia",
+      "username": "lidiafrias",
+      "email": "lidia@lidia.es",
       "pass": "123"
     }
   ],

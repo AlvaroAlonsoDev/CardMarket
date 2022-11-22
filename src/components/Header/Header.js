@@ -7,16 +7,21 @@ import { ModalLogin } from '../ModalLogin/ModalLogin';
 import { ModalRegister } from '../ModalRegister/ModalRegister';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 import './Header.css';
-import Offcanvas from 'react-bootstrap/Offcanvas';
 import { ModalListSC } from '../ModalListSC/ModalListSC';
 import Button from 'react-bootstrap/Button';
 import toast from 'react-hot-toast';
+import { ApiContext } from "../../helper/context/ApiContext";
 
 
 const Header = () => {
-    const { user, setUser, setIsLoged, isLoged, items, setItems } = useContext(ItemsContext);
+    let offer;
+    const { user, setUser, setIsLoged, isLoged, items, setItems, offers } = useContext(ItemsContext);
+    const { fetchDataOffers } = useContext(ApiContext);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        fetchDataOffers();
+    }, []);
     useEffect(() => {
         sessionStorage.setItem("infoUserLoged", JSON.stringify(user));
     }, [user]);
@@ -60,28 +65,19 @@ const Header = () => {
     }
 
     const buy = (product, amount = 1) => {
-        let interim = items.find(item => item.id === product.id);
+        let interimSC = items.find(item => item.id === product.id);
+        offer = offers.find(item => item.id === product.id);
 
-        if (interim) {
-            if (product.quantity >= (interim.quantity + amount)) {
-                // interim.quantity < product.quantity
+        if (interimSC) {
+            if (offer.quantity >= (interimSC.quantity + amount)) {
                 setItems(
-                    items.map(element => element.id === product.id ? {
-                        ...interim,
-                        quantity: interim.quantity + amount
+                    items.map(element => element.id === offer.id ? {
+                        ...interimSC,
+                        quantity: interimSC.quantity + amount
                     } : element)
                 );
                 toast.success('Successfully saved!');
             } else { toast.error('No hay mas stock'); }
-        } else {
-            let interim = {
-                id: product.id,
-                seller: product.user,
-                name: product.name,
-                price: product.price
-            }
-            setItems([...items, { ...interim, quantity: 1 }]);
-            toast.success('Successfully saved!');
         }
     };
 

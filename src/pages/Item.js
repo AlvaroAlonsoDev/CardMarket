@@ -29,7 +29,6 @@ export const Item = () => {
 
     const buy = (product, amount) => {
         let interim = items.find(item => item.id === product.id);
-
         if (interim) {
             if (product.quantity >= (interim.quantity + amount )) {
                 // interim.quantity < product.quantity
