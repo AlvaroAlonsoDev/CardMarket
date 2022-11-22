@@ -5,12 +5,17 @@ import { Offer } from '../Offer/Offer';
 
 export const Section = ({ product, offers, buy }) => {
     const { user, isLoged } = useContext(ItemsContext);
-    let filterOffers = offers.filter(x => x.idProduct === product.id);
+    let interim = offers.filter(e => e.idUsers !== user.id)
+    let filterOffers = interim.filter(x => (x.idProduct === product.id));
 
     const renderCreateOffer = () => {
         if (isLoged) {
             return (
                 <ModalCreateOffer product={product} />
+            )
+        }else{
+            return (
+                <p>HOLA</p>
             )
         }
     }

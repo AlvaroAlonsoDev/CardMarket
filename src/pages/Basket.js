@@ -1,35 +1,34 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ItemsContext } from '../helper/context/ItemsContext';
+import { ApiContext } from "../helper/context/ApiContext";
 import { ListSC } from '../components/ListSC/ListSC';
-import { ModalLogin } from '../components/ModalLogin/ModalLogin';
-import { ApiContext } from '../helper/context/ApiContext';
 
 const Basket = () => {
   let interim = JSON.parse(localStorage.getItem('items'));
-  const { items, setItems, isLoged } = useContext(ItemsContext);
+  const { items, setItems, isLoged, offers } = useContext(ItemsContext);
+  const { fetchDataOffers } = useContext(ApiContext);
   const [price, setPrice] = useState(0);
-  const [ivaPrice, setIvaPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  // const [ivaPrice, setIvaPrice] = useState(0); //* ARREGLAR
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (interim) { setItems(interim) }
+    fetchDataOffers();
   }, []);
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
     setPrice(getTotalPrice());
-    setIvaPrice(0.21 * price);
+    // setIvaPrice(0.21 * price); //* ARREGLAR
   }, [items]);
-
   useEffect(() => {
-    setIvaPrice(0.21 * price);
-    setTotalPrice(price + ivaPrice)
+    setTotalPrice(price) // SUMARLE EL IVA setTotalPrice(price + ivaPrice)
+    // setIvaPrice(0.21 * price); //* ARREGLAR
   }, [price, items]);
-  // const cleanBasket = () => {
-  //   setItems([]);
-  // }
+
 
   const getTotalPrice = () => {
     let countPrice = 0
@@ -48,43 +47,30 @@ const Basket = () => {
     });
   }
 
-  const renderBTNcheckout = () => {
+  const checkoutFunction = () => {
     if (isLoged) {
-      return (
-        <Button className='m-1 col-sm-6 text-center maxW btn' variant="success">
-          <Link to="/checkout" className="text-decoration-none text-white">Checkout</Link>
-        </Button >
-      )
+      navigate("/checkout")
     } else {
-      return (
-        <ModalLogin />
-      )
+      alert("Tienes que logearte o registrarte pisha");
+      
+      //! CREAR RUTA PARA LOGEARSE O REGISTRARSE
     }
   }
 
   const buy = (product, amount = 1) => {
-    let interim = items.find(item => item.id === product.id);
+    let interimSC = items.find(item => item.id === product.id);
+    let offer = offers.find(item => item.id === product.id);
 
-    if (interim) {
-      if (product.quantity >= (interim.quantity + amount)) {
-        // interim.quantity < product.quantity
+    if (interimSC) {
+      if (offer.quantity >= (interimSC.quantity + amount)) {
         setItems(
-          items.map(element => element.id === product.id ? {
-            ...interim,
-            quantity: interim.quantity + amount
+          items.map(element => element.id === offer.id ? {
+            ...interimSC,
+            quantity: interimSC.quantity + amount
           } : element)
         );
         toast.success('Successfully saved!');
       } else { toast.error('No hay mas stock'); }
-    } else {
-      let interim = {
-        id: product.id,
-        seller: product.user,
-        name: product.name,
-        price: product.price
-      }
-      setItems([...items, { ...interim, quantity: 1 }]);
-      toast.success('Successfully saved!');
     }
   };
 
@@ -96,10 +82,12 @@ const Basket = () => {
       <ListSC items={items} removeSC={removeSC} buy={buy} />
 
       <div className='row aling-item-center justify-content-center mt-2'>
-        <h6 className='text-muted'>Base imponible {price} €</h6>
-        <h6 className='text-muted'>IVA (21%) {ivaPrice} €</h6>
-        <h3 className='mt-2'>Precio Total: {totalPrice} €</h3>
-        {renderBTNcheckout()}
+        <h6 className='text-muted'>Base price - {price} €</h6>
+        <h6 className='text-muted'>IVA (21%)</h6>
+        <h3 className='mt-2'>Price no tax: {totalPrice} €</h3>
+        <Button className='m-1 p-2 col-sm-6 text-center maxW btn' onClick={checkoutFunction} variant="success">
+          Checkout
+        </Button >
       </div>
     </div>
   )
