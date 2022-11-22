@@ -1,13 +1,15 @@
-//? Borrar de 1 en 1 
 //? Comprobar que no haya usuarios==
 //? Encriptar pass
 //? Arreglar bug con el login .find
-//? Carrito asociado al user logeado
 //? Arreglar precio total
-//? Añadir funcionalidad a las compras y unirlas al user
-//? Borrar las offers METHOD DELETE
+//? Añadir funcionalidad a las compras 
 //? Lista de pedidos realizados
 
+
+// Borrar de 1 en 1                     //! DONE
+// Borrar las offers METHOD DELETE      //! DONE 
+// Carrito asociado al user logeado     //! DONE
+// Fix bugg con user = carrito          //! DONE
 // Mostras ofertas que no tengan id=user//! DONE
 // Fix bugg !comprar = offer            //! DONE
 // Poner el total del carrito €         //! DONE
@@ -29,4 +31,5 @@
 // Añadir las alertas de Juan           //! DONE
 // Funcionalidad Buscador               //! DONE
 
-//* Unir el carrito con el user
+//* EMPEZAMOS CON EL MIERCOLES 
+//* FUNCION DE BORRAR INDIVIDUAL DOOOONE

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from 'react-router-dom';
 import { ApiContext } from '../../helper/context/ApiContext';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 
@@ -11,6 +12,7 @@ export function ModalLogin() {
 
     const { fetchDataUsers } = useContext(ApiContext);
     const { dataUsers, setUser, setIsLoged } = useContext(ItemsContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchDataUsers();
@@ -35,6 +37,7 @@ export function ModalLogin() {
             setUser(interim);
             setIsLoged(true);
             handleClose();
+            navigate('/')
         }
     }
 

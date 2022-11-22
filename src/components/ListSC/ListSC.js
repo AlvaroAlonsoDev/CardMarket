@@ -2,15 +2,22 @@ import { Button } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { FaTrashAlt } from "react-icons/fa";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { ItemsContext } from '../../helper/context/ItemsContext';
 
-export function ListSC({ items, removeSC, buy }) {
+export function ListSC({ removeSC, buy, restOne }) {
+    const { user, isLoged, items } = useContext(ItemsContext);
+    const [prov, setProv] = useState([])
+
+    useEffect(() => {
+        isLoged ? setProv(items.filter(e => e.idUser === user.id)) : setProv(items.filter(e => e.idUser === "123"));
+    }, [isLoged, user, items]);
 
     return (
         <ListGroup as="ol" numbered>
             {
-                items && items.map((item, index) => {
+                prov && prov.map((item, index) => {
                     return (
                         <ListGroup.Item
                             key={uuidv4()}
@@ -22,7 +29,7 @@ export function ListSC({ items, removeSC, buy }) {
                                 {item.seller}
                             </div>
                             <div className="pointer">
-                                <button className='btn btn-sm'><FaMinus /></button>
+                                <button onClick={() => { restOne(item, index) }} className='btn btn-sm'><FaMinus /></button>
                                 {item.quantity}
                                 <button onClick={() => { buy(item) }} className='btn btn-sm'><FaPlus /></button>
                                 <Button onClick={e => removeSC(index)} variant="outline-danger"><FaTrashAlt /></Button>

@@ -56,9 +56,10 @@ const Header = () => {
     }
 
     const removeSC = (id) => {
-        let interim = items.filter((item, indice) => indice !== id);
-        setItems(interim);
-
+        let interim_sameID = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
+        let interim_other = items.filter(item => isLoged ? (item.idUser !== user.id) : (item.idUser !== "123"));
+        let interim = interim_sameID.filter((item, indice) => indice !== id);
+        setItems(interim_other.concat(interim));
         toast('Deleted!', {
             icon: '🗑️',
         });

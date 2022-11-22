@@ -9,7 +9,6 @@ export function ModalListSC({ removeSC, buy }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { items } = useContext(ItemsContext);
 
 
     
@@ -27,7 +26,7 @@ export function ModalListSC({ removeSC, buy }) {
                 <hr />
                 <Offcanvas.Body>
                     
-                    <ListSC items={items} removeSC={removeSC} buy={buy} />
+                    <ListSC removeSC={removeSC} buy={buy} />
                 </Offcanvas.Body>
             </Offcanvas>
         </>

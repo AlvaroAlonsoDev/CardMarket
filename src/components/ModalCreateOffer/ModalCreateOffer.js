@@ -12,7 +12,7 @@ export const ModalCreateOffer = ({ product }) => {
     const { user } = useContext(ItemsContext);
     const navigate = useNavigate()
 
-    const getfloatingInputUsername = e => {
+    const createNewOffer = e => {
         e.preventDefault();
 
         let new_offer = {
@@ -56,7 +56,7 @@ export const ModalCreateOffer = ({ product }) => {
                 </Modal.Header>
                 <Modal.Body>
 
-                    <form onSubmit={e => { getfloatingInputUsername(e) }}>
+                    <form onSubmit={e => { createNewOffer(e) }}>
 
                         <div className="form-floating mb-3">
                             <input name="condition" type="text" className="form-control" id="floatingInputUsername" placeholder="condition" autoFocus />

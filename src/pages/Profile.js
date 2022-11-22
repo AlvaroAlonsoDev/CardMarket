@@ -7,10 +7,9 @@ import { ApiContext } from '../helper/context/ApiContext'
 import { ItemsContext } from '../helper/context/ItemsContext'
 
 export const Profile = () => {
-    const { isLoged } = useContext(ItemsContext);
     const { fetchDataOffers } = useContext(ApiContext);
     const navigate = useNavigate();
-    const { user, offers } = useContext(ItemsContext);
+    const { user, offers, isLoged } = useContext(ItemsContext);
 
     useEffect(() => {
         fetchDataOffers();
