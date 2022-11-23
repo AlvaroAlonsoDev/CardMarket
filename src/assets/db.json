@@ -324,5 +324,211 @@
       "pass": "123"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "ba1761cb-2fcb-4a17-98b7-905fb94b13cd",
+      "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@gmail.com",
+      "address": "Licenciado Vidriera",
+      "phonenumber": "654321654",
+      "country": "Spain",
+      "zip": "44847",
+      "ccnanme": "Alvaro Irurita",
+      "ccnumber": "456789456789",
+      "price": 271,
+      "date": "17-6-2022",
+      "product": [
+        {
+          "id": 204,
+          "seller": "Lopey",
+          "name": "Snapcaster Mage",
+          "price": 23,
+          "condition": "Good",
+          "description": "Never used",
+          "version": "The List",
+          "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+          "quantity": 1
+        },
+        {
+          "id": 20,
+          "seller": "alvaroalonso",
+          "name": "Snapcaster Mage",
+          "price": 24,
+          "condition": "Good",
+          "description": "Never used",
+          "version": "The List",
+          "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+          "quantity": 2
+        },
+        {
+          "id": "c1a51498-3ee0-41aa-85aa-89a4e3e43ca7",
+          "seller": "airuritac",
+          "name": "Snapcaster Mage",
+          "price": 43,
+          "condition": "greah",
+          "description": "haer",
+          "version": "haer",
+          "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+          "quantity": 2
+        },
+        {
+          "id": "8186eb1f-3d11-4c19-8aa3-42a2e9674ef7",
+          "seller": "Pepemaquina",
+          "name": "Snapcaster Mage",
+          "price": 21,
+          "condition": "t45qgh",
+          "description": "nhbtrn",
+          "version": "htwr",
+          "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+          "quantity": 2
+        },
+        {
+          "id": "f7e47a98-421c-47cb-b0b7-f4e3d1abfc6e",
+          "seller": "airuritac",
+          "name": "Teferi, Time Raveler",
+          "price": 23,
+          "condition": "areh",
+          "description": "haerdha",
+          "version": "aerh",
+          "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+          "quantity": 4
+        },
+        {
+          "id": "93d4c6c9-6fe5-499a-b52e-b1a4c498600c",
+          "seller": "nacho",
+          "name": "Teferi, Time Raveler",
+          "price": 12,
+          "condition": "gregh",
+          "description": "erh",
+          "version": "erhwa",
+          "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+          "quantity": 1
+        },
+        {
+          "id": "bfa0e2f9-7fa6-4ddc-ada0-07f8f79b82fc",
+          "seller": "Pepemaquina",
+          "name": "Teferi, Time Raveler",
+          "price": 23,
+          "condition": "greah",
+          "description": "raeh",
+          "version": "reah",
+          "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+          "quantity": 2
+        },
+        {
+          "id": "f65dd245-b1b6-42b6-8a88-e186bd596110",
+          "seller": "Pepemaquina",
+          "name": "Teferi, Time Raveler",
+          "price": 55,
+          "condition": "fa",
+          "description": "fa",
+          "version": "fa",
+          "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "150c06fa-16a7-4886-be7b-2098111e4ad4",
+      "idUser": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+      "firstname": "Alvaro",
+      "lastname": "Irurita",
+      "emailorder": "airuritac@gmail.com",
+      "address": "gweragh",
+      "phonenumber": "654321654",
+      "country": "Spain",
+      "zip": "342532",
+      "ccnanme": "saf aw twe",
+      "ccnumber": "32435532",
+      "price": 186,
+      "date": "17-6-2022",
+      "product": [
+        {
+          "id": 2,
+          "seller": "alvaroalonso",
+          "name": "Tarmogoyf",
+          "price": 45,
+          "condition": "Good",
+          "description": "Never used",
+          "version": "The List",
+          "idUser": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+          "quantity": 1
+        },
+        {
+          "id": "f9bfbca5-e22a-450f-97d3-c9163d5aee70",
+          "seller": "nacho",
+          "name": "Tarmogoyf",
+          "price": 21,
+          "condition": "gwear",
+          "description": "earh",
+          "version": "arehw",
+          "idUser": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+          "quantity": 1
+        },
+        {
+          "id": 2048,
+          "seller": "Juan",
+          "name": "Teferi, Time Raveler",
+          "price": 33,
+          "condition": "Good",
+          "description": "Never used",
+          "version": "The List",
+          "idUser": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+          "quantity": 1
+        },
+        {
+          "id": "f65dd245-b1b6-42b6-8a88-e186bd596110",
+          "seller": "Pepemaquina",
+          "name": "Teferi, Time Raveler",
+          "price": 55,
+          "condition": "fa",
+          "description": "fa",
+          "version": "fa",
+          "idUser": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "d7efd84b-4808-4645-b313-96698881ee69",
+      "idUser": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+      "firstname": "Alvaro",
+      "lastname": "Irurita",
+      "emailorder": "airuritac@gmail.com",
+      "address": "432f wf wefsd ",
+      "phonenumber": "654321653",
+      "country": "Spain",
+      "zip": "g4324",
+      "ccnanme": "weGE WEATG WAE ",
+      "ccnumber": "325532",
+      "price": 91,
+      "date": "17-6-2022",
+      "product": [
+        {
+          "id": "f65dd245-b1b6-42b6-8a88-e186bd596110",
+          "seller": "Pepemaquina",
+          "name": "Teferi, Time Raveler",
+          "price": 55,
+          "condition": "fa",
+          "description": "fa",
+          "version": "fa",
+          "idUser": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+          "quantity": 12
+        },
+        {
+          "id": "8186eb1f-3d11-4c19-8aa3-42a2e9674ef7",
+          "seller": "Pepemaquina",
+          "name": "Snapcaster Mage",
+          "price": 21,
+          "condition": "t45qgh",
+          "description": "nhbtrn",
+          "version": "htwr",
+          "idUser": "cb9084b1-a588-478f-abe9-ba4e920d5200",
+          "quantity": 5
+        }
+      ]
+    }
+  ]
 }

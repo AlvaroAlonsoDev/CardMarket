@@ -5,6 +5,9 @@
 //? Añadir funcionalidad a las compras 
 //? Lista de pedidos realizados
 //? Cuando haces log que te informe para rellenar otro form con la direccion y demas
+//? Añadir carga al procesar la compra https://react-bootstrap.netlify.app/components/progress/
+//? Al hacer una compra borrar la cantidad de ofertas dependiendo de que compro
+//? Arreglar el precio total con la cantidad de productos
 
 
 // Borrar de 1 en 1                     //! DONE
@@ -32,5 +35,4 @@
 // Añadir las alertas de Juan           //! DONE
 // Funcionalidad Buscador               //! DONE
 
-//* EMPEZAMOS CON EL CHECKOUT
-//* Añadir a las order todos los productos comprados
+//* Estoy en ListOrders falta terminar de mostrar los productos las variables que queremos he terminado de mostrar todos los productos comprados
