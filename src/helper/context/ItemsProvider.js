@@ -11,7 +11,7 @@ export const ItemsProvider = ({ children }) => {
     const [user, setUser] = useState([]);
     const [ isLoged, setIsLoged ] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
-    const [number, dispatch] = useReducer(NumberReducer, 1);
+
 
     return (
         <ItemsContext.Provider value={{ isLoged, setIsLoged, items, setItems, stock, setStock, offers, setOffers, searchParams, setSearchParams, dataUsers, setDataUsers, user, setUser }}>

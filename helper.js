@@ -4,6 +4,7 @@
 //? Arreglar precio total
 //? Añadir funcionalidad a las compras 
 //? Lista de pedidos realizados
+//? Cuando haces log que te informe para rellenar otro form con la direccion y demas
 
 
 // Borrar de 1 en 1                     //! DONE
@@ -31,5 +32,5 @@
 // Añadir las alertas de Juan           //! DONE
 // Funcionalidad Buscador               //! DONE
 
-//* EMPEZAMOS CON EL MIERCOLES 
-//* FUNCION DE BORRAR INDIVIDUAL DOOOONE
+//* EMPEZAMOS CON EL CHECKOUT
+//* Añadir a las order todos los productos comprados

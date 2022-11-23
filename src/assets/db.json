@@ -282,44 +282,47 @@
       "id": "cb9084b1-a588-478f-abe9-ba4e920d5200",
       "username": "airuritac",
       "name": "Alvaro",
+      "lastname": "Irurita",
       "email": "airuritac@gmail.com",
-      "pass": "123"
+      "pass": "123",
+      "phonenumber": "654321654"
     },
     {
       "id": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
       "username": "nacho",
       "name": "Nacho",
+      "lastname": "Irurita",
       "email": "nacho@gmail.com",
+      "phonenumber": "654321654",
       "pass": "321"
     },
     {
       "id": "5a5184a8-40f2-45e8-8c87-d47a255cf5cc",
       "name": "Juan",
+      "lastname": "Francisco",
       "username": "juanito",
       "email": "juan@juan.es",
+      "phonenumber": "654321654",
       "pass": "123"
     },
     {
       "id": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
       "name": "Pepe",
+      "lastname": "Guapo",
       "username": "pepeguapo",
       "email": "pepe@gmail.com",
+      "phonenumber": "654321654",
       "pass": "123"
     },
     {
       "id": "f4ecea5a-26d8-4f7f-85e1-34f4ab24ac6a",
       "name": "lidia",
+      "lastname": "Frias",
       "username": "lidiafrias",
       "email": "lidia@lidia.es",
+      "phonenumber": "654321654",
       "pass": "123"
     }
   ],
-  "pedidos": [
-    {
-      "id": 1,
-      "idUser": "3c16dd3e-7c95-466b-8e9f-e336d57dda88",
-      "product": "lampara",
-      "address": "fijregjr"
-    }
-  ]
+  "orders": []
 }

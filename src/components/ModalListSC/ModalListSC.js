@@ -2,16 +2,14 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { FaShoppingCart } from "react-icons/fa";
-import { ItemsContext } from '../../helper/context/ItemsContext';
 import { ListSC } from '../ListSC/ListSC';
 
-export function ModalListSC({ removeSC, buy }) {
+export function ModalListSC({ removeSC, buy, restOne }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
 
-    
     return (
         <>
             <div>
@@ -25,8 +23,8 @@ export function ModalListSC({ removeSC, buy }) {
                 </Offcanvas.Header>
                 <hr />
                 <Offcanvas.Body>
-                    
-                    <ListSC removeSC={removeSC} buy={buy} />
+
+                    <ListSC removeSC={removeSC} buy={buy} restOne={restOne} />
                 </Offcanvas.Body>
             </Offcanvas>
         </>

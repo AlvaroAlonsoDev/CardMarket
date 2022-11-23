@@ -9,10 +9,9 @@ export function ModalLogin() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     const { fetchDataUsers } = useContext(ApiContext);
-    const { dataUsers, setUser, setIsLoged } = useContext(ItemsContext);
-    const navigate = useNavigate();
+    const { dataUsers, setUser, setIsLoged, setItems, items } = useContext(ItemsContext);
+    // const navigate = useNavigate();
 
     useEffect(() => {
         fetchDataUsers();
@@ -26,19 +25,23 @@ export function ModalLogin() {
         let pass = e.target.pass.value;
 
         // Comprobar datos
-        const interim = dataUsers.find(u => email === u.email);
-        const interim2 = () => {
-            if(interim.pass === pass){
+        const interim_autho = dataUsers.find(u => email === u.email);
+        const interim_autho_pass = () => {
+            if (interim_autho.pass === pass) {
                 return true;
-            }else{alert("credenciales erroneas");}
+            } else { alert("credenciales erroneas"); }
         }
-        
-        if (interim2()) {
-            setUser(interim);
-            setIsLoged(true);
-            handleClose();
-            navigate('/')
+
+        if (interim_autho_pass()) {
+            setItems(
+                items.map(element => element.idUser === "123" ? {
+                    ...element,
+                    idUser: interim_autho.id
+                } : element))
         }
+        setUser(interim_autho);
+        setIsLoged(true);
+        // navigate('/checkout')
     }
 
     return (

@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import AppRouter from './routes/AppRouter';
 import { GeneralProvider } from './helper/context/GeneralProvider';
 import { Toaster } from 'react-hot-toast';
+import { Helper } from './components/Helper/Helper';
 
 function App() {
 
@@ -12,8 +13,9 @@ function App() {
 
     <BrowserRouter >
 
+      <Toaster position="top-right" reverseOrder={false} />
       <GeneralProvider>
-        <Toaster position="top-right" reverseOrder={false} />
+        <Helper />
         <Header />
         <AppRouter />
         <Footer />
