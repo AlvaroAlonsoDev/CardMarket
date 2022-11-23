@@ -82,6 +82,22 @@ const Header = () => {
         }
     };
 
+    const restOne = (product, id) => {
+        let interim_same_ID = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
+        let interim = interim_same_ID.find((item, indice) => indice === id);
+
+        let interim_other = items.filter(item => isLoged ? (item.idUser !== user.id) : (item.idUser !== "123"));
+        let interim_delete = interim_same_ID.filter((item, indice) => indice !== id);
+
+        interim.quantity > 1 ?
+            setItems(
+                items.map(element => element.id === product.id ? {
+                    ...element,
+                    quantity: element.quantity - 1
+                } : element)
+            ) : setItems(interim_other.concat(interim_delete));
+    }
+
     return (
         <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
             <Container>
@@ -97,7 +113,7 @@ const Header = () => {
                         {renderBtnLR()}
                     </Nav>
                     <Nav className='mx-2'>
-                        <ModalListSC removeSC={removeSC} buy={buy} />
+                        <ModalListSC removeSC={removeSC} buy={buy} restOne={restOne} />
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -7,7 +7,6 @@ import { ApiContext } from "../helper/context/ApiContext";
 import { ListSC } from '../components/ListSC/ListSC';
 
 const Basket = () => {
-  let interim = JSON.parse(localStorage.getItem('items'));
   const { items, setItems, isLoged, offers, user } = useContext(ItemsContext);
   const { fetchDataOffers } = useContext(ApiContext);
   const [price, setPrice] = useState(0);
@@ -16,11 +15,9 @@ const Basket = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (interim) { setItems(interim) }
     fetchDataOffers();
   }, []);
   useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items));
     setPrice(getTotalPrice());
     // setIvaPrice(0.21 * price); //* ARREGLAR
   }, [items]);

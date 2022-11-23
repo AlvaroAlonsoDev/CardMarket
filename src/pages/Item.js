@@ -6,20 +6,15 @@ import { ApiContext } from "../helper/context/ApiContext";
 import { ItemsContext } from "../helper/context/ItemsContext";
 
 export const Item = () => {
-    let interim = JSON.parse(localStorage.getItem('items'));
     const { id } = useParams();
     const { stock, offers, items, setItems, isLoged, user } = useContext(ItemsContext);
     const [product, setProduct] = useState([]);
     const { fetchDataOffers, fetchData } = useContext(ApiContext);
 
     useEffect(() => {
-        if (interim) { setItems(interim) }
         fetchData()
         fetchDataOffers();
     }, []);
-    useEffect(() => {
-        localStorage.setItem("items", JSON.stringify(items));
-    }, [items]);
     useEffect(() => {
         stock.forEach((item) => {
             if (item.id.toString() === id) { setProduct(item) }
@@ -49,6 +44,9 @@ export const Item = () => {
                 seller: product.user,
                 name: product.name,
                 price: product.price,
+                condition: product.condition,
+                description: product.description,
+                version: product.version
             }
             if (isLoged) {
                 interim = {

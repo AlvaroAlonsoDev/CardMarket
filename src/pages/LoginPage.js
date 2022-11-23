@@ -1,17 +1,19 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { ModalRegister } from '../components/ModalRegister/ModalRegister';
+import { ShoppingCart } from '../components/ShoppingCart/ShoppingCart';
 import { ApiContext } from '../helper/context/ApiContext';
 import { ItemsContext } from '../helper/context/ItemsContext';
 
 export const LoginPage = () => {
     const { fetchDataUsers } = useContext(ApiContext);
-    const { dataUsers, setUser, setIsLoged } = useContext(ItemsContext);
+    const { dataUsers, setUser, setIsLoged, setItems, items } = useContext(ItemsContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         fetchDataUsers();
     }, []);
+
 
     const getLogin = (e) => {
         e.preventDefault();
@@ -21,18 +23,23 @@ export const LoginPage = () => {
         let pass = e.target.pass.value;
 
         // Comprobar datos
-        const interim = dataUsers.find(u => email === u.email);
-        const interim2 = () => {
-            if (interim.pass === pass) {
+        const interim_autho = dataUsers.find(u => email === u.email);
+        const interim_autho_pass = () => {
+            if (interim_autho.pass === pass) {
                 return true;
             } else { alert("credenciales erroneas"); }
         }
 
-        if (interim2()) {
-            setUser(interim);
-            setIsLoged(true);
-            navigate('/checkout')
+        if (interim_autho_pass()) {
+            setItems(
+                items.map(element => element.idUser === "123" ? {
+                    ...element,
+                    idUser: interim_autho.id
+                } : element))
         }
+        setUser(interim_autho);
+        setIsLoged(true);
+        navigate('/checkout')
     }
 
     return (
@@ -41,7 +48,7 @@ export const LoginPage = () => {
 
                 <div className="col-md-7 col-lg-8">
                     <h4 className="display-3 my-2 text-center">Log in</h4>
-                    <form onSubmit={e => getLogin(e)} className="needs-validation">
+                    <form onSubmit={e => getLogin(e)} className="needs-validation mt-3">
                         <div className="row g-3">
 
                             <div className="form-floating mb-3">
@@ -71,46 +78,10 @@ export const LoginPage = () => {
 
                     </form>
                 </div>
-                <div className="col-md-5 col-lg-4 order-md-last">
-                    <h4 className="d-flex justify-content-between align-items-center mb-3">
-                        <span className="text-primary">Your cart</span>
-                        <span className="badge bg-primary rounded-pill">3</span>
-                    </h4>
-                    <ul className="list-group mb-3">
-                        <li className="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                                <h6 className="my-0">Product name</h6>
-                                <small className="text-muted">Brief description</small>
-                            </div>
-                            <span className="text-muted">$12</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                                <h6 className="my-0">Second product</h6>
-                                <small className="text-muted">Brief description</small>
-                            </div>
-                            <span className="text-muted">$8</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                                <h6 className="my-0">Third item</h6>
-                                <small className="text-muted">Brief description</small>
-                            </div>
-                            <span className="text-muted">$5</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between bg-light">
-                            <div className="text-success">
-                                <h6 className="my-0">Promo code</h6>
-                                <small>EXAMPLECODE</small>
-                            </div>
-                            <span className="text-success">−$5</span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span>Total (USD)</span>
-                            <strong>$20</strong>
-                        </li>
-                    </ul>
 
+                {/* //? HACER COMPONENTE ESTA SECCION */}
+                <div className="col-md-5 col-lg-4 order-md-last">
+                    <ShoppingCart />
                 </div>
             </div>
         </div>

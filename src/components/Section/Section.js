@@ -13,10 +13,6 @@ export const Section = ({ product, offers, buy }) => {
             return (
                 <ModalCreateOffer product={product} />
             )
-        }else{
-            return (
-                <p>HOLA</p>
-            )
         }
     }
     return (
