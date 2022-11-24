@@ -3,35 +3,30 @@ import { Button } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { ItemsContext } from '../helper/context/ItemsContext';
-import { ApiContext } from "../helper/context/ApiContext";
 import { ListSC } from '../components/ListSC/ListSC';
 
 const Basket = () => {
-  const { items, setItems, isLoged, offers, user } = useContext(ItemsContext);
-  const { fetchDataOffers } = useContext(ApiContext);
+  const { items, setItems, isLoged, offers, user, provItem } = useContext(ItemsContext);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  // const [ivaPrice, setIvaPrice] = useState(0); //* ARREGLAR
+  const [ivaPrice, setIvaPrice] = useState(0); //* ARREGLAR
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchDataOffers();
-  }, []);
+    setTotalPrice(Number((price + ivaPrice).toFixed(2)))
+  });
   useEffect(() => {
-    setPrice(getTotalPrice());
-    // setIvaPrice(0.21 * price); //* ARREGLAR
-  }, [items]);
-  useEffect(() => {
-    setTotalPrice(price) // SUMARLE EL IVA setTotalPrice(price + ivaPrice)
-    // setIvaPrice(0.21 * price); //* ARREGLAR
-  }, [price, items]);
+    getTotal();
+  }, [isLoged, user, items, provItem]);
 
-
-  const getTotalPrice = () => {
-    let countPrice = 0
-    items.forEach(element => {
-      countPrice = countPrice + element.price;
+  const getTotal = () => {
+    let countPrice = 0;
+    provItem.forEach(element => {
+      countPrice = (countPrice) + (element.price * element.quantity)
     });
+    setPrice(Number(countPrice));
+    setIvaPrice(Number((countPrice * 0.21).toFixed(2)));
     return countPrice;
   }
 
@@ -52,13 +47,13 @@ const Basket = () => {
     let interim_other = items.filter(item => isLoged ? (item.idUser !== user.id) : (item.idUser !== "123"));
     let interim_delete = interim_same_ID.filter((item, indice) => indice !== id);
 
-    interim.quantity > 1 ? 
-    setItems(
-      items.map(element => element.id === product.id ? {
-        ...element,
-        quantity: element.quantity - 1
-      } : element)
-    ) : setItems(interim_other.concat(interim_delete));
+    interim.quantity > 1 ?
+      setItems(
+        items.map(element => element.id === product.id ? {
+          ...element,
+          quantity: element.quantity - 1
+        } : element)
+      ) : setItems(interim_other.concat(interim_delete));
   }
 
   const checkoutFunction = () => {
@@ -87,19 +82,18 @@ const Basket = () => {
   };
 
 
-
   return (
     <div className='container'>
       <h2 className='m-4 p-2'>Your Shopping Cart</h2>
 
       <ListSC removeSC={removeSC} buy={buy} restOne={restOne} />
 
-      <div className='row aling-item-center justify-content-center mt-2'>
-        <h6 className='text-muted'>Base price - {price} €</h6>
-        <h6 className='text-muted'>IVA (21%)</h6>
-        <h3 className='mt-2'>Price no tax: {totalPrice} €</h3>
-        <Button className='m-1 p-2 col-sm-6 text-center maxW btn' onClick={checkoutFunction} variant="success">
-          Checkout
+      <div className='row aling-item-center justify-content-center mt-4'>
+        <h6 className='text-muted'>Price: ${price}</h6>
+        <h6 className='text-muted'>IVA (21%) ${ivaPrice} </h6>
+        <h3 className=''>Total Price: ${totalPrice}</h3>
+        <Button className='mt-2 p-3 col-sm-6 text-center maxW btn' onClick={checkoutFunction} variant="success">
+          {isLoged ? ("Checkout") : ("Login")}
         </Button >
       </div>
     </div>

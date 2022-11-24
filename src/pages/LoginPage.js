@@ -1,18 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { ModalRegister } from '../components/ModalRegister/ModalRegister';
 import { ShoppingCart } from '../components/ShoppingCart/ShoppingCart';
-import { ApiContext } from '../helper/context/ApiContext';
 import { ItemsContext } from '../helper/context/ItemsContext';
 
 export const LoginPage = () => {
-    const { fetchDataUsers } = useContext(ApiContext);
     const { dataUsers, setUser, setIsLoged, setItems, items } = useContext(ItemsContext);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        fetchDataUsers();
-    }, []);
 
 
     const getLogin = (e) => {

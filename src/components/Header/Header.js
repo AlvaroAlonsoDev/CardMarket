@@ -16,15 +16,8 @@ import { ApiContext } from "../../helper/context/ApiContext";
 const Header = () => {
     let offer;
     const { user, setUser, setIsLoged, isLoged, items, setItems, offers } = useContext(ItemsContext);
-    const { fetchDataOffers } = useContext(ApiContext);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetchDataOffers();
-    }, []);
-    useEffect(() => {
-        sessionStorage.setItem("infoUserLoged", JSON.stringify(user));
-    }, [user]);
 
     const signOutUser = (e) => {
         setUser([]);

@@ -2,19 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { Section } from "../components/Section/Section";
-import { ApiContext } from "../helper/context/ApiContext";
 import { ItemsContext } from "../helper/context/ItemsContext";
 
 export const Item = () => {
     const { id } = useParams();
-    const { stock, offers, items, setItems, isLoged, user } = useContext(ItemsContext);
+    const { stock, items, setItems, isLoged, user } = useContext(ItemsContext);
     const [product, setProduct] = useState([]);
-    const { fetchDataOffers, fetchData } = useContext(ApiContext);
 
-    useEffect(() => {
-        fetchData()
-        fetchDataOffers();
-    }, []);
     useEffect(() => {
         stock.forEach((item) => {
             if (item.id.toString() === id) { setProduct(item) }
@@ -26,7 +20,7 @@ export const Item = () => {
         let interim = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
         let interim2 = interim.find(item => item.id === product.id)
         if (interim2) {
-            //TODO cambiarle el quantity
+            //* cambiarle el quantity
             let product_single = items.find(item => item.id === product.id);
             if (product.quantity >= (product_single.quantity + amount)) {
                 setItems(
@@ -38,7 +32,7 @@ export const Item = () => {
                 toast.success('Successfully saved!');
             } else { toast.error('No hay mas stock'); }
         } else {
-            //TODO Añadir nuevo producto producto al carrito
+            //* Añadir nuevo producto producto al carrito
             let interim = {
                 id: product.id,
                 seller: product.user,
@@ -66,7 +60,7 @@ export const Item = () => {
 
     return (
         <>
-            <Section product={product} offers={offers} buy={buy} />
+            <Section product={product} buy={buy} />
         </>
     );
 };

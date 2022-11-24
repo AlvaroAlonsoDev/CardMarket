@@ -1,6 +1,5 @@
-import React, { useReducer, useState } from 'react'
+import React, { useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import { NumberReducer } from '../reducer/NumberReducer';
 import { ItemsContext } from './ItemsContext'
 
 export const ItemsProvider = ({ children }) => {
@@ -12,10 +11,10 @@ export const ItemsProvider = ({ children }) => {
     const [user, setUser] = useState([]);
     const [ isLoged, setIsLoged ] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
-
+    const [provItem, setProvItem] = useState([])
 
     return (
-        <ItemsContext.Provider value={{ isLoged, setIsLoged, items, setItems, stock, setStock, offers, setOffers, searchParams, setSearchParams, dataUsers, setDataUsers, user, setUser,orders, setOrders }}>
+        <ItemsContext.Provider value={{ provItem, setProvItem, isLoged, setIsLoged, items, setItems, stock, setStock, offers, setOffers, searchParams, setSearchParams, dataUsers, setDataUsers, user, setUser,orders, setOrders }}>
             {children}
         </ItemsContext.Provider>
     )

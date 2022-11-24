@@ -4,12 +4,14 @@ import Modal from 'react-bootstrap/Modal';
 import { Link, useNavigate } from 'react-router-dom';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 import { v4 as uuidv4 } from 'uuid';
+import { ApiContext } from '../../helper/context/ApiContext';
 
 export const ModalCreateOffer = ({ product }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const { user } = useContext(ItemsContext);
+    const { fetchDataOffers } = useContext(ApiContext);
     const navigate = useNavigate()
 
     const createNewOffer = e => {
@@ -38,6 +40,7 @@ export const ModalCreateOffer = ({ product }) => {
             },
             body: JSON.stringify(new_offer)
         }).then(res => res.json())
+            .then(() => fetchDataOffers())
             .catch(error => console.log(error));
 
         navigate("/")

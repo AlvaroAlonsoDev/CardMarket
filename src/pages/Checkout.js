@@ -3,9 +3,11 @@ import { ShoppingCart } from '../components/ShoppingCart/ShoppingCart'
 import { ItemsContext } from '../helper/context/ItemsContext'
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
+import { ApiContext } from '../helper/context/ApiContext';
 
 export const Checkout = () => {
-    const { user, isLoged, items } = useContext(ItemsContext);
+    const { user, isLoged, items, setItems } = useContext(ItemsContext);
+    const { fetchDataOrders } = useContext(ApiContext);
     const [interim_basket, setInterim_basket] = useState([])
     const navigate = useNavigate();
 
@@ -23,7 +25,6 @@ export const Checkout = () => {
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
             year = d.getFullYear();
-
         if (month.length < 2)
             month = '0' + month;
         if (day.length < 2)
@@ -72,9 +73,16 @@ export const Checkout = () => {
             },
             body: JSON.stringify(newOrder)
         }).then(res => res.json())
-            .then(data => navigate('/profile'))
+            .then(() => fetchDataOrders())
+            .then(() => navigate('/account'))
             .catch(error => console.log(error));
 
+        // Clean LS 
+        let i_cleanLS = items.filter(e => e.idUser !== user.id);
+        setItems(i_cleanLS);
+
+        //* Update product about just seller in db.json
+        //? Proceso de cargar al finalizar
         //? HACER UN NAVIGATE A PERFIL Y PEDIDOS QUE SE MUESTRE EL ULTIMO PEDIDO
         //? o realizar una especie de alerta diciendo que se ha procesado el pedido y navegar al home o whaterever
 

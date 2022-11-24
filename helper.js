@@ -1,15 +1,20 @@
-//? Comprobar que no haya usuarios==
-//? Encriptar pass
-//? Arreglar bug con el login .find
-//? Arreglar precio total
-//? Añadir funcionalidad a las compras 
-//? Lista de pedidos realizados
-//? Cuando haces log que te informe para rellenar otro form con la direccion y demas
+//? Poner bien el FRONT al poner mal la password
 //? Añadir carga al procesar la compra https://react-bootstrap.netlify.app/components/progress/
 //? Al hacer una compra borrar la cantidad de ofertas dependiendo de que compro
+//? Al editar el perfil volver a preguntar la contraseña y verificar datos
+
+//? Cuando haces log que te informe para rellenar otro form con la direccion y demas
+//? Seccion para cambiar tu username pass..
+//? Cuando compras tienes que limpiar el local que has comprado
 //? Arreglar el precio total con la cantidad de productos
-
-
+//? Arreglar bug con el login .find
+//? Arreglar precio total
+//? Comprobar que no haya usuarios==
+//* Arreglar precio total y añadir iva DINAMICO 
+// Comprobar que no haya user =         //! DONE
+// Encriptar pass                       //! DONE
+// Lista de pedidos realizados          //! DONE
+// Añadir funcionalidad a las compras   //! DONE
 // Borrar de 1 en 1                     //! DONE
 // Borrar las offers METHOD DELETE      //! DONE 
 // Carrito asociado al user logeado     //! DONE
@@ -35,4 +40,4 @@
 // Añadir las alertas de Juan           //! DONE
 // Funcionalidad Buscador               //! DONE
 
-//* Estoy en ListOrders falta terminar de mostrar los productos las variables que queremos he terminado de mostrar todos los productos comprados
+//* FRONT PROFILE PAGE

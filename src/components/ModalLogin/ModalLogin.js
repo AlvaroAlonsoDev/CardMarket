@@ -1,47 +1,43 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useNavigate } from 'react-router-dom';
-import { ApiContext } from '../../helper/context/ApiContext';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 
 export function ModalLogin() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { fetchDataUsers } = useContext(ApiContext);
     const { dataUsers, setUser, setIsLoged, setItems, items } = useContext(ItemsContext);
     // const navigate = useNavigate();
-
-    useEffect(() => {
-        fetchDataUsers();
-    }, []);
+    var bcrypt = require('bcryptjs');
 
     const getLogin = (e) => {
         e.preventDefault();
 
         //conseguir datos del form
         let email = e.target.email.value;
-        let pass = e.target.pass.value;
+        let pass_form = e.target.pass.value;
 
         // Comprobar datos
         const interim_autho = dataUsers.find(u => email === u.email);
-        const interim_autho_pass = () => {
-            if (interim_autho.pass === pass) {
-                return true;
-            } else { alert("credenciales erroneas"); }
+
+        const decodePass = () => {
+            //Desencriptar password
+            let pass_hash = interim_autho.pass;
+            let compare = bcrypt.compareSync(pass_form, pass_hash)
+            return compare;
         }
 
-        if (interim_autho_pass()) {
+        if (decodePass()) {
             setItems(
                 items.map(element => element.idUser === "123" ? {
                     ...element,
                     idUser: interim_autho.id
                 } : element))
-        }
-        setUser(interim_autho);
-        setIsLoged(true);
-        // navigate('/checkout')
+            setUser(interim_autho);
+            setIsLoged(true);
+            // navigate('/checkout')
+        }else{ alert("credenciales erroneas"); }
     }
 
     return (
@@ -58,7 +54,7 @@ export function ModalLogin() {
                     {/* <!-- Sign In Form --> */}
                     <form onSubmit={e => getLogin(e)}>
                         <div className="form-floating mb-3">
-                            <input type="email" name="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+                            <input type="email" name="email" className="form-control" id="floatingInput" placeholder="name@example.com" autoFocus />
                             <label htmlFor="floatingInput">Email address</label>
                         </div>
                         <div className="form-floating mb-3">

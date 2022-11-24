@@ -14,13 +14,13 @@ export const ShoppingCart = () => {
 
     const getTotalPrice = () => {
         let total = 0;
-        interim_basket.forEach(e => total = e.price + total);
+        interim_basket.forEach(e => total = (e.price * e.quantity) + total);
         let totalPlusIva = total + (total * 0.21)
         return totalPlusIva.toFixed(2);
     }
     const getIvaPrice = () => {
         let total = 0;
-        interim_basket.forEach(e => total = e.price + total);
+        interim_basket.forEach(e => total = (e.price * e.quantity) + total);
         let interim_iva = total * 0.21;
         return interim_iva.toFixed(2);
     }

@@ -34,7 +34,7 @@ export const Offer = ({ offer, buy }) => {
             <td>{offer.user}</td>
             <td>
                 {offer.condition} - <small>{offer.description}</small></td>
-            <td><i><small>{offer.quantity}</small></i> x {offer.price}€ </td>
+            <td><i><small>{offer.quantity}</small></i> x ${offer.price} </td>
             <td>
 
                 <button onClick={restOne} className='btn btn-sm'><FaMinus /></button>
