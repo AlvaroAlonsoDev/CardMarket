@@ -9,9 +9,9 @@ const Basket = () => {
   const { items, setItems, isLoged, offers, user, provItem } = useContext(ItemsContext);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [ivaPrice, setIvaPrice] = useState(0); //* ARREGLAR
-
+  const [ivaPrice, setIvaPrice] = useState(0);
   const navigate = useNavigate();
+
 
   useEffect(() => {
     setTotalPrice(Number((price + ivaPrice).toFixed(2)))
@@ -19,6 +19,7 @@ const Basket = () => {
   useEffect(() => {
     getTotal();
   }, [isLoged, user, items, provItem]);
+
 
   const getTotal = () => {
     let countPrice = 0;
@@ -65,15 +66,18 @@ const Basket = () => {
   }
 
   const buy = (product, amount = 1) => {
-    let interimSC = items.find(item => item.id === product.id);
-    let offer = offers.find(item => item.id === product.id);
+    let interim = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
+    let interim2 = interim.find(item => item.id === product.id)
+    if (interim2) {
+      //* cambiarle el quantity
+      let product_single = items.find(item => item.id === product.id);
+      let offer = offers.find(item => item.id === product.id);
 
-    if (interimSC) {
-      if (offer.quantity >= (interimSC.quantity + amount)) {
+      if (offer.quantity > product_single.quantity) {
         setItems(
           items.map(element => element.id === offer.id ? {
-            ...interimSC,
-            quantity: interimSC.quantity + amount
+            ...product_single,
+            quantity: product_single.quantity + amount
           } : element)
         );
         toast.success('Successfully saved!');
@@ -88,7 +92,7 @@ const Basket = () => {
 
       <ListSC removeSC={removeSC} buy={buy} restOne={restOne} />
 
-      <div className='row aling-item-center justify-content-center mt-4'>
+      <div className='container row aling-item-center justify-content-center mt-4'>
         <h6 className='text-muted'>Price: ${price}</h6>
         <h6 className='text-muted'>IVA (21%) ${ivaPrice} </h6>
         <h3 className=''>Total Price: ${totalPrice}</h3>

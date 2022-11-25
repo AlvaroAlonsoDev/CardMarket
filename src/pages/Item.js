@@ -16,7 +16,7 @@ export const Item = () => {
     }, [stock]);
 
 
-    const buy = (product, amount) => {
+    const buy = (product, amount = 1) => {
         let interim = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
         let interim2 = interim.find(item => item.id === product.id)
         if (interim2) {

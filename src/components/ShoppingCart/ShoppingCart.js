@@ -31,7 +31,7 @@ export const ShoppingCart = () => {
         <>
             <h4 className="d-flex justify-content-between align-items-center mb-3">
                 <span className="text-primary">Your cart</span>
-                <span className="badge bg-primary rounded-pill">2</span>
+                <span className="badge bg-primary rounded-pill">{interim_basket.length}</span>
             </h4>
             <ul className="list-group mb-3">
 
@@ -40,8 +40,8 @@ export const ShoppingCart = () => {
                     return (
                         <li key={uuidv4()} className="list-group-item d-flex justify-content-between lh-sm">
                             <div>
-                                <h6 className="my-0">{item.name} - <small className='text-secondary'>{item.seller}</small></h6>
-                                <small className="text-muted">{item.description}</small>
+                                <h6 className="my-0">{item.quantity} x {item.name}</h6>
+                                <small className="text-muted">{item.version} - {item.seller}</small>
                             </div>
                             <span className="text-muted">${item.price}</span>
                         </li>

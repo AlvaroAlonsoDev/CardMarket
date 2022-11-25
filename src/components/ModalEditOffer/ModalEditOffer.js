@@ -1,28 +1,26 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Link, useNavigate } from 'react-router-dom';
-import { ItemsContext } from '../../helper/context/ItemsContext';
-import { v4 as uuidv4 } from 'uuid';
+import { FaEdit } from "react-icons/fa";
 import { ApiContext } from '../../helper/context/ApiContext';
+import { ItemsContext } from '../../helper/context/ItemsContext';
+import toast from "react-hot-toast";
 
-export const ModalCreateOffer = ({ product }) => {
+
+export const ModalEditOffer = ({ item, setInterim }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { user } = useContext(ItemsContext);
     const { fetchDataOffers } = useContext(ApiContext);
-    const navigate = useNavigate()
+    const { offers, user } = useContext(ItemsContext);
 
-    const createNewOffer = e => {
+
+    const editOffer = (e) => {
         e.preventDefault();
 
-        let new_offer = {
-            id: uuidv4(),
-            idProduct: product.id,
-            idUsers: user.id,
-            name: product.name,
-            user: user.username,
+        // recoger info del form
+        const new_offer = {
+            ...item,
             price: parseInt(e.target.price.value),
             condition: e.target.condition.value,
             lenguage: e.target.lenguage.value,
@@ -33,73 +31,70 @@ export const ModalCreateOffer = ({ product }) => {
             description: e.target.description.value
         }
 
-        fetch('http://localhost:4000/offers', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(new_offer)
-        }).then(res => res.json())
+        };
+        fetch(`http://localhost:4000/offers/${item.id}`, requestOptions)
             .then(() => fetchDataOffers())
+            .then(() => setInterim(offers.filter(e => e.idUsers === user.id)))
+            .then(() => toast('Edited!', { icon: '📃' }))
             .catch(error => console.log(error));
-
-        navigate("/")
     }
+
+
     return (
         <>
-            <div className='row aling-item-center justify-content-center'>
-                <Button className='m-1 col-sm-6 text-center maxW btn' variant="primary" onClick={handleShow}>
-                    Upload new offer
-                </Button>
-            </div>
+            <Button onClick={handleShow} variant="outline-success" className='mx-2'><FaEdit /></Button>
 
-            <Modal show={show} onHide={handleClose} >
+            <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>New Offer</Modal.Title>
+                    <Modal.Title>Edit Offer</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-
-                    <form onSubmit={e => { createNewOffer(e) }}>
+                    {/* <!-- Edit Form --> */}
+                    <form onSubmit={e => { editOffer(e) }}>
 
                         <div className="form-floating mb-3">
-                            <input name="condition" type="text" className="form-control" id="floatingInputUsername" placeholder="condition" autoFocus />
+                            <input name="condition" defaultValue={item.condition} type="text" className="form-control" id="floatingInputUsername" placeholder="condition" autoFocus />
                             <label htmlFor="floatingInputUsername">Condition</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="lenguage" type="text" className="form-control" id="floatingInputUsername" placeholder="lenguage"  />
+                            <input name="lenguage" type="text" defaultValue={item.lenguage} className="form-control" id="floatingInputUsername" placeholder="lenguage" />
                             <label htmlFor="floatingInputUsername">Lenguage</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="version" type="text" className="form-control" id="floatingInputUsername" placeholder="version"  />
+                            <input name="version" type="text" defaultValue={item.version} className="form-control" id="floatingInputUsername" placeholder="version" />
                             <label htmlFor="floatingInputUsername">Version</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="description" type="text" className="form-control" id="floatingInputUsername" placeholder="description"  />
+                            <input name="description" type="text" defaultValue={item.description} className="form-control" id="floatingInputUsername" placeholder="description" />
                             <label htmlFor="floatingInputUsername">Description</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="signed" type="text" className="form-control" id="floatingInputUsername" placeholder="signed"  />
+                            <input name="signed" type="text" defaultValue={item.signed} className="form-control" id="floatingInputUsername" placeholder="signed" />
                             <label htmlFor="floatingInputUsername">Signed</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="altered" type="text" className="form-control" id="floatingInputUsername" placeholder="altered"  />
+                            <input name="altered" type="text" defaultValue={item.altered} className="form-control" id="floatingInputUsername" placeholder="altered" />
                             <label htmlFor="floatingInputUsername">Altered</label>
                         </div>
 
                         <hr />
 
                         <div className="form-floating mb-3">
-                            <input name="quantity" type="number" className="form-control" id="floatingInputUsername" placeholder="quantity"  />
+                            <input name="quantity" type="number" defaultValue={item.quantity} className="form-control" id="floatingInputUsername" placeholder="quantity" />
                             <label htmlFor="floatingInputUsername">Quantity</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="price" type="number" className="form-control" id="floatingInputUsername" placeholder="price"  />
+                            <input name="price" type="number" defaultValue={item.price} className="form-control" id="floatingInputUsername" placeholder="price" />
                             <label htmlFor="floatingInputUsername">price</label>
                         </div>
 
@@ -107,11 +102,8 @@ export const ModalCreateOffer = ({ product }) => {
 
                         <div className="d-grid">
                             <button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" >
-                                Create offer
+                                Edit offer
                             </button>
-                            <div className="text-center">
-                                <Link to="/" className="small" >Not sure?</Link>
-                            </div>
                         </div>
                     </form>
                 </Modal.Body>
@@ -122,5 +114,5 @@ export const ModalCreateOffer = ({ product }) => {
                 </Modal.Footer>
             </Modal>
         </>
-    );
+    )
 }

@@ -14,7 +14,6 @@ import { ApiContext } from "../../helper/context/ApiContext";
 
 
 const Header = () => {
-    let offer;
     const { user, setUser, setIsLoged, isLoged, items, setItems, offers } = useContext(ItemsContext);
     const navigate = useNavigate();
 
@@ -59,15 +58,18 @@ const Header = () => {
     }
 
     const buy = (product, amount = 1) => {
-        let interimSC = items.find(item => item.id === product.id);
-        offer = offers.find(item => item.id === product.id);
-
-        if (interimSC) {
-            if (offer.quantity >= (interimSC.quantity + amount)) {
+        let interim = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
+        let interim2 = interim.find(item => item.id === product.id)
+        if (interim2) {
+            //* cambiarle el quantity
+            let product_single = items.find(item => item.id === product.id);
+            let offer = offers.find(item => item.id === product.id);
+            
+            if (offer.quantity > product_single.quantity) {
                 setItems(
                     items.map(element => element.id === offer.id ? {
-                        ...interimSC,
-                        quantity: interimSC.quantity + amount
+                        ...product_single,
+                        quantity: product_single.quantity + amount
                     } : element)
                 );
                 toast.success('Successfully saved!');

@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 import toast from "react-hot-toast";
-import { ApiContext } from '../../helper/context/ApiContext';
 
 export const ModalEditProfile = () => {
     const [show, setShow] = useState(false);
@@ -15,6 +14,15 @@ export const ModalEditProfile = () => {
     const editUser = (e) => {
         e.preventDefault();
 
+        // obtener en que dia mes y año estamos
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let currentDate = `${day}-${month}-${year}`;
+        
+
+        // buscamos el user y creamos el provisional
         let interim_user = dataUsers.find(e => e.id === user.id);
         const user_edit = {
             ...interim_user,
@@ -24,6 +32,8 @@ export const ModalEditProfile = () => {
             email: e.target.email.value,
             phonenumber: e.target.phonenumber.value,
             address: e.target.address.value,
+            zip: e.target.zip.value,
+            lastedit: currentDate,
         }
 
         const requestOptions = {
@@ -38,6 +48,8 @@ export const ModalEditProfile = () => {
             .then(() => handleClose())
             .catch(error => console.log(error));
     }
+
+
     return (
         <>
             <Button variant="success" onClick={handleShow}>
@@ -46,7 +58,7 @@ export const ModalEditProfile = () => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit Profile</Modal.Title>
+                    <Modal.Title>Edit Profile <small>{user.lastedit ? 'Last Edit: ' + user.lastedit : ""}</small></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {/* <!-- Edit Form --> */}
@@ -82,6 +94,11 @@ export const ModalEditProfile = () => {
                         <div className="form-floating mb-3">
                             <input name="address" type="text" className="form-control" id="floatingInputUsername" placeholder="Address" defaultValue={user.address} />
                             <label htmlFor="floatingInputUsername">Address</label>
+                        </div>
+
+                        <div className="form-floating mb-3">
+                            <input name="zip" type="text" className="form-control" id="floatingInputUsername" placeholder="Post Code" defaultValue={user.zip} />
+                            <label htmlFor="floatingInputUsername">zip</label>
                         </div>
 
                         <div className="d-grid mb-2">

@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from 'react-router-dom';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 
 export function ModalLogin() {
@@ -36,7 +37,7 @@ export function ModalLogin() {
                 } : element))
             setUser(interim_autho);
             setIsLoged(true);
-            // navigate('/checkout')
+            // navigate('/account');
         }else{ alert("credenciales erroneas"); }
     }
 

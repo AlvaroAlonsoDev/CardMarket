@@ -262,19 +262,94 @@
       "description": "7uldl"
     },
     {
-      "id": "91bb4f55-58ef-49b3-b8ff-5e94b9df1db8",
+      "id": "c17b369d-09cc-45d8-91ab-f2de9a066f42",
+      "idProduct": 1,
+      "idUsers": "254e683d-df91-4343-8b66-ba026491343b",
+      "name": "Snapcaster Mage",
+      "user": "joselitoV",
+      "price": 23,
+      "condition": "grewgawer",
+      "lenguage": "arewga",
+      "quantity": 3,
+      "version": "ggawer",
+      "signed": "awg",
+      "altered": "wareg",
+      "description": "gawerg"
+    },
+    {
+      "id": "a7803228-0dec-4a54-9bd9-a4896b0e80fc",
+      "idProduct": 3,
+      "idUsers": "254e683d-df91-4343-8b66-ba026491343b",
+      "name": "Teferi, Time Raveler",
+      "user": "joselitoV",
+      "price": 43,
+      "condition": "few fgaerwg",
+      "lenguage": "reagreag",
+      "quantity": 3,
+      "version": "hreah",
+      "signed": "hreah",
+      "altered": "erah",
+      "description": "aerhrhae"
+    },
+    {
+      "id": "86dd16b2-674e-46b6-a5d2-a24cf83be610",
+      "idProduct": 2,
+      "idUsers": "254e683d-df91-4343-8b66-ba026491343b",
+      "name": "Tarmogoyf",
+      "user": "joselitoV",
+      "price": 23,
+      "condition": "fagrew",
+      "lenguage": "egrae",
+      "quantity": 4,
+      "version": "ggareg",
+      "signed": "aegr",
+      "altered": "gaer",
+      "description": "aerg"
+    },
+    {
+      "id": "27b21446-70c8-4d91-b0ac-0d72a7d9e65a",
       "idProduct": 1,
       "idUsers": "f4ecea5a-26d8-4f7f-85e1-34f4ab24ac6a",
       "name": "Snapcaster Mage",
       "user": "liidia23",
-      "price": 344,
-      "condition": "",
-      "lenguage": "",
-      "quantity": 34,
-      "version": "",
-      "signed": "",
-      "altered": "",
-      "description": ""
+      "price": 32,
+      "condition": "trhsh",
+      "lenguage": "trwsh",
+      "quantity": 32,
+      "version": "twrhtw",
+      "signed": "wrteh",
+      "altered": "fw4ewqherth",
+      "description": "h"
+    },
+    {
+      "id": "b48b2977-96a1-4313-ad61-54db25b08cd9",
+      "idProduct": 2,
+      "idUsers": "f4ecea5a-26d8-4f7f-85e1-34f4ab24ac6a",
+      "name": "Tarmogoyf",
+      "user": "liidia23",
+      "price": 11,
+      "condition": "jtraj",
+      "lenguage": "jteraj",
+      "quantity": 11,
+      "version": "tjras",
+      "signed": "jtrsj",
+      "altered": "trsjrs",
+      "description": "jsjtsr"
+    },
+    {
+      "id": "33d24d41-f968-4c55-ad04-2fcf8728d0f4",
+      "idProduct": 3,
+      "idUsers": "f4ecea5a-26d8-4f7f-85e1-34f4ab24ac6a",
+      "name": "Teferi, Time Raveler",
+      "user": "liidia23",
+      "price": 21,
+      "condition": "ehwh",
+      "lenguage": "heh",
+      "quantity": 21,
+      "version": "hewh",
+      "signed": "hrewah",
+      "altered": "werga",
+      "description": "ehrrew"
     }
   ],
   "users": [
@@ -295,8 +370,11 @@
       "username": "liidia23",
       "email": "lidia@gmail.com",
       "phonenumber": "987987987",
-      "address": "Las 300 viviendas Todo recto",
-      "pass": "$2a$08$0tSfwoNo9pgGmPZEV2fKzOqb5Hu1g0UEI9Fc9jNwhXOitS0yZWx/y"
+      "address": "3000 viviendas",
+      "pass": "$2a$08$0GNLsELT4wDCFM67aQRqFufBcagF5.GEDFakPbm8TtgnJeEb4uRym",
+      "lasteditpass": "25-11-2022",
+      "zip": "45486",
+      "lastedit": "25-11-2022 at 10:55:15"
     },
     {
       "id": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
@@ -311,12 +389,24 @@
     {
       "id": "431b7a9e-eacd-44c2-b842-69a3d3829fdb",
       "name": "Alvaro",
-      "username": "alvaroic",
+      "username": "Alico23",
       "email": "airuritac@gmail.com",
-      "pass": "$2a$08$g6slxrYjNLERDPvSNYKcIu.4X/eQE38sXno9Rz.60c8jzTxXoDkNy",
+      "pass": "$2a$08$QqKr1P4wynHGqR9bA.KYFuiacoJFyej6cg/KcJ9PLHa5l5N2XATjq",
       "lastname": "Irurita",
       "phonenumber": "623374862",
-      "address": "Rosa 1 41"
+      "address": "Rosa 1 41",
+      "zip": "18008",
+      "lastedit": "25-11-2022 at 10:40:41",
+      "lasteditpass": "25-11-2022"
+    },
+    {
+      "id": "328127ab-1b5e-443e-8935-723cf7cb854c",
+      "name": "Admin",
+      "username": "Admin",
+      "admin": "True",
+      "email": "admin@admin.es",
+      "pass": "$2a$08$.p/zMcJ4OsEk40Q71R2xHuUsePUAbtncNbIhLL1Hcap/bjZNpPOHW",
+      "dateregister": "25-11-2022 at 13:57:24"
     }
   ],
   "orders": [
@@ -1051,6 +1141,84 @@
         }
       ],
       "date": "24-11-2022"
+    },
+    {
+      "id": "4667e76b-37c8-4c3e-b364-77246213ed2e",
+      "idUser": "431b7a9e-eacd-44c2-b842-69a3d3829fdb",
+      "firstname": "Alvaro",
+      "lastname": "Irurita",
+      "emailorder": "airuritac@gmail.com",
+      "address": "1234 Main Street",
+      "phonenumber": "623374862",
+      "country": "Spain",
+      "zip": "12123",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 128,
+      "product": [
+        {
+          "id": "8186eb1f-3d11-4c19-8aa3-42a2e9674ef7",
+          "seller": "Pepemaquina",
+          "name": "Snapcaster Mage",
+          "price": 21,
+          "condition": "t45qgh",
+          "description": "nhbtrn",
+          "version": "htwr",
+          "idUser": "431b7a9e-eacd-44c2-b842-69a3d3829fdb",
+          "quantity": 4
+        },
+        {
+          "id": "2b4f70b1-c293-4b18-b123-b73f6ec16f37",
+          "seller": "airuritac",
+          "name": "Tarmogoyf",
+          "price": 73,
+          "condition": "greag",
+          "description": "fdafdah",
+          "version": "aerh",
+          "idUser": "431b7a9e-eacd-44c2-b842-69a3d3829fdb",
+          "quantity": 4
+        },
+        {
+          "id": "93d4c6c9-6fe5-499a-b52e-b1a4c498600c",
+          "seller": "nacho",
+          "name": "Teferi, Time Raveler",
+          "price": 12,
+          "condition": "gregh",
+          "description": "erh",
+          "version": "erhwa",
+          "idUser": "431b7a9e-eacd-44c2-b842-69a3d3829fdb",
+          "quantity": 4
+        }
+      ],
+      "date": "25-11-2022 at 10:19:37"
+    },
+    {
+      "id": "f3d2b88b-0e7f-42b3-be3a-60df5a1e53fe",
+      "idUser": "f4ecea5a-26d8-4f7f-85e1-34f4ab24ac6a",
+      "firstname": "Lidia",
+      "lastname": "Frias",
+      "emailorder": "lidia@gmail.com",
+      "address": "3000 viviendas",
+      "phonenumber": "987987987",
+      "country": "Spain",
+      "zip": "45486",
+      "ccnanme": "",
+      "ccnumber": "-2",
+      "price": 41,
+      "product": [
+        {
+          "id": "e8ed87cb-a96d-4108-a883-08ac9ce6a48d",
+          "seller": "airuritac",
+          "name": "Tarmogoyf",
+          "price": 34,
+          "condition": "aher",
+          "description": "hared",
+          "version": "reah",
+          "idUser": "f4ecea5a-26d8-4f7f-85e1-34f4ab24ac6a",
+          "quantity": 4
+        }
+      ],
+      "date": "25-11-2022 at 10:58:39"
     }
   ]
 }

@@ -20,18 +20,6 @@ export const Checkout = () => {
     }, [isLoged, user, items]);
 
 
-    function formatDate(date) {
-        var d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
-        if (month.length < 2)
-            month = '0' + month;
-        if (day.length < 2)
-            day = '0' + day;
-
-        return [year, month, day].join('-');
-    }
     const getTotalPrice = () => {
         let total = 0;
         interim_basket.forEach(e => total = e.price + total);
@@ -47,7 +35,7 @@ export const Checkout = () => {
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
         let currentDate = `${day}-${month}-${year}`;
-
+        var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
         const newOrder = {
             id: uuidv4(),
@@ -63,7 +51,7 @@ export const Checkout = () => {
             ccnumber: e.target.ccnumber.value,
             price: parseInt(getTotalPrice()),
             product: interim_basket,
-            date: currentDate
+            date: currentDate + ' at ' + time
         }
 
         fetch('http://localhost:4000/orders', {
@@ -80,6 +68,7 @@ export const Checkout = () => {
         // Clean LS 
         let i_cleanLS = items.filter(e => e.idUser !== user.id);
         setItems(i_cleanLS);
+
 
         //* Update product about just seller in db.json
         //? Proceso de cargar al finalizar
@@ -119,7 +108,7 @@ export const Checkout = () => {
 
                             <div className="col-12">
                                 <label htmlFor="address" className="form-label">Address</label>
-                                <input type="text" name='address' className="form-control" id="address" placeholder="1234 Main St" />
+                                <input type="text" name='address' className="form-control" id="address" placeholder="1234 Main St" defaultValue={user.address}/>
                                 <div className="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -152,7 +141,7 @@ export const Checkout = () => {
 
                             <div className="col-md-3">
                                 <label htmlFor="zip" className="form-label">Zip</label>
-                                <input type="text" name='zip' className="form-control" id="zip" placeholder="18554" />
+                                <input type="text" name='zip' className="form-control" id="zip" placeholder="18554" defaultValue={user.zip}/>
                                 <div className="invalid-feedback">
                                     Zip code required.
                                 </div>
@@ -216,6 +205,7 @@ export const Checkout = () => {
                         <hr className="my-4" />
 
                         <button className="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+
                     </form>
                 </div>
             </div>
