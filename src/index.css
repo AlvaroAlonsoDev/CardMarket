@@ -1,10 +1,26 @@
+
+
+.bodypro {
+  min-height: 85vh;
+}
+
+
 .pointer {
   cursor: pointer;
 }
 
 .maxW {
-  max-width: 300px;
+  max-width: 250px;
 }
+
+.max-width {
+  max-width: 500px;
+}
+
+.bgnavBar {
+  background-color: #67569E;
+}
+
 
 /* PROFILE PAGE */
 .emp-profile {
@@ -118,4 +134,8 @@
   color: #0062cc;
 }
 
+footer {
+  position: relative !important;
+  bottom: 0 !important;
+}
 /* PROFILE PAGE */

@@ -7,12 +7,12 @@ import { ApiContext } from '../helper/context/ApiContext';
 import toast from "react-hot-toast";
 
 export const Checkout = () => {
-    const { user, isLoged, items, setItems, offers } = useContext(ItemsContext);
+    const { user, isLoged, items, setItems, offers, cupon, setCupon } = useContext(ItemsContext);
     const { fetchDataOrders, fetchDataOffers } = useContext(ApiContext);
     const [interim_basket, setInterim_basket] = useState([])
     const navigate = useNavigate();
-    const [cupon, setCupon] = useState(false);
     const inputEl = useRef(null);
+
 
     useEffect(() => {
         if (!isLoged) { navigate('/') }
@@ -24,21 +24,22 @@ export const Checkout = () => {
 
     const authCupon = () => {
         let interim = inputEl.current.value;
+        inputEl.current.className = 'form-control border';
+        setCupon(false);
         if (interim === "123456") {
+            inputEl.current.className = 'form-control border border-success rounded'
             setCupon(true);
-            console.log("true");
         }
-
     }
     const getTotalPrice = () => {
         let total = 0;
         let totalPlusIva = 0;
-        interim_basket.forEach(e => total = e.price + total);
+        interim_basket.forEach(e => total = (e.price * e.quantity) + total);
         if (!cupon) {
             totalPlusIva = total + (total * 0.21)
             setCupon(false);
         } else {
-            totalPlusIva = (total - 10) + (total * 0.21)
+            totalPlusIva = (total + (total * 0.21)) - 25
             setCupon(false);
         }
         return totalPlusIva.toFixed(2);
@@ -79,61 +80,75 @@ export const Checkout = () => {
             body: JSON.stringify(newOrder)
         }).then(res => res.json())
             .then(() => fetchDataOrders())
-            .then(() => toast.success('Successfully saved!'))
+            .then(() => toast.success('Successfully saved!', {
+                position: "top-center",
+                style: {
+                    border: '1px solid #713200',
+                    padding: '16px',
+                    color: '#713200',
+                },
+                iconTheme: {
+                    primary: '#713200',
+                    secondary: '#FFFAEE',
+                },
+            }))
             .then(() => navigate('/account'))
-            .catch(error => console.log(error));
+            .catch (error => console.log(error));
 
-        // Clean LS 
-        let i_cleanLS = items.filter(e => e.idUser !== user.id);
-        setItems(i_cleanLS);
+// Clean LS 
+let i_cleanLS = items.filter(e => e.idUser !== user.id);
+setItems(i_cleanLS);
 
-        //* Update product about just seller in db.json
-        offers.forEach(offer => {
-            (newOrder.product).forEach(e => {
-                if (e.id === offer.id) {
-                    if (offer.quantity > e.quantity) {
-                        console.log("El stock es superior a la cantidad que compra");
-                        const offer_update = {
-                            ...offer,
-                            quantity: offer.quantity - e.quantity,
-                        }
-
-                        const requestOptions = {
-                            method: 'PUT',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(offer_update)
-                        };
-                        fetch(`http://localhost:4000/offers/${e.id}`, requestOptions)
-                            .then(() => fetchDataOffers())
-                            .catch(error => console.log(error));
-
-                    } else {
-                        console.log("No hay mas stock y borro");
-                        fetch(`http://localhost:4000/offers/${e.id}`, {
-                            method: 'DELETE'
-                        }).then(() => fetchDataOffers())
-                            .catch(error => console.log(error));
-
-                    }
+//* Update product about just seller in db.json
+offers.forEach(offer => {
+    (newOrder.product).forEach(e => {
+        if (e.id === offer.id) {
+            if (offer.quantity > e.quantity) {
+                console.log("El stock es superior a la cantidad que compra");
+                const offer_update = {
+                    ...offer,
+                    quantity: offer.quantity - e.quantity,
                 }
 
-            })
-        })
+                const requestOptions = {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(offer_update)
+                };
+                fetch(`http://localhost:4000/offers/${e.id}`, requestOptions)
+                    .then(() => fetchDataOffers())
+                    .catch(error => console.log(error));
+
+            } else {
+                console.log("No hay mas stock y borro");
+                fetch(`http://localhost:4000/offers/${e.id}`, {
+                    method: 'DELETE'
+                }).then(() => fetchDataOffers())
+                    .catch(error => console.log(error));
+
+            }
+        }
+
+    })
+})
         //? Proceso de cargar al finalizar
 
     }
 
-    return (
+return (
+    <div className='bodypro'>
         <div className='container mt-2'>
             <div className="row g-5">
                 <div className="col-md-5 col-lg-4 order-md-last">
+
                     <ShoppingCart />
+
                     <div className="">
                         <label htmlFor="cc-expiration" className="form-label">Do you have any cupon?</label>
+                        {
+                            cupon === true && <p className='bg-success mt-2 text-center border rounded'>Accepted</p>
+                        }
                         <input onChange={e => authCupon()} ref={inputEl} type="text" name='cupon' className="form-control" id="cc-expiration" placeholder="" />
-                    </div>
-                    <div className="mt-2 ">
-                        <button className='btn btn-outline-success'>Cupon Validate</button>
                     </div>
                 </div>
 
@@ -264,5 +279,6 @@ export const Checkout = () => {
                 </div>
             </div>
         </div>
-    )
+    </div>
+)
 }

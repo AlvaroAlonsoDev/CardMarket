@@ -1,17 +1,18 @@
 import React, { useContext, useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import Button from '@mui/material/Button';
 import Modal from 'react-bootstrap/Modal';
 import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { ApiContext } from '../../helper/context/ApiContext';
 import { ItemsContext } from '../../helper/context/ItemsContext';
+import toast from 'react-hot-toast';
 
 export function ModalRegister() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     var bcrypt = require('bcryptjs');
-    const { dataUsers, setUser, setIsLoged } = useContext(ItemsContext);
+    const { dataUsers, user, setUser, setIsLoged } = useContext(ItemsContext);
     const { fetchDataUsers } = useContext(ApiContext);
 
 
@@ -52,19 +53,33 @@ export function ModalRegister() {
                 },
                 body: JSON.stringify(new_user)
             }).then(res => res.json())
+                .then(() => setUser(new_user))
+                .then(() => setIsLoged(true))
+                .then(() => handleClose())
+                .then(() => handleClose())
+                .then(() => toast('Hello ' + new_user.name + '!',
+                    {
+                        icon: '👏',
+                        position: "top-center",
+                        style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                        },
+                    }
+                ))
                 .then(() => fetchDataUsers())
                 .catch(error => console.log(error));
 
             setUser(new_user);
             setIsLoged(true);
             handleClose();
-            alert("You have a 20% off in your first purshased, the code is 123456789 ")
         } else { alert('email o username ya existentes') }
     }
 
     return (
         <>
-            <Button variant="outline-success" onClick={handleShow}>
+            <Button variant="contained" color="secondary" onClick={handleShow}>
                 Sign-up
             </Button>
 

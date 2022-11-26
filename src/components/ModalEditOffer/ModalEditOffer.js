@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { FaEdit } from "react-icons/fa";
 import { ApiContext } from '../../helper/context/ApiContext';
 import { ItemsContext } from '../../helper/context/ItemsContext';
-import toast from "react-hot-toast";
+import Swal from 'sweetalert2'
 
 
 export const ModalEditOffer = ({ item, setInterim }) => {
@@ -39,7 +39,7 @@ export const ModalEditOffer = ({ item, setInterim }) => {
         fetch(`http://localhost:4000/offers/${item.id}`, requestOptions)
             .then(() => fetchDataOffers())
             .then(() => setInterim(offers.filter(e => e.idUsers === user.id)))
-            .then(() => toast('Edited!', { icon: '📃' }))
+            .then(() => Swal.fire('All right!', 'You edited your profile!', 'success'))
             .catch(error => console.log(error));
     }
 

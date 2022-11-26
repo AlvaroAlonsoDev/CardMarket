@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import { InfoProduct } from "../components/InfoProduct/InfoProduct";
 import { Section } from "../components/Section/Section";
 import { ItemsContext } from "../helper/context/ItemsContext";
 
@@ -60,7 +61,10 @@ export const Item = () => {
 
     return (
         <>
+        <div className="container">
+            <InfoProduct product={product} />
             <Section product={product} buy={buy} />
+        </div>
         </>
     );
 };

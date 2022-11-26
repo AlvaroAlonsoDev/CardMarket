@@ -57,7 +57,7 @@ const Basket = () => {
       ) : setItems(interim_other.concat(interim_delete));
   }
 
-  const checkoutFunction = () => {  
+  const checkoutFunction = () => {
     if (isLoged) {
       navigate("/checkout")
     } else {
@@ -80,25 +80,37 @@ const Basket = () => {
             quantity: product_single.quantity + amount
           } : element)
         );
-        toast.success('Successfully saved!');
       } else { toast.error('No hay mas stock'); }
     }
   };
 
 
   return (
-    <div className='container'>
-      <h2 className='m-4 p-2'>Your Shopping Cart</h2>
-
-      <ListSC removeSC={removeSC} buy={buy} restOne={restOne} />
-
-      <div className='container row aling-item-center justify-content-center mt-4'>
-        <h6 className='text-muted'>Price: ${price}</h6>
-        <h6 className='text-muted'>IVA (21%) ${ivaPrice} </h6>
-        <h3 className=''>Total Price: ${totalPrice}</h3>
-        <Button className='mt-2 p-3 col-sm-6 text-center maxW btn' onClick={checkoutFunction} variant="success">
-          {isLoged ? ("Checkout") : ("Login")}
-        </Button >
+    <div className='bodypro'>
+      <div className='row justify-content-center'>
+        <div className='max-width col-auto'>
+          <h2 className='m-4 p-2 display-5'>Your Shopping Cart</h2>
+          <ul className="list-group mb-3">
+            <ListSC removeSC={removeSC} buy={buy} restOne={restOne} />
+            <li className="list-group-item d-flex justify-content-between">
+              <span>Price (USD) </span>
+              <strong>${price}</strong>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <span>Tax <small>21%</small> (USD)</span>
+              <strong>${ivaPrice}</strong>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <span>Total (USD)</span>
+              <strong>${totalPrice}</strong>
+            </li>
+          </ul>
+        </div>
+        <div className='container row aling-item-center justify-content-center mt-4'>
+          <Button className='mt-2 p-3 col-sm-6 text-center maxW btn' onClick={checkoutFunction} variant="success">
+            {isLoged ? ("Checkout") : ("Login")}
+          </Button >
+        </div>
       </div>
     </div>
   )

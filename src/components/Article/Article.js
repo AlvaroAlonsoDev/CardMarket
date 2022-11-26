@@ -7,32 +7,20 @@ const Article = ({ stock, filter, isLoged, user }) => {
 
 
     const renderBTNCrud = () => {
-        if (isLoged) {
-            if (user.admin) {
-                return (
-                    <ModalCreateProduct />
-                )
-            } else {
-                return (
-                    <>
-                        <div onClick={() => console.log("goli")} className='pointer bg-dark mb-4'>
-                            <div className='text-center p-3'>
-                                <h3 className='text-decoration-none text-info display-5'>Welcome {user.name}!</h3>
-                                <h3 className='text-decoration-none text-light display-6'>Would you like to upload a new product? click here!</h3>
-                            </div>
-                        </div>
 
-                    </>
-                )
-            }
+        if (user.admin) {
+            return (
+                <ModalCreateProduct />
+            )
         }
+
     }
 
     return (
 
         <article className="mt-2 p-4  container bg-light">
             <div className="container">
-                <div className=''>{renderBTNCrud()}</div>
+                {renderBTNCrud()}
             </div>
 
             <div className="row pb-5 mb-4">
@@ -44,10 +32,10 @@ const Article = ({ stock, filter, isLoged, user }) => {
                             return itemName.includes(filter.toLowerCase());
                         }
                     })
-                    .map((product, indice) => {
-                        return (    
+                    .map((product) => {
+                        return (
                             <div key={uuidv4()} className="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                            <Product product={product} indice={indice} />
+                                <Product product={product} />
                             </div>
                         )
                     })

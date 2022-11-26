@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ItemsContext } from '../../helper/context/ItemsContext';
-import toast from "react-hot-toast";
 import { ApiContext } from '../../helper/context/ApiContext';
+import Swal from 'sweetalert2'
 
 export const ModalEditPass = () => {
     const [show, setShow] = useState(false);
@@ -16,59 +16,81 @@ export const ModalEditPass = () => {
     const changePass = (e) => {
         e.preventDefault()
 
-        // get info form
-        let edit_pass = {
-            oldpass: e.target.oldpass.value,
-            newpass: e.target.newpass.value,
-        }
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                // get info form
+                let edit_pass = {
+                    oldpass: e.target.oldpass.value,
+                    newpass: e.target.newpass.value,
+                }
 
-        //Desencriptar password
-        const decodePass = () => {
-            //pass already hash
-            let pass_hash = user.pass;
-            let compare = bcrypt.compareSync(edit_pass.oldpass, pass_hash);
-            return compare;
-        }
+                //Desencriptar password
+                const decodePass = () => {
+                    //pass already hash
+                    let pass_hash = user.pass;
+                    let compare = bcrypt.compareSync(edit_pass.oldpass, pass_hash);
+                    return compare;
+                }
 
-        if (decodePass()) {
-            // obtener en que dia mes
-            const date = new Date();
-            let day = date.getDate();
-            let month = date.getMonth() + 1;
-            let year = date.getFullYear();
-            let currentDate = `${day}-${month}-${year}`;
-            let time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                if (decodePass()) {
+                    // obtener en que dia mes
+                    const date = new Date();
+                    let day = date.getDate();
+                    let month = date.getMonth() + 1;
+                    let year = date.getFullYear();
+                    let currentDate = `${day}-${month}-${year}`;
+                    let time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
-            // encriptar new passwprd
-            const hashedPassword = bcrypt.hashSync(edit_pass.newpass, 8);
+                    // encriptar new passwprd
+                    const hashedPassword = bcrypt.hashSync(edit_pass.newpass, 8);
 
-            // provisional 
-            const interim_user = {
-                ...user,
-                pass: hashedPassword,
-                lasteditpass: currentDate + ' at ' + time,
+                    // provisional 
+                    const interim_user = {
+                        ...user,
+                        pass: hashedPassword,
+                        lasteditpass: currentDate + ' at ' + time,
+                    }
+                    //actualizar base de datos (userData)
+                    const requestOptions = {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(interim_user)
+                    };
+                    fetch(`http://localhost:4000/users/${user.id}`, requestOptions)
+                        .then(response => response.json())
+                        .then(() => setUser(interim_user))
+                        .then(() => fetchDataUsers())
+                        .then(() => Swal.fire('Saved!', '', 'success'))
+                        .then(() => handleClose())
+                        .catch(error => console.log(error));
+
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Password went wrong!',
+                        footer: '<a href="">Why do I have this issue?</a>'
+                    })
+                }
+
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
             }
-            //actualizar base de datos (userData)
-            const requestOptions = {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(interim_user)
-            };
-            fetch(`http://localhost:4000/users/${user.id}`, requestOptions)
-                .then(response => response.json())
-                .then(() => setUser(interim_user))
-                .then(() => fetchDataUsers())
-                .then(() => toast.success('Successfully saved!'))
-                .then(() => handleClose())
-                .catch(error => console.log(error));
+        })
 
-        } else { alert("Credenciales erroneas") }
 
     }
 
     return (
         <>
-            <Button className='' variant="light" onClick={handleShow}>
+            <Button className='' variant='dark' onClick={handleShow}>
                 Change Password
             </Button>
 

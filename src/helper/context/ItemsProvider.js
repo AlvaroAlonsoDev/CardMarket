@@ -11,10 +11,11 @@ export const ItemsProvider = ({ children }) => {
     const [user, setUser] = useState([]);
     const [ isLoged, setIsLoged ] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
-    const [provItem, setProvItem] = useState([])
+    const [provItem, setProvItem] = useState([]);
+    const [cupon, setCupon] = useState(false);
 
     return (
-        <ItemsContext.Provider value={{ provItem, setProvItem, isLoged, setIsLoged, items, setItems, stock, setStock, offers, setOffers, searchParams, setSearchParams, dataUsers, setDataUsers, user, setUser,orders, setOrders }}>
+        <ItemsContext.Provider value={{ cupon, setCupon, provItem, setProvItem, isLoged, setIsLoged, items, setItems, stock, setStock, offers, setOffers, searchParams, setSearchParams, dataUsers, setDataUsers, user, setUser,orders, setOrders }}>
             {children}
         </ItemsContext.Provider>
     )

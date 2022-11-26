@@ -1,13 +1,13 @@
-//? Poner bien el FRONT al poner mal la password
 //? RRUTAS PRIVADAS
+//? Pagina privada para el admin
 
-
-//*  Cupon
-//? Al hacer una compra borrar la cantidad de ofertas dependiendo de que compro
-//* Agregar producto nuevo con un post
-//* Editas las ofertas realizadas METHOD PUT
-//? Añadir la ultima vez que se edito o cambio la password
-//? Al editar el perfil volver a preguntar la contraseña y verificar datos
+//? especie de alerta diciendo que se ha procesado el pedido y navegar al home o whaterever
+//  Cupon
+// Al hacer una compra borrar la cantidad de ofertas dependiendo de que compro
+// Agregar producto nuevo con un post
+// Editas las ofertas realizadas METHOD PUT
+// Añadir la ultima vez que se edito o cambio la password
+// Al editar el perfil volver a preguntar la contraseña y verificar datos
 // Cuando haces log que te informe para rellenar otro form con la direccion y demas //! DONE
 // Cuando compras tienes que limpiar el local que has comprado //! DONE
 // Arreglar el precio total con la cantidad de productos //! DONE
@@ -46,96 +46,8 @@
 // Añadir las alertas de Juan           //! DONE
 // Funcionalidad Buscador               //! DONE
 
-//? especie de alerta diciendo que se ha procesado el pedido y navegar al home o whaterever
-// PODEMOS USAR SWEET ALERT 
-
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
-import { green } from '@mui/material/colors';
-import Button from '@mui/material/Button';
-import Fab from '@mui/material/Fab';
-import CheckIcon from '@mui/icons-material/Check';
-import SaveIcon from '@mui/icons-material/Save';
-
-export default function CircularIntegration() {
-    const [loading, setLoading] = React.useState(false);
-    const [success, setSuccess] = React.useState(false);
-    const timer = React.useRef < number > ();
-
-    const buttonSx = {
-        ...(success && {
-            bgcolor: green[500],
-            '&:hover': {
-                bgcolor: green[700],
-            },
-        }),
-    };
-
-    React.useEffect(() => {
-        return () => {
-            clearTimeout(timer.current);
-        };
-    }, []);
-
-    const handleButtonClick = () => {
-        if (!loading) {
-            setSuccess(false);
-            setLoading(true);
-            timer.current = window.setTimeout(() => {
-                setSuccess(true);
-                setLoading(false);
-            }, 2000);
-        }
-    };
-
-    return (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box sx={{ m: 1, position: 'relative' }}>
-                <Fab
-                    aria-label="save"
-                    color="primary"
-                    sx={buttonSx}
-                    onClick={handleButtonClick}
-                >
-                    {success ? <CheckIcon /> : <SaveIcon />}
-                </Fab>
-                {loading && (
-                    <CircularProgress
-                        size={68}
-                        sx={{
-                            color: green[500],
-                            position: 'absolute',
-                            top: -6,
-                            left: -6,
-                            zIndex: 1,
-                        }}
-                    />
-                )}
-            </Box>
-            <Box sx={{ m: 1, position: 'relative' }}>
-                <Button
-                    variant="contained"
-                    sx={buttonSx}
-                    disabled={loading}
-                    onClick={handleButtonClick}
-                >
-                    Accept terms
-                </Button>
-                {loading && (
-                    <CircularProgress
-                        size={24}
-                        sx={{
-                            color: green[500],
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            marginTop: '-12px',
-                            marginLeft: '-12px',
-                        }}
-                    />
-                )}
-            </Box>
-        </Box>
-    );
-}
+//? Mandar alert cada x tiempo con el cupon
+//? Al crear ofertas Toast con que todo ha ido bien
+//? Cuando compro mandarte a una pagina bonita
+//? No poder ir al checkout si no hay productos en la basket
+//? 

@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link, useNavigate } from 'react-router-dom';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 import { v4 as uuidv4 } from 'uuid';
 import { ApiContext } from '../../helper/context/ApiContext';
+import toast from 'react-hot-toast';
 
 export const ModalCreateProduct = () => {
     const [show, setShow] = useState(false);
@@ -33,6 +34,18 @@ export const ModalCreateProduct = () => {
             },
             body: JSON.stringify(new_product)
         }).then(res => res.json())
+            .then(() => toast.success('Successfully saved!', {
+                position: "top-center",
+                style: {
+                    border: '1px solid #713200',
+                    padding: '16px',
+                    color: '#713200',
+                },
+                iconTheme: {
+                    primary: '#713200',
+                    secondary: '#FFFAEE',
+                },
+            }))
             .then(() => fetchData())
             .then(() => handleClose())
             .catch(error => console.log(error));

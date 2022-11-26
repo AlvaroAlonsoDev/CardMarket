@@ -35,7 +35,7 @@
       "price": 23,
       "condition": "Good",
       "lenguage": "English",
-      "quantity": 3,
+      "quantity": 2,
       "version": "The List",
       "signed": "no",
       "altered": "no",
@@ -51,7 +51,7 @@
       "price": 45,
       "condition": "Good",
       "lenguage": "English",
-      "quantity": 8,
+      "quantity": 6,
       "version": "The List",
       "signed": "no",
       "altered": "no",
@@ -66,7 +66,7 @@
       "price": 33,
       "condition": "Good",
       "lenguage": "English",
-      "quantity": 7,
+      "quantity": 4,
       "version": "The List",
       "signed": "no",
       "altered": "no",
@@ -116,7 +116,7 @@
       "signed": "erahaerh",
       "altered": "aehr",
       "description": "hared"
-    },
+    }
     {
       "id": "2b4f70b1-c293-4b18-b123-b73f6ec16f37",
       "idProduct": 2,
@@ -126,7 +126,7 @@
       "price": 73,
       "condition": "greag",
       "lenguage": "hareh",
-      "quantity": 18,
+      "quantity": 15,
       "version": "aerh",
       "signed": "fdhafh",
       "altered": "hafd",
@@ -156,7 +156,7 @@
       "price": 12,
       "condition": "gregh",
       "lenguage": "reh",
-      "quantity": 11,
+      "quantity": 9,
       "version": "erhwa",
       "signed": "reh",
       "altered": "hre",
@@ -201,7 +201,7 @@
       "price": 21,
       "condition": "t45qgh",
       "lenguage": "hreth",
-      "quantity": 11,
+      "quantity": 8,
       "version": "htwr",
       "signed": "trwn",
       "altered": "rtnntrw",
@@ -246,7 +246,7 @@
       "price": 45,
       "condition": "hreh",
       "lenguage": "heatr",
-      "quantity": 5,
+      "quantity": 2,
       "version": "heah",
       "signed": "erah",
       "altered": "era",
@@ -276,7 +276,7 @@
       "price": 23,
       "condition": "grewgawer",
       "lenguage": "arewga",
-      "quantity": 3,
+      "quantity": 2,
       "version": "ggawer",
       "signed": "awg",
       "altered": "wareg",
@@ -321,7 +321,7 @@
       "price": 32,
       "condition": "trhsh",
       "lenguage": "trwsh",
-      "quantity": 30,
+      "quantity": 23,
       "version": "twrhtw",
       "signed": "wrteh",
       "altered": "fw4ewqherth",
@@ -336,7 +336,7 @@
       "price": 23,
       "condition": "jtraj",
       "lenguage": "jteraj",
-      "quantity": 23,
+      "quantity": 21,
       "version": "tjras",
       "signed": "jtrsj",
       "altered": "trsjrs",
@@ -366,7 +366,7 @@
       "price": 23,
       "condition": "ksrt7yk",
       "lenguage": "ksyrk",
-      "quantity": 23,
+      "quantity": 21,
       "version": "syk",
       "signed": "sytk",
       "altered": "tk",
@@ -386,6 +386,96 @@
       "signed": "sjjtsrj",
       "altered": "trjsa",
       "description": "rsj"
+    },
+    {
+      "id": "c4ae4f16-a00d-486f-a80d-3ad7ea8ad59c",
+      "idProduct": "9a9ecafd-7ede-4033-8f55-8f0dca0fe03f",
+      "idUsers": "254e683d-df91-4343-8b66-ba026491343b",
+      "name": "Liliana of the Veil",
+      "user": "joselitoV",
+      "price": 23,
+      "condition": "ktuysd",
+      "lenguage": "ksxtyrks",
+      "quantity": 4,
+      "version": "krsk",
+      "signed": "skkysrk",
+      "altered": "krysk",
+      "description": "sk"
+    },
+    {
+      "id": "d58fb93f-993e-47d7-96d1-b8a06d0bcba6",
+      "idProduct": "9a9ecafd-7ede-4033-8f55-8f0dca0fe03f",
+      "idUsers": "254e683d-df91-4343-8b66-ba026491343b",
+      "name": "Liliana of the Veil",
+      "user": "joselitoV",
+      "price": 25,
+      "condition": "ygrhe<ahy",
+      "lenguage": "reayhyrea",
+      "quantity": 10,
+      "version": "yreayrea",
+      "signed": "aeryaer",
+      "altered": "yaewry",
+      "description": "yreay"
+    },
+    {
+      "id": "cb46bff4-8414-4689-8e0b-d2aeade88c18",
+      "idProduct": 1,
+      "idUsers": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "name": "Snapcaster Mage",
+      "user": "nachoic",
+      "price": 10,
+      "condition": "greqagh",
+      "lenguage": "hreh",
+      "quantity": 10,
+      "version": "erh",
+      "signed": "hreh",
+      "altered": "re",
+      "description": "hre"
+    },
+    {
+      "id": "269805e1-a29a-41b6-92ff-361d0a561dd2",
+      "idProduct": "9a9ecafd-7ede-4033-8f55-8f0dca0fe03f",
+      "idUsers": "431b7a9e-eacd-44c2-b842-69a3d3829fdb",
+      "name": "Liliana of the Veil",
+      "user": "Alico23",
+      "price": 12,
+      "condition": "5harh",
+      "lenguage": "ehja5j",
+      "quantity": 23,
+      "version": "jea5rtje",
+      "signed": "jerta",
+      "altered": "ejhraejart",
+      "description": "artjrteaj"
+    },
+    {
+      "id": "fb9aa038-deab-48d1-a357-67c7446fd28b",
+      "idProduct": 1,
+      "idUsers": "431b7a9e-eacd-44c2-b842-69a3d3829fdb",
+      "name": "Snapcaster Mage",
+      "user": "Alico23",
+      "price": 43,
+      "condition": "hrehah",
+      "lenguage": "hearh",
+      "quantity": 23,
+      "version": "eahrh",
+      "signed": "haerh",
+      "altered": "hreah",
+      "description": "ehar"
+    },
+    {
+      "id": "086d8eee-3ff9-4e10-8d0b-0c234fe25b2b",
+      "idProduct": 2,
+      "idUsers": "431b7a9e-eacd-44c2-b842-69a3d3829fdb",
+      "name": "Tarmogoyf",
+      "user": "Alico23",
+      "price": 43,
+      "condition": "aherhreah",
+      "lenguage": "reahrawe<h",
+      "quantity": 12,
+      "version": "arewh",
+      "signed": "aehaewr",
+      "altered": "hraewh",
+      "description": "areharewh"
     }
   ],
   "users": [
@@ -397,7 +487,9 @@
       "email": "jose@gmail.com",
       "phonenumber": "985652545",
       "address": "Cervantes 34",
-      "pass": "$2a$08$ZhRUk4fA9tLqFgkcnoBHhOjs.IzVtvxRUzbPHNFEvOefUfF0vaFRy"
+      "pass": "$2a$08$ZhRUk4fA9tLqFgkcnoBHhOjs.IzVtvxRUzbPHNFEvOefUfF0vaFRy",
+      "zip": "",
+      "lastedit": "26-11-2022"
     },
     {
       "id": "f4ecea5a-26d8-4f7f-85e1-34f4ab24ac6a",
@@ -429,10 +521,10 @@
       "email": "airuritac@gmail.com",
       "pass": "$2a$08$QqKr1P4wynHGqR9bA.KYFuiacoJFyej6cg/KcJ9PLHa5l5N2XATjq",
       "lastname": "Irurita",
-      "phonenumber": "623374862",
+      "phonenumber": "654987987",
       "address": "Rosa 1 41",
       "zip": "18008",
-      "lastedit": "25-11-2022 at 10:40:41",
+      "lastedit": "26-11-2022",
       "lasteditpass": "25-11-2022"
     },
     {
@@ -443,14 +535,6 @@
       "email": "admin@admin.es",
       "pass": "$2a$08$.p/zMcJ4OsEk40Q71R2xHuUsePUAbtncNbIhLL1Hcap/bjZNpPOHW",
       "dateregister": "25-11-2022 at 13:57:24"
-    },
-    {
-      "id": "feddb1d1-529c-4fc2-b09c-9c3dffba4d49",
-      "name": "airuritac@gmail.com",
-      "username": "swkjjk",
-      "email": "kjw5s67kairuritac@gmail.com",
-      "pass": "$2a$08$z3fxvmwTlwIl/95FMPQ2N.uAQmMnEgKb/w7EGMBrk1yF3mP5mubaS",
-      "dateregister": "26-11-2022 at 12:28:22"
     }
   ],
   "orders": [
@@ -1767,6 +1851,436 @@
         }
       ],
       "date": "26-11-2022 at 12:40:45"
+    },
+    {
+      "id": "33f42b2a-d869-44a5-b1fe-d73d4ae53087",
+      "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@hotmail.com",
+      "address": "Licenciado Vidriera 7",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 78.33,
+      "product": [
+        {
+          "id": "2b4f70b1-c293-4b18-b123-b73f6ec16f37",
+          "seller": "airuritac",
+          "name": "Tarmogoyf",
+          "price": 73,
+          "condition": "greag",
+          "description": "fdafdah",
+          "version": "aerh",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 2
+        }
+      ],
+      "date": "26-11-2022 at 17:53:18"
+    },
+    {
+      "id": "2e76c7bf-8b27-4826-8315-94744b5ef3f8",
+      "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@hotmail.com",
+      "address": "Licenciado Vidriera 7",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 42.03,
+      "product": [
+        {
+          "id": "c1a51498-3ee0-41aa-85aa-89a4e3e43ca7",
+          "seller": "airuritac",
+          "name": "Snapcaster Mage",
+          "price": 43,
+          "condition": "greah",
+          "description": "haer",
+          "version": "haer",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 1
+        }
+      ],
+      "date": "26-11-2022 at 17:53:39"
+    },
+    {
+      "id": "10631e67-fecf-443e-85bd-a9363c5989be",
+      "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@hotmail.com",
+      "address": "Licenciado Vidriera 7",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 64.64,
+      "product": [
+        {
+          "id": "27b21446-70c8-4d91-b0ac-0d72a7d9e65a",
+          "seller": "liidia23",
+          "name": "Snapcaster Mage",
+          "price": 32,
+          "condition": "trhsh",
+          "description": "h",
+          "version": "twrhtw",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 2
+        }
+      ],
+      "date": "26-11-2022 at 17:58:38"
+    },
+    {
+      "id": "ac07280c-c6d1-47d7-af53-1218cb08583d",
+      "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@hotmail.com",
+      "address": "Licenciado Vidriera 7",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 111.1,
+      "product": [
+        {
+          "id": "27b21446-70c8-4d91-b0ac-0d72a7d9e65a",
+          "seller": "liidia23",
+          "name": "Snapcaster Mage",
+          "price": 32,
+          "condition": "trhsh",
+          "description": "h",
+          "version": "twrhtw",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 2
+        },
+        {
+          "id": "b48b2977-96a1-4313-ad61-54db25b08cd9",
+          "seller": "liidia23",
+          "name": "Tarmogoyf",
+          "price": 23,
+          "condition": "jtraj",
+          "description": "jsjtsr",
+          "version": "tjras",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 2
+        }
+      ],
+      "date": "26-11-2022 at 18:0:29"
+    },
+    {
+      "id": "fff6f6dd-019f-4b98-9d55-188681807366",
+      "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@hotmail.com",
+      "address": "Licenciado Vidriera 7",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 24.24,
+      "product": [
+        {
+          "id": "93d4c6c9-6fe5-499a-b52e-b1a4c498600c",
+          "seller": "nacho",
+          "name": "Teferi, Time Raveler",
+          "price": 12,
+          "condition": "gregh",
+          "description": "erh",
+          "version": "erhwa",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 2
+        }
+      ],
+      "date": "26-11-2022 at 18:2:24"
+    },
+    {
+      "id": "f4db9884-ba9f-47c4-9a4d-34484c20313f",
+      "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@hotmail.com",
+      "address": "Licenciado Vidriera 7",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 95.04,
+      "product": [
+        {
+          "id": 2048,
+          "seller": "Juan",
+          "name": "Teferi, Time Raveler",
+          "price": 33,
+          "condition": "Good",
+          "description": "Never used",
+          "version": "The List",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 3
+        }
+      ],
+      "date": "26-11-2022 at 18:4:32"
+    },
+    {
+      "id": "e788d270-716a-412c-b056-d88119cbd10a",
+      "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@hotmail.com",
+      "address": "Licenciado Vidriera 7",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 30.66,
+      "product": [
+        {
+          "id": "a4fb7b98-5757-4df3-9e15-c630c6476606",
+          "seller": "Alico23",
+          "name": "Liliana of the Veil",
+          "price": 23,
+          "condition": "ksrt7yk",
+          "description": "kystk",
+          "version": "syk",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 2
+        }
+      ],
+      "date": "26-11-2022 at 18:6:44"
+    },
+    {
+      "id": "1e1d3375-7391-4541-8a5e-5447008f28b8",
+      "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+      "firstname": "Jose",
+      "lastname": "Valenzuela",
+      "emailorder": "jose@gmail.com",
+      "address": "Cervantes 34",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 294.03,
+      "product": [
+        {
+          "id": 2,
+          "seller": "alvaroalonso",
+          "name": "Tarmogoyf",
+          "price": 45,
+          "condition": "Good",
+          "description": "Never used",
+          "version": "The List",
+          "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+          "quantity": 2
+        },
+        {
+          "id": "8186eb1f-3d11-4c19-8aa3-42a2e9674ef7",
+          "seller": "Pepemaquina",
+          "name": "Snapcaster Mage",
+          "price": 21,
+          "condition": "t45qgh",
+          "description": "nhbtrn",
+          "version": "htwr",
+          "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+          "quantity": 3
+        },
+        {
+          "id": "6ca7ddbc-e457-44b0-96af-9955002974f4",
+          "seller": "Pepemaquina",
+          "name": "Snapcaster Mage",
+          "price": 45,
+          "condition": "hreh",
+          "description": "erah",
+          "version": "heah",
+          "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+          "quantity": 2
+        }
+      ],
+      "date": "26-11-2022 at 20:35:18"
+    },
+    {
+      "id": "a488002e-fc6f-420a-9f40-c326d6a1bd45",
+      "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+      "firstname": "Jose",
+      "lastname": "Valenzuela",
+      "emailorder": "jose@gmail.com",
+      "address": "Cervantes 34",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 106.89,
+      "product": [
+        {
+          "id": "27b21446-70c8-4d91-b0ac-0d72a7d9e65a",
+          "seller": "liidia23",
+          "name": "Snapcaster Mage",
+          "price": 32,
+          "condition": "trhsh",
+          "description": "h",
+          "version": "twrhtw",
+          "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+          "quantity": 2
+        },
+        {
+          "id": "6ca7ddbc-e457-44b0-96af-9955002974f4",
+          "seller": "Pepemaquina",
+          "name": "Snapcaster Mage",
+          "price": 45,
+          "condition": "hreh",
+          "description": "erah",
+          "version": "heah",
+          "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+          "quantity": 1
+        }
+      ],
+      "date": "26-11-2022 at 20:37:48"
+    },
+    {
+      "id": "fe11e135-0d3f-4441-9a55-cb53b4c7e29a",
+      "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+      "firstname": "Jose",
+      "lastname": "Valenzuela",
+      "emailorder": "jose@gmail.com",
+      "address": "Cervantes 34",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "123",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 151.25,
+      "product": [
+        {
+          "id": 204,
+          "seller": "Lopey",
+          "name": "Snapcaster Mage",
+          "price": 23,
+          "condition": "Good",
+          "description": "Never used",
+          "version": "The List",
+          "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+          "quantity": 1
+        },
+        {
+          "id": "e8ed87cb-a96d-4108-a883-08ac9ce6a48d",
+          "seller": "airuritac",
+          "name": "Tarmogoyf",
+          "price": 34,
+          "condition": "aher",
+          "description": "hared",
+          "version": "reah",
+          "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+          "quantity": 3
+        }
+      ],
+      "date": "26-11-2022 at 21:40:23"
+    },
+    {
+      "id": "33c8541e-f333-498d-b3df-e07a5a5f1ca7",
+      "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+      "firstname": "Jose",
+      "lastname": "Valenzuela",
+      "emailorder": "jose@gmail.com",
+      "address": "Cervantes 34",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 88.33,
+      "product": [
+        {
+          "id": "2b4f70b1-c293-4b18-b123-b73f6ec16f37",
+          "seller": "airuritac",
+          "name": "Tarmogoyf",
+          "price": 73,
+          "condition": "greag",
+          "description": "fdafdah",
+          "version": "aerh",
+          "idUser": "254e683d-df91-4343-8b66-ba026491343b",
+          "quantity": 1
+        }
+      ],
+      "date": "26-11-2022 at 21:42:40"
+    },
+    {
+      "id": "9c3e7358-8050-4836-91d6-77dd233fa458",
+      "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@hotmail.com",
+      "address": "Licenciado Vidriera 7",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 54.86,
+      "product": [
+        {
+          "id": "c1a51498-3ee0-41aa-85aa-89a4e3e43ca7",
+          "seller": "airuritac",
+          "name": "Snapcaster Mage",
+          "price": 43,
+          "condition": "greah",
+          "description": "haer",
+          "version": "haer",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 1
+        },
+        {
+          "id": "c17b369d-09cc-45d8-91ab-f2de9a066f42",
+          "seller": "joselitoV",
+          "name": "Snapcaster Mage",
+          "price": 23,
+          "condition": "grewgawer",
+          "description": "gawerg",
+          "version": "ggawer",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 1
+        }
+      ],
+      "date": "26-11-2022 at 23:44:27"
+    },
+    {
+      "id": "2f5f0ed0-037b-4e7b-a259-354773f2e791",
+      "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+      "firstname": "Nacho",
+      "lastname": "Irurita",
+      "emailorder": "nacho@hotmail.com",
+      "address": "Licenciado Vidriera 7",
+      "phonenumber": "985652545",
+      "country": "Spain",
+      "zip": "",
+      "ccnanme": "",
+      "ccnumber": "",
+      "price": 13.72,
+      "product": [
+        {
+          "id": "27b21446-70c8-4d91-b0ac-0d72a7d9e65a",
+          "seller": "liidia23",
+          "name": "Snapcaster Mage",
+          "price": 32,
+          "condition": "trhsh",
+          "description": "h",
+          "version": "twrhtw",
+          "idUser": "0947e5d7-4664-4ddc-bbb0-322ad372d367",
+          "quantity": 1
+        }
+      ],
+      "date": "26-11-2022 at 23:46:50"
     }
   ]
 }

@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import Button from '@mui/material/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import { ItemsContext } from '../../helper/context/ItemsContext';
+import Swal from 'sweetalert2'
+import userEvent from '@testing-library/user-event';
+import toast from 'react-hot-toast';
 
 export function ModalLogin() {
     const [show, setShow] = useState(false);
@@ -28,23 +31,49 @@ export function ModalLogin() {
             let compare = bcrypt.compareSync(pass_form, pass_hash)
             return compare;
         }
-
-        if (decodePass()) {
-            setItems(
-                items.map(element => element.idUser === "123" ? {
-                    ...element,
-                    idUser: interim_autho.id
-                } : element))
-            setUser(interim_autho);
-            setIsLoged(true);
-            // navigate('/account');
-        }else{ alert("credenciales erroneas"); }
+        if (interim_autho) {
+            if (decodePass()) {
+                setItems(
+                    items.map(element => element.idUser === "123" ? {
+                        ...element,
+                        idUser: interim_autho.id
+                    } : element))
+                setUser(interim_autho);
+                setIsLoged(true);
+                toast('Hello ' + interim_autho.name + '!',
+                    {
+                        icon: '👏',
+                        position: "top-center",
+                        style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                        },
+                    }
+                );
+                // navigate('/account');
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'There was a problem',
+                    text: 'Your email or password is incorrect',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                })
+            }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'There was a problem',
+                text: 'Your email or password is incorrect',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+        }
     }
 
     return (
         <>
-            <Button variant="success" onClick={handleShow}>
-                Login
+            <Button className='me-2' variant="contained" color="secondary" onClick={handleShow}>
+                Log in
             </Button>
 
             <Modal show={show} onHide={handleClose}>

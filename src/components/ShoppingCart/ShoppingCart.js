@@ -3,26 +3,29 @@ import { ItemsContext } from '../../helper/context/ItemsContext';
 import { v4 as uuidv4 } from 'uuid';
 
 export const ShoppingCart = () => {
-    const { items, isLoged, user } = useContext(ItemsContext);
+    const { items, isLoged, cupon, setCupon, user } = useContext(ItemsContext);
     const [interim_basket, setInterim_basket] = useState([])
 
 
     useEffect(() => {
         isLoged ? setInterim_basket(items.filter(e => e.idUser === user.id)) : setInterim_basket(items.filter(e => e.idUser === "123"));
     }, [isLoged, user, items]);
+    useEffect(() => {
+        getTotalPrice();
+    }, [cupon])
 
-
-    const getTotalPrice = () => {
-        let total = 0;
-        interim_basket.forEach(e => total = (e.price * e.quantity) + total);
-        let totalPlusIva = total + (total * 0.21)
-        return totalPlusIva.toFixed(2);
-    }
     const getIvaPrice = () => {
         let total = 0;
         interim_basket.forEach(e => total = (e.price * e.quantity) + total);
         let interim_iva = total * 0.21;
         return interim_iva.toFixed(2);
+    }
+    const getTotalPrice = () => {
+        let total = 0;
+        let totalPlusIva = 0;
+        interim_basket.forEach(e => total = (e.price * e.quantity) + total);
+        cupon ? totalPlusIva = (total + (total * 0.21)) - 25 : totalPlusIva = total + (total * 0.21);
+        return totalPlusIva.toFixed(2);
     }
 
 
@@ -47,7 +50,12 @@ export const ShoppingCart = () => {
                         </li>
                     )
                 })}
-
+                {
+                    cupon === true && <li className="list-group-item d-flex justify-content-between">
+                        <span>Discount <small>$25</small> (USD)</span>
+                        <strong>-$25</strong>
+                    </li>
+                }
                 <li className="list-group-item d-flex justify-content-between">
                     <span>Tax <small>21%</small> (USD)</span>
                     <strong>${getIvaPrice()}</strong>
