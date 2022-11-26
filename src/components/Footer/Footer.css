@@ -1,4 +1,9 @@
-.hola { 
+.hola {
     background-color: rgb(55, 55, 55);
     color: white;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
 }

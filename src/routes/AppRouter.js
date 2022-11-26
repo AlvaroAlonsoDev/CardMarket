@@ -6,6 +6,7 @@ import Home from '../pages/Home'
 import { Item } from '../pages/Item'
 import { LoginPage } from '../pages/LoginPage'
 import { Profile } from '../pages/Profile'
+import { Setting } from '../pages/Setting'
 
 const AppRouter = () => {
     return (
@@ -18,6 +19,7 @@ const AppRouter = () => {
             <Route path='/account' element={<Profile />}></Route>
             <Route path='/checkout' element={<Checkout />}></Route>
             <Route path='/login' element={<LoginPage />}></Route>
+            <Route path='/setting' element={<Setting />}></Route>
         </Routes>
 
     )

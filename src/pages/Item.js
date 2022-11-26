@@ -1,25 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import { InfoProduct } from "../components/InfoProduct/InfoProduct";
 import { Section } from "../components/Section/Section";
-import { ApiContext } from "../helper/context/ApiContext";
 import { ItemsContext } from "../helper/context/ItemsContext";
 
 export const Item = () => {
-    let interim = JSON.parse(localStorage.getItem('items'));
     const { id } = useParams();
-    const { stock, offers, items, setItems, isLoged, user } = useContext(ItemsContext);
+    const { stock, items, setItems, isLoged, user } = useContext(ItemsContext);
     const [product, setProduct] = useState([]);
-    const { fetchDataOffers, fetchData } = useContext(ApiContext);
 
-    useEffect(() => {
-        if (interim) { setItems(interim) }
-        fetchData()
-        fetchDataOffers();
-    }, []);
-    useEffect(() => {
-        localStorage.setItem("items", JSON.stringify(items));
-    }, [items]);
     useEffect(() => {
         stock.forEach((item) => {
             if (item.id.toString() === id) { setProduct(item) }
@@ -27,11 +17,11 @@ export const Item = () => {
     }, [stock]);
 
 
-    const buy = (product, amount) => {
+    const buy = (product, amount = 1) => {
         let interim = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
         let interim2 = interim.find(item => item.id === product.id)
         if (interim2) {
-            //TODO cambiarle el quantity
+            //* cambiarle el quantity
             let product_single = items.find(item => item.id === product.id);
             if (product.quantity >= (product_single.quantity + amount)) {
                 setItems(
@@ -43,12 +33,15 @@ export const Item = () => {
                 toast.success('Successfully saved!');
             } else { toast.error('No hay mas stock'); }
         } else {
-            //TODO Añadir nuevo producto producto al carrito
+            //* Añadir nuevo producto producto al carrito
             let interim = {
                 id: product.id,
                 seller: product.user,
                 name: product.name,
                 price: product.price,
+                condition: product.condition,
+                description: product.description,
+                version: product.version
             }
             if (isLoged) {
                 interim = {
@@ -68,7 +61,10 @@ export const Item = () => {
 
     return (
         <>
-            <Section product={product} offers={offers} buy={buy} />
+        <div className="container">
+            <InfoProduct product={product} />
+            <Section product={product} buy={buy} />
+        </div>
         </>
     );
 };

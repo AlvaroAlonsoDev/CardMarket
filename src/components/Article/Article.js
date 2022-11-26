@@ -1,55 +1,48 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom';
-import { ItemsContext } from '../../helper/context/ItemsContext';
-import { ModalCreateOffer } from '../ModalCreateOffer/ModalCreateOffer';
+import { ModalCreateProduct } from '../ModalCreateProduct/ModalCreateProduct';
 import Product from '../Product/Product';
 import './Article.css';
+import { v4 as uuidv4 } from 'uuid';
 
-const Article = ({ stock, items, filter, isLoged, user }) => {
+const Article = ({ stock, filter, isLoged, user }) => {
 
 
     const renderBTNCrud = () => {
-        if (isLoged) {
-            return (
-                <>
-                    <div className='bg-dark mb-4'>
-                        <h5 className='text-center p-2'>
-                            <Link to="/account" className='text-decoration-none text-info display-5'>Welcome {user.name}!</Link>
-                        </h5>
-                    </div>
 
-                </>
+        if (user.admin) {
+            return (
+                <ModalCreateProduct />
             )
         }
+
     }
 
     return (
 
-        <article className="mt-2 container album py-5 bg-light">
+        <article className="mt-2 p-4  container bg-light">
             <div className="container">
                 {renderBTNCrud()}
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                    {stock
-                        .filter(items => {
-                            if (!filter) return true;
-                            else {
-                                const itemName = items.name.toLowerCase();
-                                return itemName.includes(filter.toLowerCase());
-                            }
-                        })
-                        .map((product, indice) => {
-                            return (
-                                <div key={indice}>
-                                    <Product product={product} />
-                                </div>
-                            )
-                        })
-                    }
-
-
-                </div>
             </div>
+
+            <div className="row pb-5 mb-4">
+                {stock
+                    .filter(items => {
+                        if (!filter) return true;
+                        else {
+                            const itemName = items.name.toLowerCase();
+                            return itemName.includes(filter.toLowerCase());
+                        }
+                    })
+                    .map((product) => {
+                        return (
+                            <div key={uuidv4()} className="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                <Product product={product} />
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
+
         </article>
 
     )

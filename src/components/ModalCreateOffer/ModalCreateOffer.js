@@ -4,12 +4,15 @@ import Modal from 'react-bootstrap/Modal';
 import { Link, useNavigate } from 'react-router-dom';
 import { ItemsContext } from '../../helper/context/ItemsContext';
 import { v4 as uuidv4 } from 'uuid';
+import { ApiContext } from '../../helper/context/ApiContext';
+import toast from 'react-hot-toast';
 
 export const ModalCreateOffer = ({ product }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const { user } = useContext(ItemsContext);
+    const { fetchDataOffers } = useContext(ApiContext);
     const navigate = useNavigate()
 
     const createNewOffer = e => {
@@ -38,14 +41,28 @@ export const ModalCreateOffer = ({ product }) => {
             },
             body: JSON.stringify(new_offer)
         }).then(res => res.json())
+            .then(() => fetchDataOffers())
+            .then(() => toast.success('Successfully created!', {
+                position: "top-center",
+                style: {
+                    border: '1px solid #713200',
+                    padding: '16px',
+                    color: '#713200',
+                },
+                iconTheme: {
+                    primary: '#713200',
+                    secondary: '#FFFAEE',
+                },
+            }))
+            .then(() => navigate("/"))
             .catch(error => console.log(error));
 
-        navigate("/")
+
     }
     return (
         <>
-            <div className='row aling-item-center justify-content-center'>
-                <Button className='m-1 col-sm-6 text-center maxW btn' variant="primary" onClick={handleShow}>
+            <div className='row aling-item-center'>
+                <Button className='m-1 ms-3 text-center maxW btn' variant="primary" onClick={handleShow}>
                     Upload new offer
                 </Button>
             </div>
@@ -64,39 +81,39 @@ export const ModalCreateOffer = ({ product }) => {
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="lenguage" type="text" className="form-control" id="floatingInputUsername" placeholder="lenguage" autoFocus />
+                            <input name="lenguage" type="text" className="form-control" id="floatingInputUsername" placeholder="lenguage" />
                             <label htmlFor="floatingInputUsername">Lenguage</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="version" type="text" className="form-control" id="floatingInputUsername" placeholder="version" autoFocus />
+                            <input name="version" type="text" className="form-control" id="floatingInputUsername" placeholder="version" />
                             <label htmlFor="floatingInputUsername">Version</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="description" type="text" className="form-control" id="floatingInputUsername" placeholder="description" autoFocus />
+                            <input name="description" type="text" className="form-control" id="floatingInputUsername" placeholder="description" />
                             <label htmlFor="floatingInputUsername">Description</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="signed" type="text" className="form-control" id="floatingInputUsername" placeholder="signed" autoFocus />
+                            <input name="signed" type="text" className="form-control" id="floatingInputUsername" placeholder="signed" />
                             <label htmlFor="floatingInputUsername">Signed</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="altered" type="text" className="form-control" id="floatingInputUsername" placeholder="altered" autoFocus />
+                            <input name="altered" type="text" className="form-control" id="floatingInputUsername" placeholder="altered" />
                             <label htmlFor="floatingInputUsername">Altered</label>
                         </div>
 
                         <hr />
 
                         <div className="form-floating mb-3">
-                            <input name="quantity" type="number" className="form-control" id="floatingInputUsername" placeholder="quantity" autoFocus />
+                            <input name="quantity" type="number" className="form-control" id="floatingInputUsername" placeholder="quantity" />
                             <label htmlFor="floatingInputUsername">Quantity</label>
                         </div>
 
                         <div className="form-floating mb-3">
-                            <input name="price" type="number" className="form-control" id="floatingInputUsername" placeholder="price" autoFocus />
+                            <input name="price" type="number" className="form-control" id="floatingInputUsername" placeholder="price" />
                             <label htmlFor="floatingInputUsername">price</label>
                         </div>
 

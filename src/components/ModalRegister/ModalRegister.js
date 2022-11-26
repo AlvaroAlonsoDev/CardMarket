@@ -1,45 +1,85 @@
 import React, { useContext, useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import Button from '@mui/material/Button';
 import Modal from 'react-bootstrap/Modal';
 import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { ApiContext } from '../../helper/context/ApiContext';
 import { ItemsContext } from '../../helper/context/ItemsContext';
+import toast from 'react-hot-toast';
 
 export function ModalRegister() {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { setUser, setIsLoged } = useContext(ItemsContext);
+    var bcrypt = require('bcryptjs');
+    const { dataUsers, user, setUser, setIsLoged } = useContext(ItemsContext);
+    const { fetchDataUsers } = useContext(ApiContext);
+
+
+
 
     const getRegisterUser = e => {
         e.preventDefault();
+
+        // encriptar passwprd
+        let i_pass = e.target.pass.value;
+        const hashedPassword = bcrypt.hashSync(i_pass, 8);
+
+        // obtener en que dia mes y año estamos
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let currentDate = `${day}-${month}-${year}`;
+        var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
         let new_user = {
             id: uuidv4(),
             name: e.target.name.value,
             username: e.target.username.value,
             email: e.target.email.value,
-            pass: e.target.pass.value
+            pass: hashedPassword,
+            dateregister: currentDate + ' at ' + time,
         }
+        // Comprobar que no exista email igual
+        let i_email = dataUsers.find(e => e.email === new_user.email)
+        let i_username = dataUsers.find(e => e.username === new_user.username)
 
-        fetch('http://localhost:4000/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(new_user)
-        }).then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
-        setUser(new_user);
-        setIsLoged(true);
-        handleClose();
+        if (!i_email && !i_username) {
+            fetch('http://localhost:4000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(new_user)
+            }).then(res => res.json())
+                .then(() => setUser(new_user))
+                .then(() => setIsLoged(true))
+                .then(() => handleClose())
+                .then(() => handleClose())
+                .then(() => toast('Hello ' + new_user.name + '!',
+                    {
+                        icon: '👏',
+                        position: "top-center",
+                        style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                        },
+                    }
+                ))
+                .then(() => fetchDataUsers())
+                .catch(error => console.log(error));
+
+            setUser(new_user);
+            setIsLoged(true);
+            handleClose();
+        } else { alert('email o username ya existentes') }
     }
 
     return (
         <>
-            <Button variant="outline-success" onClick={handleShow}>
+            <Button variant="contained" color="secondary" onClick={handleShow}>
                 Sign-up
             </Button>
 
@@ -78,8 +118,6 @@ export function ModalRegister() {
                         </div>
 
                         <NavLink className="d-block text-center mt-2 small" to="/">Have an account? Sign In</NavLink>
-
-                        <hr className="my-4" />
                     </form>
                 </Modal.Body>
                 <Modal.Footer>

@@ -1,7 +1,11 @@
 
 .height {
     max-height: 100px;
-    width: 100%;
+    width: 99.1%;
+}
+
+.bgsearch{
+    background-color: #67569ed1;
 }
 
 .form {

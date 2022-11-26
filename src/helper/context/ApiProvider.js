@@ -3,7 +3,7 @@ import { ApiContext } from './ApiContext';
 import { ItemsContext } from './ItemsContext';
 
 export const ApiProvider = ({ children }) => {
-    const { setStock, setOffers, setDataUsers } = useContext(ItemsContext);
+    const { setStock, setOffers, setDataUsers, setOrders } = useContext(ItemsContext);
 
     const fetchData = async () => {
         const peticion = await fetch("http://localhost:4000/products");
@@ -26,8 +26,15 @@ export const ApiProvider = ({ children }) => {
         setDataUsers(data);
     }
 
+    const fetchDataOrders = async () => {
+        const peticion = await fetch("http://localhost:4000/orders");
+        const data = await peticion.json();
+
+        setOrders(data);
+    }
+
     return (
-        <ApiContext.Provider value={{ fetchData, fetchDataOffers, fetchDataUsers }}>
+        <ApiContext.Provider value={{ fetchData, fetchDataOffers, fetchDataUsers, fetchDataOrders }}>
             {children}
         </ApiContext.Provider>
     )
