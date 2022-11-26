@@ -14,9 +14,12 @@ export function ListOwnOffers() {
     const [myOffers, setMyOffers] = useState(offers.filter(e => e.idUsers === user.id));
     const [interim, setInterim] = useState();
 
+    
     useEffect(()=> {
         setMyOffers(offers.filter(e => e.idUsers === user.id))
     }, [interim])
+
+
     const removeOffer = (product, id) => {
         let interim = myOffers.find((offer, indice) => indice === id);
         let offers_prov = myOffers.filter((offer, indice) => indice !== id);

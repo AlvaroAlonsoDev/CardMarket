@@ -15,6 +15,8 @@ export function ModalRegister() {
     const { fetchDataUsers } = useContext(ApiContext);
 
 
+
+
     const getRegisterUser = e => {
         e.preventDefault();
 
@@ -52,9 +54,11 @@ export function ModalRegister() {
             }).then(res => res.json())
                 .then(() => fetchDataUsers())
                 .catch(error => console.log(error));
+
             setUser(new_user);
             setIsLoged(true);
             handleClose();
+            alert("You have a 20% off in your first purshased, the code is 123456789 ")
         } else { alert('email o username ya existentes') }
     }
 

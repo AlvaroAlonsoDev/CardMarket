@@ -57,7 +57,7 @@ const Basket = () => {
       ) : setItems(interim_other.concat(interim_delete));
   }
 
-  const checkoutFunction = () => {
+  const checkoutFunction = () => {  
     if (isLoged) {
       navigate("/checkout")
     } else {

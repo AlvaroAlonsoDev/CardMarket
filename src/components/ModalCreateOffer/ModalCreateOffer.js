@@ -41,9 +41,10 @@ export const ModalCreateOffer = ({ product }) => {
             body: JSON.stringify(new_offer)
         }).then(res => res.json())
             .then(() => fetchDataOffers())
+            .then(() => navigate("/"))
             .catch(error => console.log(error));
 
-        navigate("/")
+        
     }
     return (
         <>

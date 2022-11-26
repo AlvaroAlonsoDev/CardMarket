@@ -1,15 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { ShoppingCart } from '../components/ShoppingCart/ShoppingCart'
 import { ItemsContext } from '../helper/context/ItemsContext'
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 import { ApiContext } from '../helper/context/ApiContext';
+import toast from "react-hot-toast";
 
 export const Checkout = () => {
-    const { user, isLoged, items, setItems } = useContext(ItemsContext);
-    const { fetchDataOrders } = useContext(ApiContext);
+    const { user, isLoged, items, setItems, offers } = useContext(ItemsContext);
+    const { fetchDataOrders, fetchDataOffers } = useContext(ApiContext);
     const [interim_basket, setInterim_basket] = useState([])
     const navigate = useNavigate();
+    const [cupon, setCupon] = useState(false);
+    const inputEl = useRef(null);
 
     useEffect(() => {
         if (!isLoged) { navigate('/') }
@@ -19,11 +22,25 @@ export const Checkout = () => {
         isLoged ? setInterim_basket(items.filter(e => e.idUser === user.id)) : setInterim_basket(items.filter(e => e.idUser === "123"));
     }, [isLoged, user, items]);
 
+    const authCupon = () => {
+        let interim = inputEl.current.value;
+        if (interim === "123456") {
+            setCupon(true);
+            console.log("true");
+        }
 
+    }
     const getTotalPrice = () => {
         let total = 0;
+        let totalPlusIva = 0;
         interim_basket.forEach(e => total = e.price + total);
-        let totalPlusIva = total + (total * 0.21)
+        if (!cupon) {
+            totalPlusIva = total + (total * 0.21)
+            setCupon(false);
+        } else {
+            totalPlusIva = (total - 10) + (total * 0.21)
+            setCupon(false);
+        }
         return totalPlusIva.toFixed(2);
     }
     const getNewOrder = (e) => {
@@ -49,7 +66,7 @@ export const Checkout = () => {
             zip: e.target.zip.value,
             ccnanme: e.target.ccname.value,
             ccnumber: e.target.ccnumber.value,
-            price: parseInt(getTotalPrice()),
+            price: Number(getTotalPrice()),
             product: interim_basket,
             date: currentDate + ' at ' + time
         }
@@ -62,6 +79,7 @@ export const Checkout = () => {
             body: JSON.stringify(newOrder)
         }).then(res => res.json())
             .then(() => fetchDataOrders())
+            .then(() => toast.success('Successfully saved!'))
             .then(() => navigate('/account'))
             .catch(error => console.log(error));
 
@@ -69,11 +87,39 @@ export const Checkout = () => {
         let i_cleanLS = items.filter(e => e.idUser !== user.id);
         setItems(i_cleanLS);
 
-
         //* Update product about just seller in db.json
+        offers.forEach(offer => {
+            (newOrder.product).forEach(e => {
+                if (e.id === offer.id) {
+                    if (offer.quantity > e.quantity) {
+                        console.log("El stock es superior a la cantidad que compra");
+                        const offer_update = {
+                            ...offer,
+                            quantity: offer.quantity - e.quantity,
+                        }
+
+                        const requestOptions = {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(offer_update)
+                        };
+                        fetch(`http://localhost:4000/offers/${e.id}`, requestOptions)
+                            .then(() => fetchDataOffers())
+                            .catch(error => console.log(error));
+
+                    } else {
+                        console.log("No hay mas stock y borro");
+                        fetch(`http://localhost:4000/offers/${e.id}`, {
+                            method: 'DELETE'
+                        }).then(() => fetchDataOffers())
+                            .catch(error => console.log(error));
+
+                    }
+                }
+
+            })
+        })
         //? Proceso de cargar al finalizar
-        //? HACER UN NAVIGATE A PERFIL Y PEDIDOS QUE SE MUESTRE EL ULTIMO PEDIDO
-        //? o realizar una especie de alerta diciendo que se ha procesado el pedido y navegar al home o whaterever
 
     }
 
@@ -82,6 +128,13 @@ export const Checkout = () => {
             <div className="row g-5">
                 <div className="col-md-5 col-lg-4 order-md-last">
                     <ShoppingCart />
+                    <div className="">
+                        <label htmlFor="cc-expiration" className="form-label">Do you have any cupon?</label>
+                        <input onChange={e => authCupon()} ref={inputEl} type="text" name='cupon' className="form-control" id="cc-expiration" placeholder="" />
+                    </div>
+                    <div className="mt-2 ">
+                        <button className='btn btn-outline-success'>Cupon Validate</button>
+                    </div>
                 </div>
 
                 <div className="col-md-7 col-lg-8">
@@ -108,7 +161,7 @@ export const Checkout = () => {
 
                             <div className="col-12">
                                 <label htmlFor="address" className="form-label">Address</label>
-                                <input type="text" name='address' className="form-control" id="address" placeholder="1234 Main St" defaultValue={user.address}/>
+                                <input type="text" name='address' className="form-control" id="address" placeholder="1234 Main St" defaultValue={user.address} />
                                 <div className="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -141,7 +194,7 @@ export const Checkout = () => {
 
                             <div className="col-md-3">
                                 <label htmlFor="zip" className="form-label">Zip</label>
-                                <input type="text" name='zip' className="form-control" id="zip" placeholder="18554" defaultValue={user.zip}/>
+                                <input type="text" name='zip' className="form-control" id="zip" placeholder="18554" defaultValue={user.zip} />
                                 <div className="invalid-feedback">
                                     Zip code required.
                                 </div>
@@ -186,6 +239,14 @@ export const Checkout = () => {
                             </div>
 
                             <div className="col-md-3">
+                                <label htmlFor="cc-cvv" className="form-label">CVV</label>
+                                <input type="text" name='cccvv' className="form-control" id="cc-cvv" placeholder="" />
+                                <div className="invalid-feedback">
+                                    Security code required
+                                </div>
+                            </div>
+
+                            <div className="col-md-3">
                                 <label htmlFor="cc-expiration" className="form-label">Expiration</label>
                                 <input type="text" name='ccexpiration' className="form-control" id="cc-expiration" placeholder="" />
                                 <div className="invalid-feedback">
@@ -193,13 +254,6 @@ export const Checkout = () => {
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <label htmlFor="cc-cvv" className="form-label">CVV</label>
-                                <input type="text" name='cccvv' className="form-control" id="cc-cvv" placeholder="" />
-                                <div className="invalid-feedback">
-                                    Security code required
-                                </div>
-                            </div>
                         </div>
 
                         <hr className="my-4" />

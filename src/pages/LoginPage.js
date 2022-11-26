@@ -7,34 +7,62 @@ import { ItemsContext } from '../helper/context/ItemsContext';
 export const LoginPage = () => {
     const { dataUsers, setUser, setIsLoged, setItems, items } = useContext(ItemsContext);
     const navigate = useNavigate();
-
+    let bcrypt = require('bcryptjs');
 
     const getLogin = (e) => {
         e.preventDefault();
 
         //conseguir datos del form
         let email = e.target.email.value;
-        let pass = e.target.pass.value;
+        let pass_form = e.target.pass.value;
 
         // Comprobar datos
         const interim_autho = dataUsers.find(u => email === u.email);
-        const interim_autho_pass = () => {
-            if (interim_autho.pass === pass) {
-                return true;
-            } else { alert("credenciales erroneas"); }
+
+        const decodePass = () => {
+            //Desencriptar password
+            let pass_hash = interim_autho.pass;
+            let compare = bcrypt.compareSync(pass_form, pass_hash)
+            return compare;
         }
 
-        if (interim_autho_pass()) {
+        if (decodePass()) {
             setItems(
                 items.map(element => element.idUser === "123" ? {
                     ...element,
                     idUser: interim_autho.id
                 } : element))
-        }
-        setUser(interim_autho);
-        setIsLoged(true);
-        navigate('/checkout')
+            setUser(interim_autho);
+            setIsLoged(true);
+            navigate('/checkout')
+        } else { alert("credenciales erroneas"); }
     }
+    // const getLogin = (e) => {
+    //     e.preventDefault();
+
+    //     //conseguir datos del form
+    //     let email = e.target.email.value;
+    //     let pass = e.target.pass.value;
+
+    //     // Comprobar datos
+    //     const interim_autho = dataUsers.find(u => email === u.email);
+    //     const interim_autho_pass = () => {
+    //         if (interim_autho.pass === pass) {
+    //             return true;
+    //         } else { alert("credenciales erroneas"); }
+    //     }
+
+    //     if (interim_autho_pass()) {
+    //         setItems(
+    //             items.map(element => element.idUser === "123" ? {
+    //                 ...element,
+    //                 idUser: interim_autho.id
+    //             } : element))
+    //     }
+    //     setUser(interim_autho);
+    //     setIsLoged(true);
+    //     navigate('/checkout')
+    // }
 
     return (
         <div className='container mt-2'>

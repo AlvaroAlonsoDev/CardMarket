@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Article from '../components/Article/Article'
 import { SearchBar } from '../components/SearchBar/SearchBar'
 import { ItemsContext } from '../helper/context/ItemsContext'

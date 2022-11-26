@@ -10,7 +10,7 @@ export function ModalLogin() {
     const handleShow = () => setShow(true);
     const { dataUsers, setUser, setIsLoged, setItems, items } = useContext(ItemsContext);
     // const navigate = useNavigate();
-    var bcrypt = require('bcryptjs');
+    let bcrypt = require('bcryptjs');
 
     const getLogin = (e) => {
         e.preventDefault();
