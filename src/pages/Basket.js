@@ -30,7 +30,6 @@ const Basket = () => {
     setIvaPrice(Number((countPrice * 0.21).toFixed(2)));
     return countPrice;
   }
-
   const removeSC = (id) => {
     let interim_sameID = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
     let interim_other = items.filter(item => isLoged ? (item.idUser !== user.id) : (item.idUser !== "123"));
@@ -40,7 +39,6 @@ const Basket = () => {
       icon: '🗑️',
     });
   }
-
   const restOne = (product, id) => {
     let interim_same_ID = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
     let interim = interim_same_ID.find((item, indice) => indice === id);
@@ -56,7 +54,6 @@ const Basket = () => {
         } : element)
       ) : setItems(interim_other.concat(interim_delete));
   }
-
   const checkoutFunction = () => {
     if (isLoged) {
       navigate("/checkout")
@@ -64,7 +61,6 @@ const Basket = () => {
       navigate("/login")
     }
   }
-
   const buy = (product, amount = 1) => {
     let interim = items.filter(item => isLoged ? (item.idUser === user.id) : (item.idUser === "123"));
     let interim2 = interim.find(item => item.id === product.id)

@@ -1,6 +1,8 @@
 //? RRUTAS PRIVADAS
 //? Pagina privada para el admin
 
+//? Cuando compro mandarte a una pagina bonita
+//? No poder ir al checkout si no hay productos en la basket
 //? especie de alerta diciendo que se ha procesado el pedido y navegar al home o whaterever
 //  Cupon
 // Al hacer una compra borrar la cantidad de ofertas dependiendo de que compro
@@ -46,8 +48,6 @@
 // Añadir las alertas de Juan           //! DONE
 // Funcionalidad Buscador               //! DONE
 
-//? Mandar alert cada x tiempo con el cupon
+//? arreglar al mostrar los orders invididual meter precio cantidad...
 //? Al crear ofertas Toast con que todo ha ido bien
-//? Cuando compro mandarte a una pagina bonita
-//? No poder ir al checkout si no hay productos en la basket
-//? 
+//? navigate al producto individual en Thanks page

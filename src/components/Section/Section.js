@@ -12,10 +12,10 @@ export const Section = ({ product, buy }) => {
     return (
         <>
             {isLoged ? <ModalCreateOffer product={product} /> : ""}
-            <hr className='m-' />
+            <hr className='' />
             <div className="table-responsive">
-                <table className="table">
-                    <thead>
+                <table className="table container">
+                    <thead className=''>
                         <tr>
                             <th scope="col">Seller</th>
                             <th scope="col">Product Information</th>

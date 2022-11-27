@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { Badge } from 'react-bootstrap';
 import { FaShoppingCart, FaPlus, FaMinus } from "react-icons/fa";
-import { ItemsContext } from '../../helper/context/ItemsContext';
 import { NumberReducer } from '../../helper/reducer/NumberReducer';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import IconButton from '@mui/material/IconButton';
 
 export const Offer = ({ offer, buy }) => {
     const [number, dispatch] = useReducer(NumberReducer, 1);
@@ -46,7 +47,9 @@ export const Offer = ({ offer, buy }) => {
                 <button onClick={restOne} className='btn btn-sm'><FaMinus /></button>
                 {number}
                 <button onClick={addOne} className='btn btn-sm'><FaPlus /></button>
-                <button onClick={() => { buy(offer, number) }} className='btn btn-sm btn-outline-primary'><FaShoppingCart /> </button>
+                    <IconButton onClick={() => { buy(offer, number) }} color="primary" aria-label="add to shopping cart">
+                        <AddShoppingCartIcon />
+                    </IconButton>
             </td>
         </>
     )
