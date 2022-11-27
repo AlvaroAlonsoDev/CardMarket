@@ -15,7 +15,6 @@ export const Checkout = () => {
     const inputEl = useRef(null);
 
     useEffect(() => {
-        if (!isLoged) { navigate('/') } else if (user.admin) { navigate('/profile') }
         let items_own = items.filter(item => item.idUser === user.id);
         if (!items_own[0]) {
             Swal.fire({
