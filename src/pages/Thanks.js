@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ItemsContext } from '../helper/context/ItemsContext';
 import { v4 as uuidv4 } from 'uuid';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 export const Thanks = () => {
@@ -16,7 +16,7 @@ export const Thanks = () => {
             <div className="pricing-header p-3 pb-md-4 mx-auto text-center">
                 <h1 className="display-4 fw-normal">Thank you!</h1>
                 <p className="fs-5 p-2 text-muted">Your order is coming, it should arrive in 24-48 hours</p>
-                <p className="fs-5 text-muted"><small>Here are the details of your order</small></p>
+                <p className="fs-5 text-muted"><small>Here are the details of your order. <Link to='/account' className='link-info'>Orders History!</Link></small></p>
             </div>
             <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
 

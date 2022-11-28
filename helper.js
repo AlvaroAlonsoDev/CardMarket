@@ -1,15 +1,20 @@
-//? RRUTAS PRIVADAS
 //? Pagina privada para el admin
 
-//? Cuando compro mandarte a una pagina bonita
-//? No poder ir al checkout si no hay productos en la basket
-//? especie de alerta diciendo que se ha procesado el pedido y navegar al home o whaterever
-//  Cupon
-// Al hacer una compra borrar la cantidad de ofertas dependiendo de que compro
-// Agregar producto nuevo con un post
-// Editas las ofertas realizadas METHOD PUT
-// Añadir la ultima vez que se edito o cambio la password
-// Al editar el perfil volver a preguntar la contraseña y verificar datos
+
+//? arreglar al mostrar los orders invididual meter precio cantidad...
+//? Al crear ofertas Toast con que todo ha ido bien
+// Quitar en el checkout el metodo paypal de pago
+// navigate al producto individual en Thanks page   //! DONE
+// RRUTAS PRIVADAS              //! DONE
+// Cuando compro mandarte a una pagina bonita           //! DONE
+// No poder ir al checkout si no hay productos en la basket     //! DONE
+// especie de alerta diciendo que se ha procesado el pedido y navegar al home o whaterever  //! DONE
+//  Cupon           //! DONE
+// Al hacer una compra borrar la cantidad de ofertas dependiendo de que compro  //! DONE
+// Agregar producto nuevo con un post   //! DONE
+// Editas las ofertas realizadas METHOD PUT //! DONE
+// Añadir la ultima vez que se edito o cambio la password       //! DONE
+// Al editar el perfil volver a preguntar la contraseña y verificar datos   //! DONE
 // Cuando haces log que te informe para rellenar otro form con la direccion y demas //! DONE
 // Cuando compras tienes que limpiar el local que has comprado //! DONE
 // Arreglar el precio total con la cantidad de productos //! DONE
@@ -48,6 +53,3 @@
 // Añadir las alertas de Juan           //! DONE
 // Funcionalidad Buscador               //! DONE
 
-//? arreglar al mostrar los orders invididual meter precio cantidad...
-//? Al crear ofertas Toast con que todo ha ido bien
-//? navigate al producto individual en Thanks page

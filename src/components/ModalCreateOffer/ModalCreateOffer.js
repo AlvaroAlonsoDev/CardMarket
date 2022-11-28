@@ -54,7 +54,7 @@ export const ModalCreateOffer = ({ product }) => {
                     secondary: '#FFFAEE',
                 },
             }))
-            .then(() => navigate("/"))
+            .then(() => handleClose())
             .catch(error => console.log(error));
 
 

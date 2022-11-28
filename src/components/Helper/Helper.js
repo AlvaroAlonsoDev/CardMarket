@@ -18,9 +18,6 @@ export const Helper = () => {
         fetchDataOrders();
     }, []);
     useEffect(() => {
-        fetchDataUsers();
-    }, []);
-    useEffect(() => {
         if (isLoged && !user.admin) {
             if (!user.cupon) {
                 console.log("alert is coming");
@@ -35,7 +32,7 @@ export const Helper = () => {
                 };
                 fetch(`http://localhost:4000/users/${user.id}`, requestOptions)
                     .then(() => fetchDataUsers())
-                    .then(() => setTimeout(() => { deliveryCupon(user.name) }, "60000"))
+                    .then(() => setTimeout(() => { deliveryCupon(user.name) }, "10000"))
                     .catch(error => console.log(error));
             }
         }

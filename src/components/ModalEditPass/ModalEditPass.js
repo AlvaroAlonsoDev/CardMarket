@@ -70,7 +70,6 @@ export const ModalEditPass = () => {
                         .then(() => Swal.fire('Saved!', '', 'success'))
                         .then(() => handleClose())
                         .catch(error => console.log(error));
-
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -84,8 +83,6 @@ export const ModalEditPass = () => {
                 Swal.fire('Changes are not saved', '', 'info')
             }
         })
-
-
     }
 
     return (

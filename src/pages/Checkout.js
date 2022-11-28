@@ -9,23 +9,13 @@ import Swal from 'sweetalert2';
 
 export const Checkout = () => {
     const { user, isLoged, items, setItems, offers, cupon, setOrders, setCupon } = useContext(ItemsContext);
-    const { fetchDataOrders, fetchDataOffers, fetchDataUsers } = useContext(ApiContext);
+    const { fetchDataOrders, fetchDataOffers } = useContext(ApiContext);
     const [interim_basket, setInterim_basket] = useState([])
     const navigate = useNavigate();
     const inputEl = useRef(null);
 
     useEffect(() => {
         let items_own = items.filter(item => item.idUser === user.id);
-        if (!items_own[0]) {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'info',
-                title: 'Add product in your Basket is still empty',
-                showConfirmButton: false,
-                timer: 2500
-            })
-            navigate('/product')
-        }
     }, []);
     useEffect(() => {
         isLoged ? setInterim_basket(items.filter(e => e.idUser === user.id)) : setInterim_basket(items.filter(e => e.idUser === "123"));
@@ -52,9 +42,54 @@ export const Checkout = () => {
         }
         return totalPlusIva.toFixed(2);
     }
-    const saveOrderLS = (order) =>{
+    const saveOrderLS = (order) => {
         localStorage.setItem('lastOrder', JSON.stringify(order))
     }
+
+    const fetchPost = async (newOrder) => {
+        await fetch('http://localhost:4000/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newOrder)
+        }).then(res => res.json())
+            .then(() => saveOrderLS(newOrder))
+            .then(() => setOrders(newOrder))
+            .then(() => fetchDataOrders())
+            .then(() => toast.success('Successfully saved!', {
+                position: "top-center",
+                style: {
+                    border: '1px solid #713200',
+                    padding: '16px',
+                    color: '#713200',
+                },
+                iconTheme: {
+                    primary: '#713200',
+                    secondary: '#FFFAEE',
+                },
+            }))
+            .then(() => navigate('/done'))
+            .catch(error => console.log(error));
+    }
+    const fetchPut = async (id, product) => {
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(product)
+        };
+
+        await fetch(`http://localhost:4000/offers/${id}`, requestOptions)
+            .then(() => fetchDataOffers())
+            .catch(error => console.log(error));
+    }
+    const fetchDelete = async (id) => {
+        await fetch(`http://localhost:4000/offers/${id}`, {
+            method: 'DELETE'
+        }).then(() => fetchDataOffers())
+            .catch(error => console.log(error));
+    }
+
     const getNewOrder = (e) => {
         e.preventDefault();
 
@@ -83,30 +118,7 @@ export const Checkout = () => {
             date: currentDate + ' at ' + time
         }
 
-        fetch('http://localhost:4000/orders', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newOrder)
-        }).then(res => res.json())
-            .then(() => saveOrderLS(newOrder))
-            .then(() => setOrders(newOrder))
-            .then(() => fetchDataOrders())
-            .then(() => toast.success('Successfully saved!', {
-                position: "top-center",
-                style: {
-                    border: '1px solid #713200',
-                    padding: '16px',
-                    color: '#713200',
-                },
-                iconTheme: {
-                    primary: '#713200',
-                    secondary: '#FFFAEE',
-                },
-            }))
-            .then(() => navigate('/done'))
-            .catch(error => console.log(error));
+        fetchPost(newOrder);
 
         // Clean LS 
         let i_cleanLS = items.filter(e => e.idUser !== user.id);
@@ -122,20 +134,10 @@ export const Checkout = () => {
                             ...offer,
                             quantity: offer.quantity - e.quantity,
                         }
-                        const requestOptions = {
-                            method: 'PUT',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(offer_update)
-                        };
-                        fetch(`http://localhost:4000/offers/${e.id}`, requestOptions)
-                            .then(() => fetchDataOffers())
-                            .catch(error => console.log(error));
+                        fetchPut(e.id, offer_update);
                     } else {
                         console.log("No hay mas stock y borro");
-                        fetch(`http://localhost:4000/offers/${e.id}`, {
-                            method: 'DELETE'
-                        }).then(() => fetchDataOffers())
-                            .catch(error => console.log(error));
+                        fetchDelete(e.id);
                     }
                 }
             })
@@ -251,21 +253,6 @@ export const Checkout = () => {
                             <hr className="my-4" />
 
                             <h4 className="mb-3">Payment</h4>
-
-                            <div className="my-3">
-                                <div className="form-check">
-                                    <input id="credit" name="paymentMethod" type="radio" className="form-check-input" />
-                                    <label className="form-check-label" htmlFor="credit">Credit card</label>
-                                </div>
-                                <div className="form-check">
-                                    <input id="debit" name="paymentMethod" type="radio" className="form-check-input" />
-                                    <label className="form-check-label" htmlFor="debit">Debit card</label>
-                                </div>
-                                <div className="form-check">
-                                    <input id="paypal" name="paymentMethod" type="radio" className="form-check-input" />
-                                    <label className="form-check-label" htmlFor="paypal">PayPal</label>
-                                </div>
-                            </div>
 
                             <div className="row gy-3">
                                 <div className="col-md-6">

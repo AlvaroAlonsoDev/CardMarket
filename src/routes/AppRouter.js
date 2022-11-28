@@ -6,6 +6,7 @@ import Home from '../pages/Home'
 import { Item } from '../pages/Item'
 import { LoginPage } from '../pages/LoginPage'
 import { Profile } from '../pages/Profile'
+import { RegisterPage } from '../pages/RegisterPage'
 import { Setting } from '../pages/Setting'
 import { Thanks } from '../pages/Thanks'
 import { PrivateRoutes } from './PrivateRoutes'
@@ -19,6 +20,7 @@ const AppRouter = () => {
             <Route path='/basket' element={<Basket />}></Route>
             <Route path='/item/:id' element={<Item />}></Route>
             <Route path='/login' element={<LoginPage />}></Route>
+            <Route path='/register' element={<RegisterPage />}></Route>
 
 
             <Route path='/account' element={<PrivateRoutes><Profile /></PrivateRoutes>}></Route>
