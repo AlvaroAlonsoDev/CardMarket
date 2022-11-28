@@ -50,21 +50,16 @@ export function ListOwnOffers() {
     }
 
     return (
-        <ListGroup as="ol" numbered>
+        <ListGroup numbered>
             {
                 myOffers && myOffers.map((item, index) => {
                     return (
-                        <ListGroup.Item
-                            key={uuidv4()}
-                            as="li"
-                            className="d-flex justify-content-between align-items-start"
-                        >
+                        <ListGroup.Item key={uuidv4()} as="li" className="d-flex justify-content-between align-items-start">
                             <div className="ms-2 me-auto">
                                 <div className="fw-bold">{item.name}</div>
-                                {item.quantity} x {item.price}
+                                {item.quantity} x ${item.price}
                             </div>
 
-                            {/* //TODO CAMBIAR BOTON PARA QUE HAGA UN METHOD DELETE */}
                             <div className="pointer">
                                 <ModalEditOffer item={item} index={index} setInterim={setInterim} />
                                 <Button onClick={e => { removeOffer(item, index) }} variant="outline-danger" ><FaTrashAlt /></Button>

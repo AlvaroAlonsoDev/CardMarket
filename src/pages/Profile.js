@@ -5,6 +5,8 @@ import ListOrders from '../components/ListOrders/ListOrders'
 import { ListOwnOffers } from '../components/ListOwnOffers/ListOwnOffers'
 import { ItemsContext } from '../helper/context/ItemsContext'
 import { FaUserCog } from "react-icons/fa";
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 export const Profile = () => {
     const navigate = useNavigate();
@@ -12,14 +14,12 @@ export const Profile = () => {
     const i_offer = offers.filter(e => e.idUsers === user.id);
     const i_order = orders.filter(e => e.idUser === user.id);
     useEffect(() => {
-        if (!isLoged) { navigate('/') }
+        if (!isLoged) { navigate('/') };
     }, [])
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
-
-
     return (
         <div className="container emp-profile">
             <div className="row">
@@ -110,21 +110,20 @@ export const Profile = () => {
                 <div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-md-4">
-                    <div className="profile-work">
-                    </div>
-                </div>
-
-                <div>
-                    <h3 className='display-4'> {i_offer ? "Your Offers" : ""}</h3>
-                    <div className='mt-3'><ListOwnOffers /></div>
-                </div>
-                <div>
-                    <hr />
-                    <h3 className='display-4'>{i_order ? "Your Orders" : ""}</h3>
-                    <div className='mt-2'><ListOrders /></div>
-                </div>
+            <div className="">
+                <Tabs
+                    defaultActiveKey="home"
+                    transition={false}
+                    id="noanim-tab-example"
+                    className="mb-3"
+                >
+                    <Tab eventKey="home" title="Public Offers">
+                        <ListOwnOffers />
+                    </Tab>
+                    <Tab eventKey="profile" title="Orders">
+                        <ListOrders />
+                    </Tab>
+                </Tabs>
             </div>
         </div>
     )

@@ -1,13 +1,18 @@
-import React, { useContext } from 'react'
+import { Button } from '@mui/material';
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ModalRegister } from '../components/ModalRegister/ModalRegister';
 import { ShoppingCart } from '../components/ShoppingCart/ShoppingCart';
 import { ItemsContext } from '../helper/context/ItemsContext';
 
 export const LoginPage = () => {
-    const { dataUsers, setUser, setIsLoged, setItems, items } = useContext(ItemsContext);
+    const { dataUsers, setUser, setIsLoged, setItems, items, user, isLoged } = useContext(ItemsContext);
     const navigate = useNavigate();
     let bcrypt = require('bcryptjs');
+
+    useEffect(() => {
+        if (isLoged) { navigate('/') } else if (user.admin) { navigate('/profile') }
+
+    })
 
     const getLogin = (e) => {
         e.preventDefault();
@@ -71,7 +76,9 @@ export const LoginPage = () => {
 
                             <hr className="my-4" />
 
-                            <p className='text-muted'>Don’t have an account? <ModalRegister /></p>
+                            <p className='text-muted'>Don’t have an account?  <Button variant="contained" color="secondary" onClick={() => navigate('/register')}>
+                                Sign-up
+                            </Button></p>
 
                         </form>
                     </div>

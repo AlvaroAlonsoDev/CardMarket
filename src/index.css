@@ -4,6 +4,10 @@
   min-height: 85vh;
 }
 
+.bgpurple {
+background-color: #67569E;
+border-color: #67569e8f;
+}
 
 .pointer {
   cursor: pointer;

@@ -12,7 +12,6 @@ export const ListOrders = () => {
     useEffect(() => {
         setIOrders(orders.filter(e => e.idUser === user.id))
     }, [orders]);
-
     return (
         <Accordion defaultActiveKey={[]}>
             {
@@ -26,21 +25,22 @@ export const ListOrders = () => {
                                         {/* //? Añadirlo en plan en un lado como el shopping cart  */}
 
                                         {(element.product).map((int, index) => {
-                                                    return (
-                                                        <Accordion.Item key={uuidv4()} eventKey={index}>
-                                                            <Accordion.Header>{index + 1}. {int.name} / {int.version} - {int.quantity} x ${int.price}</Accordion.Header>
-                                                            <Accordion.Body>
-                                                                <ListGroup variant="flush">
-                                                                    <ListGroup.Item>Seller: {int.seller}</ListGroup.Item>
-                                                                    <ListGroup.Item>Billing address: {element.country} {element.address}</ListGroup.Item>
-                                                                    <ListGroup.Item>Post code: {element.zip}</ListGroup.Item>
-                                                                    <ListGroup.Item>Description: {int.description}</ListGroup.Item>
-                                                                    <ListGroup.Item>Condition: {int.condition}</ListGroup.Item>
-                                                                </ListGroup>
-                                                            </Accordion.Body>
-                                                        </Accordion.Item>
-                                                    )
-                                                })
+                                            return (
+                                                <Accordion.Item key={uuidv4()} eventKey={index}>
+                                                    <Accordion.Header>{index + 1}. {int.name}</Accordion.Header>
+                                                    <Accordion.Body>
+                                                        <ListGroup variant="flush">
+                                                            <ListGroup.Item>Seller: {int.seller}</ListGroup.Item>
+                                                            <ListGroup.Item>Price: ${int.price}</ListGroup.Item>
+                                                            <ListGroup.Item>Quantity: {int.quantity}</ListGroup.Item>
+                                                            <ListGroup.Item>Version: {int.version}</ListGroup.Item>
+                                                            <ListGroup.Item>Condition: {int.condition}</ListGroup.Item>
+                                                            <ListGroup.Item>Description: {int.description}</ListGroup.Item>
+                                                        </ListGroup>
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+                                            )
+                                        })
                                         }
                                     </Accordion>
                                 </Accordion.Body>
