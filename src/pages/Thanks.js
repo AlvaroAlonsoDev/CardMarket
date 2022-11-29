@@ -3,13 +3,17 @@ import { ItemsContext } from '../helper/context/ItemsContext';
 import { v4 as uuidv4 } from 'uuid';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { ApiContext } from '../helper/context/ApiContext';
 
 export const Thanks = () => {
     const { user, isLoged, stock } = useContext(ItemsContext);
+    const { fetchDataOffers, fetchDataOrders } = useContext(ApiContext);
     const lastOrder = JSON.parse(localStorage.getItem("lastOrder"))
     const navigate = useNavigate();
     useEffect(() => {
         if (!isLoged) { navigate('/') } else if (user.admin) { navigate('/profile') }
+        fetchDataOffers();
+        fetchDataOrders();
     }, [])
     return (
         <div className="container py-3">

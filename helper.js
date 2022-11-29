@@ -1,9 +1,9 @@
 //? Pagina privada para el admin
 
 
-//? arreglar al mostrar los orders invididual meter precio cantidad...
-//? Al crear ofertas Toast con que todo ha ido bien
-// Quitar en el checkout el metodo paypal de pago
+// arreglar al mostrar los orders invididual meter precio cantidad...   //! DONE
+// Al crear ofertas Toast con que todo ha ido bien      //! DONE
+// Quitar en el checkout el metodo paypal de pago       //! DONE
 // navigate al producto individual en Thanks page   //! DONE
 // RRUTAS PRIVADAS              //! DONE
 // Cuando compro mandarte a una pagina bonita           //! DONE

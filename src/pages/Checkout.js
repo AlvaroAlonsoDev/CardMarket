@@ -56,7 +56,6 @@ export const Checkout = () => {
         }).then(res => res.json())
             .then(() => saveOrderLS(newOrder))
             .then(() => setOrders(newOrder))
-            .then(() => fetchDataOrders())
             .then(() => toast.success('Successfully saved!', {
                 position: "top-center",
                 style: {
@@ -80,13 +79,12 @@ export const Checkout = () => {
         };
 
         await fetch(`http://localhost:4000/offers/${id}`, requestOptions)
-            .then(() => fetchDataOffers())
             .catch(error => console.log(error));
     }
     const fetchDelete = async (id) => {
         await fetch(`http://localhost:4000/offers/${id}`, {
             method: 'DELETE'
-        }).then(() => fetchDataOffers())
+        })
             .catch(error => console.log(error));
     }
 
